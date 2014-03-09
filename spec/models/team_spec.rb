@@ -54,4 +54,61 @@ describe Team do
       expect(@team.authenticate(@new_pw)).to eq @team
     end
   end
+
+  describe '#is_suspended?' do
+    before do
+      @team = create(:team)
+    end
+    context 'if the team is not suspended' do
+      it 'returns false' do
+        expect(@team.is_suspended?).to be_false
+      end
+    end
+    context 'if the team is suspended' do
+      before do
+        @team.suspend!
+      end
+      it 'returns true' do
+        expect(@team.is_suspended?).to be_true
+      end
+    end
+  end
+
+  describe '#suspend!' do
+    before do
+      @team = create(:team)
+      @suspend_until = Time.now.tomorrow
+    end
+    context 'if the team is not suspended' do
+      before do
+        @team.suspend!(@suspend_until)
+      end
+      it 'suspends the team' do
+        expect(@team.is_suspended?).to be_true
+        expect(@team.suspended_until).to eq @suspend_until
+      end
+    end
+  end
+
+  describe '#resume!' do
+    before do
+      @team = create(:team)
+    end
+    context 'if the team is not suspended' do
+      it 'does nothing' do
+        @team.resume!
+        expect(@team.is_suspended?).to be_false
+      end
+    end
+    context 'if the team is suspended' do
+      before do
+        @team.suspend!
+      end
+      it 'resumes the team' do
+        @team.resume!
+        expect(@team.is_suspended?).to be_false
+      end
+    end
+  end
+
 end
