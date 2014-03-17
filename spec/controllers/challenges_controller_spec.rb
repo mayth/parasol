@@ -11,14 +11,14 @@ describe ChallengesController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get 'show', id: 1
       response.should be_success
     end
   end
 
-  describe "GET 'answer'" do
+  describe "POST 'answer'" do
     it "returns http success" do
-      get 'answer'
+      post 'answer', id: 1
       response.should be_success
     end
   end
