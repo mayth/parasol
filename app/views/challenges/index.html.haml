@@ -1,2 +1,12 @@
 .header
   %h1 Challenges
+.content
+  - if @challenges.present?
+    - @genres.each do |genre|
+      %section
+        %h1= genre
+        %ul
+          - @challenges.select{|c| c.genre == genre}.each do |ch|
+            %li #{ch.name} (#{ch.point})
+  - else
+    %p No challenges are opened...
