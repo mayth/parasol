@@ -11,6 +11,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'less-rails'
 gem 'yui-compressor'
 
+# framework
+gem 'purecss'
+
 # javascript (coffeescript, jquery, ...)
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'

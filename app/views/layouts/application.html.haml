@@ -2,15 +2,22 @@
 %html
   %head
     %title= Setting.ctf_name
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:400,300'
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    %header.ui.top.attached.inverted.main.menu
-      .container
-        %h1.header.item= Setting.ctf_name
-        %a.item Rules
-        %a.item Challenges
-        %a.item Ranking
-    .main.container
-      = yield
+    #layout
+      %a#menuLink.menu-link{href: '#menu'}
+      #menu
+        .pure-menu.pure-menu-open
+          %a.pure-menu-heading= Setting.ctf_name
+          %ul
+            %li
+              %a Rules
+            %li
+              %a Challenges
+            %li
+              %a Ranking
+      #main
+        = yield
