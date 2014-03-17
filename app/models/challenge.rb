@@ -10,6 +10,7 @@ class Challenge < ActiveRecord::Base
 
   structure do
     name       'Parasol Star Memories', validates: :presence
+    genre      'binary', validates: :presence
     timestamps
   end
 
