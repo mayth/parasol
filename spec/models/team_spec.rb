@@ -41,11 +41,11 @@ describe Team do
     end
   end
 
-  describe '#forget_password' do
+  describe '#forget_password!' do
     before do
       @old_pw = 'test'
       @team = create(:team, password: @old_pw)
-      @new_pw = @team.forget_password
+      @new_pw = @team.forget_password!
     end
     it 'returns the new password' do
       expect(@old_pw).not_to eq @new_pw
@@ -55,13 +55,13 @@ describe Team do
     end
   end
 
-  describe '#is_suspended?' do
+  describe '#suspended?' do
     before do
       @team = create(:team)
     end
     context 'if the team is not suspended' do
       it 'returns false' do
-        expect(@team.is_suspended?).to be_false
+        expect(@team.suspended?).to be_false
       end
     end
     context 'if the team is suspended' do
@@ -69,7 +69,7 @@ describe Team do
         @team.suspend!
       end
       it 'returns true' do
-        expect(@team.is_suspended?).to be_true
+        expect(@team.suspended?).to be_true
       end
     end
   end
@@ -84,7 +84,7 @@ describe Team do
         @team.suspend!(@suspend_until)
       end
       it 'suspends the team' do
-        expect(@team.is_suspended?).to be_true
+        expect(@team.suspended?).to be_true
         expect(@team.suspended_until).to eq @suspend_until
       end
     end
@@ -97,7 +97,7 @@ describe Team do
     context 'if the team is not suspended' do
       it 'does nothing' do
         @team.resume!
-        expect(@team.is_suspended?).to be_false
+        expect(@team.suspended?).to be_false
       end
     end
     context 'if the team is suspended' do
@@ -106,9 +106,38 @@ describe Team do
       end
       it 'resumes the team' do
         @team.resume!
-        expect(@team.is_suspended?).to be_false
+        expect(@team.suspended?).to be_false
       end
     end
   end
 
+  describe '#point' do
+    subject { @team.point }
+    context 'if the team has no members' do
+      before do
+        @team = create(:team, players: [])
+      end
+      it 'returns 0' do
+        expect(subject).to eq 0
+      end
+    end
+    context 'if the team has some members' do
+      before do
+        @team = create(:team, players: [])
+        @players = 2.times.map {create(:player)}
+        @players.each {|p| @team.players << p}
+        challenge = create(:challenge)
+        @players[0].submit(challenge, challenge.flags[0].flag)
+
+        challenge = build(:challenge, flags: [])
+        f = challenge.flags.build(flag: 'FLAG_abcde', point: 300)
+        challenge.save!
+        f.save!
+        @players[1].submit(challenge, challenge.flags[0].flag)
+      end
+      it "returns summation of the players' point" do
+        expect(subject).to eq @players.map{|p| p.point}.inject(:+)
+      end
+    end
+  end
 end
