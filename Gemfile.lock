@@ -29,8 +29,6 @@ GEM
       rails (>= 3, < 5)
     arel (4.0.2)
     atomic (1.1.15)
-    autoprefixer-rails (1.1.20140302)
-      execjs
     awesome_print (1.2.0)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -240,9 +238,6 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    semantic-ui-rails (0.14.0)
-      autoprefixer-rails
-      less-rails
     sexp_processor (4.4.1)
     showdown-rails (0.0.4)
       actionpack (>= 3.1)
@@ -318,6 +313,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  less-rails
   migrant
   newrelic_rpm
   pg
@@ -335,7 +331,6 @@ DEPENDENCIES
   redcarpet
   rspec-rails
   sass-rails (~> 4.0.0)
-  semantic-ui-rails
   showdown-rails
   spring
   spring-commands-rspec

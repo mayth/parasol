@@ -1,9 +1,16 @@
 !!!
 %html
   %head
-    %title Parasol
+    %title= Setting.ctf_name
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = yield
+    %header.ui.top.attached.inverted.main.menu
+      .container
+        %h1.header.item= Setting.ctf_name
+        %a.item Rules
+        %a.item Challenges
+        %a.item Ranking
+    .main.container
+      = yield

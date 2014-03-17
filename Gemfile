@@ -6,8 +6,9 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'pg'
 
-# stylesheets (sass)
+# stylesheets (sass/less)
 gem 'sass-rails', '~> 4.0.0'
+gem 'less-rails'
 gem 'yui-compressor'
 
 # javascript (coffeescript, jquery, ...)
@@ -21,9 +22,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # view template (haml)
 gem 'haml-rails'
-
-# framework
-gem 'semantic-ui-rails'
 
 # markdown
 gem 'redcarpet'
