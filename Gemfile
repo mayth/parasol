@@ -36,6 +36,7 @@ gem 'newrelic_rpm'
 gem 'foreman'
 # app configuration
 gem 'figaro'
+gem 'rails-settings-cached', '0.3.1'
 
 ## model
 # migration DSL
