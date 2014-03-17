@@ -17,4 +17,8 @@ class Challenge < ActiveRecord::Base
   def point
     flags.pluck(:point).inject(:+)
   end
+
+  def self.genres
+    Challenge.pluck(:genre).uniq
+  end
 end
