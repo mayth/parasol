@@ -15,6 +15,72 @@ describe Challenge do
     end
   end
 
+  describe '#opened?' do
+    subject { @challenge.opened? }
+    before do
+      @challenge = create(:challenge)
+    end
+    context 'before it opens' do
+      it 'returns false' do
+        expect(subject).to be_false
+      end
+    end
+    context 'after it opens' do
+      before do
+        @challenge.open!
+      end
+      it 'returns true' do
+        expect(subject).to be_true
+      end
+    end
+  end
+
+  describe '#open!' do
+    before do
+      @challenge = create(:challenge)
+      @challenge.close!
+    end
+    context 'when the challenge is closed' do
+      it 'opens the challenge' do
+        @challenge.open!
+        expect(@challenge.opened?).to be_true
+      end
+    end
+
+    context 'when the challenge is already opened' do
+      before do
+        @challenge.open!
+      end
+      it 'has no effects so the opened date is not changed' do
+        expect{@challenge.open!}.not_to change {@challenge.opened_at}
+      end
+      it 'has no effects so the challenge is still opened' do
+        expect(@challenge.opened?).to be_true
+      end
+    end
+  end
+
+  describe '#close!' do
+    before do
+      @challenge = create(:challenge)
+    end
+    context 'if the challenge is already closed' do
+      it 'has no effects and the challenge still be closed' do
+        @challenge.close!
+        expect(@challenge.opened?).to be_false
+      end
+    end
+    context 'if the challenge is opened' do
+      before do
+        @challenge.open!
+      end
+      it 'closes the challenge' do
+        @challenge.close!
+        expect(@challenge.opened?).to be_false
+      end
+    end
+  end
+
   describe '.generes' do
     subject { Challenge.genres }
 
