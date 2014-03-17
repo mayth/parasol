@@ -1,4 +1,5 @@
 Parasol::Application.routes.draw do
+  ### Challenges
   get "challenges"             => 'challenges#index'
   get "challenges/:id"         => 'challenges#show'
   post "challenges/:id/answer" => 'challenges#answer'
