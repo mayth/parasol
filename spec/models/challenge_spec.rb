@@ -104,4 +104,25 @@ describe Challenge do
       end
     end
   end
+
+  describe '.opened' do
+    subject { Challenge.opened }
+
+    context 'when no challenges are registered' do
+      it 'returns emtpy set' do
+        expect(subject).to be_empty
+      end
+    end
+
+    context 'when some challenges are registered' do
+      before do
+        @challenges = 3.times.map { create(:challenge) }
+        @challenges.each {|c| c.open!}
+        3.times.each {create(:challenge)}
+      end
+      it 'returns opened challenges' do
+        expect(subject).to eq @challenges
+      end
+    end
+  end
 end

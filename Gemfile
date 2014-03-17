@@ -64,6 +64,7 @@ gem 'unicorn'
 group :development do
   gem 'erb2haml'
   gem 'yard', require: false
+  gem 'yard-activerecord', require: false
 end
 
 group :development, :test do

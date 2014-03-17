@@ -1,13 +1,11 @@
 # Represents a challenge.
+#
 # @!attribute [r] point
 #   Gets the maximum points for this challenge.
 #   @return [Number]
+#
 # @!attribute [r] opened?
 #   Gets whether the challenge is opened or not.
-# @!scope class
-# @!attribute [r] genres
-#   Gets the all genres.
-#   @return [Array<String>]
 class Challenge < ActiveRecord::Base
   has_many :answers, dependent: :destroy, inverse_of: :challenge
   has_many :flags, dependent: :destroy, inverse_of: :challenge
@@ -34,7 +32,11 @@ class Challenge < ActiveRecord::Base
   #
   # @return [Time] Opened time
   def open!
-    self[:opened_at] ||= Time.now
+    unless self[:opened_at]
+      self[:opened_at] ||= Time.now
+      save!
+    end
+    self[:opened_at]
   end
 
   # Closes the challenge.
@@ -42,9 +44,16 @@ class Challenge < ActiveRecord::Base
   # @return [void]
   def close!
     self[:opened_at] = nil
+    save!
   end
 
-  def self.genres
-    Challenge.pluck(:genre).uniq
-  end
+  # Gets all genres.
+  #
+  # @return [Set<String>]
+  scope :genres, -> { pluck(:genre).uniq }
+
+  # Gets all opened challenges.
+  #
+  # @return [Set<Challenge>]
+  scope :opened, -> { where.not(opened_at: nil) }
 end
