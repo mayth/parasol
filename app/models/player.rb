@@ -11,7 +11,11 @@
 #   It should not be blank.
 #   @return [String]
 class Player < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable
 
   has_many :answers, dependent: :destroy, inverse_of: :player
   belongs_to :team, inverse_of: :players
@@ -22,7 +26,6 @@ class Player < ActiveRecord::Base
   structure do
     name        'Kogasa Tatara',      validates: :presence
     email       'kogasa@example.com', validates: [:presence, :uniqueness]
-    password_digest                   validates: :presence
     timestamps
   end
 
