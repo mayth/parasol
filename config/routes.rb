@@ -1,16 +1,26 @@
 Parasol::Application.routes.draw do
+  # You can have the root of your site routed with "root"
+  root 'home#index'
+
+  devise_for :players
+
   ### Challenges
   get "challenges"             => 'challenges#index'
   get "challenges/:id"         => 'challenges#show'
   post "challenges/:id/answer" => 'challenges#answer'
 
-  devise_for :players
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/sessions',
+    registrations: 'admin/registrations',
+    passwords: 'admin/passwords'
+  }
+
+  namespace 'admin' do
+    get '/' => 'home#index'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

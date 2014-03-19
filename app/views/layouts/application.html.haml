@@ -19,5 +19,11 @@
               %a Challenges
             %li
               %a Ranking
+          - if admin_signed_in?
+            = link_to 'Admin', admin_path, class: 'pure-menu-heading'
       #main
+        - [:notice, :alert].each do |klass|
+          - if flash[klass].present?
+            %div{class: "flash #{klass}"}
+              = flash[klass]
         = yield

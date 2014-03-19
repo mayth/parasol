@@ -1,0 +1,18 @@
+.header
+  %h1 Admin Sign in
+  %h2 You must be logged in as an admin to continue...
+.content
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-aligned'}) do |f|
+    %fieldset
+      .pure-control-group
+        = f.label :email
+        = f.email_field :email, :autofocus => true
+      .pure-control-group
+        = f.label :password
+        = f.password_field :password
+      .pure-controls
+        - if devise_mapping.rememberable?
+          = f.label :remember_me, class: 'pure-checkbox' do
+            = f.check_box :remember_me
+            Remember me
+        = f.submit "Sign in", class: 'pure-button pure-button-primary'

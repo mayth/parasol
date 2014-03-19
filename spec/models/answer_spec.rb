@@ -11,6 +11,7 @@ describe Answer do
       @flags.each {|f| @challenge.flags << f}
       @challenge.save!
       @player = create(:player)
+      @player.confirm!
     end
     context 'when it is the correct answer' do
       it 'returns true' do
