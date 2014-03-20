@@ -1,7 +1,10 @@
-%h1 Editing team
+.header
+  %h1 Editing Team
+  %h2= @team.name
 
-= render 'form'
+.content
+  = render 'form'
 
-= link_to 'Show', admin_team_path(@team)
-\|
-= link_to 'Back', admin_teams_path
+  = link_to 'Show', admin_team_path(@team)
+  \|
+  = link_to 'Back', admin_teams_path

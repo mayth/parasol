@@ -1,17 +1,28 @@
-%h1 Listing teams
+.header
+  %h1 Teams
 
-%table
-  %tr
-    %th
-    %th
-    %th
+.content
+  %p= link_to 'New Team', new_admin_team_path
 
-  - @teams.each do |team|
-    %tr
-      %td= link_to 'Show', admin_team_path(team)
-      %td= link_to 'Edit', edit_admin_team_path(team)
-      %td= link_to 'Destroy', admin_team_path(team), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %p= pluralize(Team.count, 'team')
+  %table.pure-table
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th # Members
+        %th Point
+        %th
+        %th
+        %th
 
-%br
-
-= link_to 'New Team', new_admin_team_path
+    %tbody
+      - @teams.each do |team|
+        %tr
+          %td= team.id
+          %td= team.name
+          %td= team.players.count
+          %td= team.point
+          %td= link_to 'Show', admin_team_path(team)
+          %td= link_to 'Edit', edit_admin_team_path(team)
+          %td= link_to 'Destroy', admin_team_path(team), :method => :delete, :data => { :confirm => 'Are you sure?' }
