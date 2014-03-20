@@ -13,5 +13,8 @@
     .pure-control-group
       = f.label :email
       = f.text_field :email, required: true
+    .pure-control-group
+      = f.label :team
+      = f.select :team_id, Team.pluck(:name, :id)
     .pure-controls
       = f.submit 'Save', class: 'pure-button pure-button-primary'
