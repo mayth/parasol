@@ -1,0 +1,28 @@
+.header
+  %h1 Players
+
+.content
+  %p= link_to 'New Player', new_admin_player_path
+
+  %p= pluralize(Player.count, 'player')
+  %table.pure-table
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th Team
+        %th Point
+        %th
+        %th
+        %th
+
+    %tbody
+      - @players.each do |player|
+        %tr
+          %td= player.id
+          %td= player.name
+          %td= link_to player.team.name, '/'
+          %td= player.point
+          %td= link_to 'Show', admin_player_path(player)
+          %td= link_to 'Edit', edit_admin_player_path(player)
+          %td= link_to 'Destroy', admin_player_path(player), :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,10 @@
+.header
+  %h1 Editing Player
+  %h2= @player.name
+
+.content
+  = render 'form'
+
+  = link_to 'Show', admin_player_path(@player)
+  \|
+  = link_to 'Back', admin_players_path

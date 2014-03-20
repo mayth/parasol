@@ -1,0 +1,17 @@
+= form_for @player, url: (@player.new_record? ? admin_players_path : admin_player_path(@player)), html: {class: 'pure-form pure-form-aligned'} do |f|
+  - if @player.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
+      %ul
+        - @player.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    .pure-control-group
+      = f.label :name
+      = f.text_field :name, required: true
+    .pure-control-group
+      = f.label :email
+      = f.text_field :email, required: true
+    .pure-controls
+      = f.submit 'Save', class: 'pure-button pure-button-primary'

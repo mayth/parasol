@@ -18,6 +18,7 @@ Parasol::Application.routes.draw do
   namespace 'admin' do
     get '/' => 'home#index'
     resources :challenges
+    resources :players
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
