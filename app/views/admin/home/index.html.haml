@@ -1,4 +1,24 @@
 .header
   %h1 Admin Home
 .content
-  %p Something here.
+  %section
+    %h1 Overview
+    %dl
+      %dt Contest Started at
+      - first_challenge = Challenge.opened.order(opened_at: :desc).first
+      - if first_challenge
+        %dd= first_challenge.opened_at
+      - else
+        %dd Not started yet.
+
+      %dt # Teams
+      %dd= Team.count
+
+      %dt # Players
+      %dd= Player.count
+
+      %dt # Challenges (Opened/Total)
+      %dd #{Challenge.opened.count} / #{Challenge.count}
+
+      %dt # Submission
+      %dd= Answer.count
