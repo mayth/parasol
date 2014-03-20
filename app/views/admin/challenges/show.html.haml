@@ -1,5 +1,13 @@
-%p#notice= notice
+.header
+  %h1 Challenge '#{@challenge.name}'
+  %h2 #{@challenge.genre} #{@challenge.point}
 
+.content
+  %p
+    - if @challenge.opened?
+      = @challenge.opened_at
+    - else
+      Closed...
 
 = link_to 'Edit', edit_admin_challenge_path(@challenge)
 \|

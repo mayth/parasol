@@ -1,17 +1,31 @@
-%h1 Listing Challenges
+.header
+  %h1 Challenges
 
-%table
-  %tr
-    %th
-    %th
-    %th
+.content
+  %p
+    = link_to 'New Challenge', new_admin_challenge_path
 
-  - @challenges.each do |challenge|
+  %table.pure-table
     %tr
-      %td= link_to 'Show', admin_challenge_path(challenge)
-      %td= link_to 'Edit', edit_admin_challenge_path(challenge)
-      %td= link_to 'Destroy', admin_challenge_path(challenge), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th ID
+      %th Name
+      %th Genre
+      %th Point
+      %th
+        Opened at
+        %br
+        %small ('N/A' means it is closed.)
+      %th
+      %th
+      %th
 
-%br
-
-= link_to 'New Challenge', new_admin_challenge_path
+    - @challenges.each do |challenge|
+      %tr
+        %td= challenge.id
+        %td= challenge.name
+        %td= challenge.genre
+        %td= challenge.point
+        %td= challenge.opened_at.presence || 'N/A'
+        %td= link_to 'Show', admin_challenge_path(challenge)
+        %td= link_to 'Edit', edit_admin_challenge_path(challenge)
+        %td= link_to 'Destroy', admin_challenge_path(challenge), :method => :delete, :data => { :confirm => 'Are you sure?' }

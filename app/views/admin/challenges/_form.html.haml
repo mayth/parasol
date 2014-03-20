@@ -1,4 +1,4 @@
-= form_for @challenge, url: (@challenge.new_record? ? admin_challenges_path : admin_challenge_path(@challenge)) do |f|
+= form_for @challenge, url: (@challenge.new_record? ? admin_challenges_path : admin_challenge_path(@challenge)), html: {class: 'pure-form pure-form-aligned'} do |f|
   - if @challenge.errors.any?
     #error_explanation
       %h2= "#{pluralize(@challenge.errors.count, "error")} prohibited this admin_challenge from being saved:"
@@ -6,5 +6,16 @@
         - @challenge.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    .pure-control-group
+      = f.label :name
+      = f.text_field :name, required: true
+    .pure-control-group
+      = f.label :genre
+      = f.text_field :genre, required: true
+    %fieldset
+      - @challenge.flags.each do |flag|
+        = f.fields_for :flags, flag do |ff|
+          = render partial: 'flagform', locals: {f: ff}
+    .pure-controls
+      = f.submit 'Save', class: 'pure-button pure-button-primary'
