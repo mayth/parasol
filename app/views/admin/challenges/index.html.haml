@@ -5,6 +5,7 @@
   %p
     = link_to 'New Challenge', new_admin_challenge_path
 
+  %p= pluralize(Challenge.count, 'challenge')
   %table.pure-table
     %thead
       %tr
