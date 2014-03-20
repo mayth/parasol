@@ -13,6 +13,8 @@ class Challenge < ActiveRecord::Base
   validates_associated :flags
   validates_presence_of :flags
 
+  accepts_nested_attributes_for :flags
+
   structure do
     name       'Parasol Star Memories', validates: :presence
     genre      'binary', validates: :presence

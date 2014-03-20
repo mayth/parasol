@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :admin do
+    email 'admin@aquarite.info'
+    password 'kogasa-ch@n'
   end
 end

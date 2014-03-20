@@ -16,6 +16,7 @@ class Flag < ActiveRecord::Base
   end
 
   def point=(value)
+    value = Integer(value)
     self[:point] = value if value >= 0
   end
 end

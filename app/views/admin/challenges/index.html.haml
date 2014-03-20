@@ -1,0 +1,17 @@
+%h1 Listing Challenges
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @challenges.each do |challenge|
+    %tr
+      %td= link_to 'Show', admin_challenge_path(challenge)
+      %td= link_to 'Edit', edit_admin_challenge_path(challenge)
+      %td= link_to 'Destroy', admin_challenge_path(challenge), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Challenge', new_admin_challenge_path

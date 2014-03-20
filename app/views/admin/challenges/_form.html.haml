@@ -1,0 +1,10 @@
+= form_for @challenge, url: (@challenge.new_record? ? admin_challenges_path : admin_challenge_path(@challenge)) do |f|
+  - if @challenge.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@challenge.errors.count, "error")} prohibited this admin_challenge from being saved:"
+      %ul
+        - @challenge.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
