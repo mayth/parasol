@@ -21,6 +21,10 @@
               %a Ranking
           - if admin_signed_in?
             = link_to 'Admin', admin_path, class: 'pure-menu-heading'
+            %ul
+              %li= link_to 'Challenges', admin_challenges_path
+              %li= link_to 'Players', admin_players_path
+              %li= link_to 'Teams', admin_teams_path
       #main
         - [:notice, :alert].each do |klass|
           - if flash[klass].present?
