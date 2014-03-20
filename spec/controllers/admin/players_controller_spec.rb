@@ -27,7 +27,7 @@ describe Admin::PlayersController do
       player = create(:player)
       player.confirm!
       get :index
-      assigns(:players).should eq([player])
+      expect(assigns(:players)).to eq [player]
     end
   end
 
@@ -37,7 +37,7 @@ describe Admin::PlayersController do
       player = create(:player)
       player.confirm!
       get :show, {id: player.to_param}
-      assigns(:player).should eq(player)
+      expect(assigns(:player)).to eq player
     end
   end
 
@@ -45,7 +45,7 @@ describe Admin::PlayersController do
     it "assigns a new player as @player" do
       sign_in admin
       get :new
-      assigns(:player).should be_a_new(Player)
+      expect(assigns(:player)).to be_a_new(Player)
     end
   end
 
@@ -55,7 +55,7 @@ describe Admin::PlayersController do
       player = create(:player)
       player.confirm!
       get :edit, {id: player.to_param}
-      assigns(:player).should eq(player)
+      expect(assigns(:player)).to eq player
     end
   end
 
@@ -71,14 +71,14 @@ describe Admin::PlayersController do
       it "assigns a newly created player as @player" do
         sign_in admin
         post :create, {player: make_valid_player_param_hash(build(:player))}
-        assigns(:player).should be_a(Player)
-        assigns(:player).should be_persisted
+        expect(assigns(:player)).to be_a(Player)
+        expect(assigns(:player)).to be_persisted
       end
 
       it "redirects to the created player" do
         sign_in admin
         post :create, {player: make_valid_player_param_hash(build(:player))}
-        response.should redirect_to(admin_player_path(Player.last))
+        expect(response).to redirect_to admin_player_path(Player.last)
       end
     end
 
@@ -88,7 +88,7 @@ describe Admin::PlayersController do
         # Trigger the behavior that occurs when invalid params are submitted
         Player.any_instance.stub(:save).and_return(false)
         post :create, {player: make_invalid_player_param_hash(build(:player))}
-        assigns(:player).should be_a_new(Player)
+        expect(assigns(:player)).to be_a_new(Player)
       end
 
       it "re-renders the 'new' template" do
@@ -96,7 +96,7 @@ describe Admin::PlayersController do
         # Trigger the behavior that occurs when invalid params are submitted
         Player.any_instance.stub(:save).and_return(false)
         post :create, {player: make_invalid_player_param_hash(build(:player))}
-        response.should render_template("new")
+        expect(response).to render_template('new')
       end
     end
   end
@@ -111,7 +111,7 @@ describe Admin::PlayersController do
         # specifies that the Player created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Player.any_instance.should_receive(:update).with({'these' => 'params'})
+        expect_any_instance_of(Player).to receive(:update).with({'these' => 'params'})
         put :update, {id: player.to_param, player: {'these' => 'params'}}
       end
 
@@ -120,7 +120,7 @@ describe Admin::PlayersController do
         player = create(:player)
         player.confirm!
         put :update, {id: player.to_param, player: make_valid_player_param_hash(build(:player))}
-        assigns(:player).should eq(player)
+        expect(assigns(:player)).to eq player
       end
 
       it "redirects to the player" do
@@ -128,7 +128,7 @@ describe Admin::PlayersController do
         player = create(:player)
         player.confirm!
         put :update, {id: player.to_param, player: make_valid_player_param_hash(build(:player))}
-        response.should redirect_to(admin_player_path(player))
+        expect(response).to redirect_to admin_player_path(player)
       end
     end
 
@@ -140,7 +140,7 @@ describe Admin::PlayersController do
         # Trigger the behavior that occurs when invalid params are submitted
         Player.any_instance.stub(:save).and_return(false)
         put :update, {id: player.to_param, player: make_invalid_player_param_hash(player)}
-        assigns(:player).should eq(player)
+        expect(assigns(:player)).to eq player
       end
 
       it "re-renders the 'edit' template" do
@@ -150,7 +150,7 @@ describe Admin::PlayersController do
         # Trigger the behavior that occurs when invalid params are submitted
         Player.any_instance.stub(:save).and_return(false)
         put :update, {id: player.to_param, player: make_invalid_player_param_hash(player)}
-        response.should render_template("edit")
+        expect(response).to render_template('edit')
       end
     end
   end
@@ -170,7 +170,7 @@ describe Admin::PlayersController do
       player = create(:player)
       player.confirm!
       delete :destroy, {id: player.to_param}
-      response.should redirect_to(admin_players_url)
+      expect(response).to redirect_to admin_players_path
     end
   end
 
