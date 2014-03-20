@@ -5,7 +5,7 @@ describe "Admin::Challenges" do
     it "works! (now write some real specs)" do
       sign_in_as_a_valid_admin
       get admin_challenges_path
-      response.status.should be(200)
+      expect(response.status).to eq 200
     end
   end
 end

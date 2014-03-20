@@ -4,31 +4,31 @@ describe Admin::ChallengesController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/admin/challenges").should route_to("admin/challenges#index")
+      expect(get: "/admin/challenges").to route_to("admin/challenges#index")
     end
 
     it "routes to #new" do
-      get("/admin/challenges/new").should route_to("admin/challenges#new")
+      expect(get: "/admin/challenges/new").to route_to("admin/challenges#new")
     end
 
     it "routes to #show" do
-      get("/admin/challenges/1").should route_to("admin/challenges#show", :id => "1")
+      expect(get: "/admin/challenges/1").to route_to("admin/challenges#show", :id => "1")
     end
 
     it "routes to #edit" do
-      get("/admin/challenges/1/edit").should route_to("admin/challenges#edit", :id => "1")
+      expect(get: "/admin/challenges/1/edit").to route_to("admin/challenges#edit", :id => "1")
     end
 
     it "routes to #create" do
-      post("/admin/challenges").should route_to("admin/challenges#create")
+      expect(post: "/admin/challenges").to route_to("admin/challenges#create")
     end
 
     it "routes to #update" do
-      put("/admin/challenges/1").should route_to("admin/challenges#update", :id => "1")
+      expect(put: "/admin/challenges/1").to route_to("admin/challenges#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      delete("/admin/challenges/1").should route_to("admin/challenges#destroy", :id => "1")
+      expect(delete: "/admin/challenges/1").to route_to("admin/challenges#destroy", :id => "1")
     end
 
   end
