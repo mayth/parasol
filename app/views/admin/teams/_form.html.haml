@@ -1,0 +1,10 @@
+= form_for @team, url: (@team.new_record? ? admin_teams_path : admin_team_path(@team)) do |f|
+  - if @team.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+      %ul
+        - @team.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

@@ -1,5 +1,6 @@
 class Admin::PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /admin/players
   # GET /admin/players.json
