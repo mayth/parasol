@@ -52,6 +52,7 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'rails-i18n', '~> 4.0.0'
 # automatically insert validation to views
 gem 'html5_validators'
+gem 'nested_form'
 
 # authentication
 gem 'devise'

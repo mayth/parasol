@@ -1,4 +1,4 @@
-= form_for @challenge, url: (@challenge.new_record? ? admin_challenges_path : admin_challenge_path(@challenge)), html: {class: 'pure-form pure-form-aligned'} do |f|
+= nested_form_for @challenge, url: (@challenge.new_record? ? admin_challenges_path : admin_challenge_path(@challenge)), html: {class: 'pure-form pure-form-aligned'} do |f|
   - if @challenge.errors.any?
     #error_explanation
       %h2= "#{pluralize(@challenge.errors.count, "error")} prohibited this admin_challenge from being saved:"
@@ -14,8 +14,8 @@
       = f.label :genre
       = f.text_field :genre, required: true
     %fieldset
-      - @challenge.flags.each do |flag|
-        = f.fields_for :flags, flag do |ff|
-          = render partial: 'flagform', locals: {f: ff}
+      %legend Flags
+      = f.fields_for :flags
+      = f.link_to_add 'Add a flag', :flags, class: 'pure-button'
     .pure-controls
       = f.submit 'Save', class: 'pure-button pure-button-primary'
