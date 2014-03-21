@@ -12,7 +12,10 @@
       = f.text_field :name, required: true
     .pure-control-group
       = f.label :genre
-      = f.text_field :genre, required: true
+      = f.text_field :genre, required: true, list: 'genres'
+      %datalist#genres
+        - Challenge.genres.each do |g|
+          %option= g
     %fieldset
       %legend Flags
       = f.fields_for :flags
