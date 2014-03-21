@@ -20,6 +20,9 @@ Parasol::Application.routes.draw do
     resources :challenges
     resources :players
     resources :teams
+    get '/settings' => 'settings#index'
+    patch '/settings' => 'settings#update'
+    put '/settings' => 'settings#update'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
