@@ -2,4 +2,20 @@
   %h1 Settings
 
 .content
-  %p form here.
+  = form_for Setting, url: admin_settings_path, method: 'put', html: {class: 'pure-form pure-form-aligned'} do |f|
+    %fieldset
+      .pure-control-group
+        = f.label :ctf_name, 'CTF Name'
+        = f.text_field :ctf_name, required: true
+      .pure-control-group
+        = f.label 'submit_burst.count', 'Submit Burst [Count] (# submission)'
+        = f.text_field 'submit_burst.count', required: true, type: :number, min: 0
+      .pure-control-group
+        = f.label 'submit_burst.time', 'Submit Burst [Time] (sec.)'
+        = f.text_field 'submit_burst.time', required: true, type: :number, min: 0
+      %small Note: any of 'submit burst' settings can be 0. It means the feature is disabled.
+      .pure-control-group
+        = f.label :cooling_down, 'Time for cooling down (sec.)'
+        = f.text_field :cooling_down, required: true, type: :number
+      .pure-controls
+        = f.submit 'Submit', class: 'pure-button pure-button-primary'

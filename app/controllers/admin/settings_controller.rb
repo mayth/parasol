@@ -7,6 +7,13 @@ class Admin::SettingsController < ApplicationController
 
   # PATCH/PUT /admin/settings
   def update
+    settings_params.each do |k, v|
+      Setting[k] = v
+    end
+    respond_to do |format|
+      format.html { redirect_to admin_settings_path, notice: 'Settings saved.' }
+      format.json { head :no_content}
+    end
   end
 
   private
