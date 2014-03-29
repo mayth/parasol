@@ -1,2 +1,12 @@
-%h1 Challenges#show
-%p Find me in app/views/challenges/show.html.haml
+.header
+  %h1= @challenge.name
+  %h2 #{@challenge.genre} #{@challenge.point}
+
+.content
+  - md = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new)
+  != md.render(@challenge.description)
+
+  = form_for @answer, url: challenge_path(@challenge), html: {class: 'pure-form'} do |f|
+    %fieldset
+      = f.text_field :answer, placeholder: 'Flag'
+      = f.submit 'Submit', class: 'pure-button pure-button-primary'

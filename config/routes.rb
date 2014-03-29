@@ -7,8 +7,8 @@ Parasol::Application.routes.draw do
   ### Challenges
   controller :challenges do
     get "challenges"             => :index
-    get "challenges/:id"         => :show, as: 'challenge'
-    post "challenges/:id/answer" => :answer
+    get "challenges/:id"         => :show,  as: 'challenge'
+    post "challenges/:id"        => :answer
   end
 
   devise_for :admins, path: 'admin', controllers: {
