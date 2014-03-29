@@ -3,21 +3,26 @@
   %h2 Spare Umbrella Limited Express Night Carnival
 
 .content
-  %section
-    %h1 Information
-    %p Announcements from the admin goes here.
+  - unless player_signed_in?
+    %p= link_to 'Sign in', new_player_session_path, class: 'pure-button pure-button-primary'
+    %p
+      Don't have an account?
+      = link_to 'Sign up', new_player_registration_path
+  - else
+    %section
+      %h1 Information
+      %p Announcements from the admin goes here.
+    %section
+      %h1 Challenges
+      - if @challenges.present?
+        %ul
+          - @challenges.each do |challenge|
+            %li= link_to challenge.name, challenge_path(challenge)
+      - else
+        %p No challenges are opened yet.
 
-  %section
-    %h1 Challenges
-    - if @challenges.present?
+    %section
+      %h1 Activities
       %ul
-        - @challenges.each do |challenge|
-          %li= link_to challenge.name, challenge_path(challenge)
-    - else
-      %p No challenges are opened yet.
-
-  %section
-    %h1 Activities
-    %ul
-      %li Marisa submits the answer for 'Problem A' => +200pt.
-      %li Remillia submits the answer for 'Problem A' => Wrong Answer...
+        %li Marisa submits the answer for 'Problem A' => +200pt.
+        %li Remillia submits the answer for 'Problem A' => Wrong Answer...

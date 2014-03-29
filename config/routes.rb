@@ -2,7 +2,11 @@ Parasol::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  devise_for :players
+  devise_for :players, controllers: {
+    sessions: 'players/sessions',
+    registrations: 'players/registrations',
+    passwords: 'players/passwords'
+  }
 
   get 'rules' => 'home#rules'
 

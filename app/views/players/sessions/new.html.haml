@@ -1,16 +1,19 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, :autofocus => true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Sign in"
-= render "players/shared/links"
+.header
+  %h1 Sign in
+
+.content
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-aligned'}) do |f|
+    %fieldset
+      .pure-control-group
+        = f.label :email
+        = f.email_field :email, :autofocus => true
+      .pure-control-group
+        = f.label :password
+        = f.password_field :password
+      .pure-controls
+        - if devise_mapping.rememberable?
+          = f.label :remember_me, class: 'pure-checkbox' do
+            = f.check_box :remember_me
+            Remember me
+        = f.submit "Sign in", class: 'pure-button pure-button-primary'
+  = render "players/shared/links"
