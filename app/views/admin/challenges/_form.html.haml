@@ -16,6 +16,10 @@
       %datalist#genres
         - Challenge.genres.each do |g|
           %option= g
+    .pure-control-group
+      = f.label :opened_at
+      = f.text_field :opened_at, type: :datetime
+      %small Leave this empty to close this challenge.
     %fieldset
       %legend Flags
       = f.fields_for :flags

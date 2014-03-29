@@ -27,15 +27,18 @@ class Challenge < ActiveRecord::Base
   end
 
   def opened?
-    opened_at.present?
+    opened_at.present? && opened_at < Time.now
   end
 
   # Opens the challenge.
   #
   # @return [Time] Opened time
-  def open!
+  def open!(time = nil)
     unless self[:opened_at]
-      self[:opened_at] ||= Time.now
+      current = Time.zone.now
+      t = (time || current)
+      t = current if t < current
+      self[:opened_at] = t
       save!
     end
     self[:opened_at]

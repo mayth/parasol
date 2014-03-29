@@ -20,9 +20,18 @@ describe Challenge do
     before do
       @challenge = create(:challenge)
     end
-    context 'before it opens' do
-      it 'returns false' do
-        expect(subject).to be_false
+    context 'when it is closed' do
+      context 'because it is a new challenge' do
+        it 'returns false' do
+          expect(subject).to be_false
+        end
+      end
+      context 'because the time to open has not come yet' do
+        before do
+          @challenge.opened_at = Time.now.tomorrow
+        end
+        it 'returns false' do
+        end
       end
     end
     context 'after it opens' do
@@ -41,9 +50,35 @@ describe Challenge do
       @challenge.close!
     end
     context 'when the challenge is closed' do
-      it 'opens the challenge' do
-        @challenge.open!
-        expect(@challenge.opened?).to be_true
+      context 'without the parameter' do
+        it 'opens the challenge immediately' do
+          @challenge.open!
+          expect(@challenge.opened?).to be_true
+        end
+      end
+
+      context 'with the parameter' do
+        context 'which represents the future datetime' do
+          before do
+            @time = Time.zone.now.tomorrow
+            @challenge.open!(@time)
+          end
+          it 'changes the opened date but the challenge is still closed' do
+            expect(@challenge.opened_at).to eq @time
+            expect(@challenge.opened?).to be_false
+          end
+        end
+        context 'which represents the past datetime' do
+          before do
+            @current = Time.zone.now
+            @time = @current.yesterday
+            @opened_at = @challenge.open!(@time)
+          end
+          it 'opens the challenge immediately and sets to opened time to now' do
+            expect(@challenge.opened_at).to eq @opened_at
+            expect(@challenge.opened?).to be_true
+          end
+        end
       end
     end
 
