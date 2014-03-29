@@ -9,9 +9,12 @@
 
   %section
     %h1 Challenges
-    %ul
-      %li Problem A
-      %li Problem B
+    - if @challenges.present?
+      %ul
+        - @challenges.each do |challenge|
+          %li= link_to challenge.name, challenge_path(challenge)
+    - else
+      %p No challenges are opened yet.
 
   %section
     %h1 Activities

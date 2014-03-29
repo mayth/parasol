@@ -16,9 +16,10 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :flags
 
   structure do
-    name       'Parasol Star Memories', validates: :presence
-    genre      'binary', validates: :presence
-    opened_at  Time.new(2014, 3, 18, 9, 0, 0, '+09:00')
+    name        'Parasol Star Memories', validates: :presence
+    genre       'binary', validates: :presence
+    description 'Here is the description!'
+    opened_at   Time.new(2014, 3, 18, 9, 0, 0, '+09:00')
     timestamps
   end
 

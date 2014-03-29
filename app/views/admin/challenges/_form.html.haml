@@ -23,8 +23,20 @@
       :javascript
         $('#challenge_opened_at').datetimepicker();
     %fieldset
+      %legend Description
+      = f.text_area :description, class: 'pure-input-1'
+      %p
+        Preview:
+        %div#description-preview
+    %fieldset
       %legend Flags
       = f.fields_for :flags
       = f.link_to_add 'Add a flag', :flags, class: 'pure-button'
     .pure-controls
       = f.submit 'Save', class: 'pure-button pure-button-primary'
+
+:javascript
+  var conv = new Showdown.converter();
+  $('#challenge_description').keyup(function() {
+    $('#description-preview').html(conv.makeHtml(this.value));
+  })

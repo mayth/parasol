@@ -5,9 +5,11 @@ Parasol::Application.routes.draw do
   devise_for :players
 
   ### Challenges
-  get "challenges"             => 'challenges#index'
-  get "challenges/:id"         => 'challenges#show'
-  post "challenges/:id/answer" => 'challenges#answer'
+  controller :challenges do
+    get "challenges"             => :index
+    get "challenges/:id"         => :show, as: 'challenge'
+    post "challenges/:id/answer" => :answer
+  end
 
   devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/sessions',
