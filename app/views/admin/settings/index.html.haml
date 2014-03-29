@@ -8,11 +8,11 @@
         = f.label :ctf_name, 'CTF Name'
         = f.text_field :ctf_name, required: true
       .pure-control-group
-        = f.label 'submit_burst.count', 'Submit Burst [Count] (# submission)'
-        = f.text_field 'submit_burst.count', required: true, type: :number, min: 0
+        = f.label :submit_burst_count, 'Submit Burst [Count] (# submission)'
+        = f.text_field :submit_burst_count, required: true, type: :number, min: 0
       .pure-control-group
-        = f.label 'submit_burst.time', 'Submit Burst [Time] (sec.)'
-        = f.text_field 'submit_burst.time', required: true, type: :number, min: 0
+        = f.label :submit_burst_time, 'Submit Burst [Time] (sec.)'
+        = f.text_field :submit_burst_time, required: true, type: :number, min: 0
       %small Note: any of 'submit burst' settings can be 0. It means the feature is disabled.
       .pure-control-group
         = f.label :cooling_down, 'Time for cooling down (sec.)'
