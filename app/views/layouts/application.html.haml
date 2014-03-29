@@ -11,12 +11,10 @@
       %a#menuLink.menu-link{href: '#menu'}
       #menu
         .pure-menu.pure-menu-open
-          %a.pure-menu-heading= Setting.ctf_name
+          = link_to Setting.ctf_name, root_path, class: 'pure-menu-heading'
           %ul
-            %li
-              %a Rules
-            %li
-              %a Challenges
+            %li= link_to 'Rules', rules_path
+            %li= link_to 'Challenges', challenges_path
             %li
               %a Ranking
           - if admin_signed_in?

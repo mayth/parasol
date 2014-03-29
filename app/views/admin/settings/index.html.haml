@@ -17,5 +17,19 @@
       .pure-control-group
         = f.label :cooling_down, 'Time for cooling down (sec.)'
         = f.text_field :cooling_down, required: true, type: :number
+      %fieldset
+        %legend Rules
+        = f.text_area :rules, class: 'pure-input-1'
+        %small Preview
+        %div#rules-preview
       .pure-controls
         = f.submit 'Submit', class: 'pure-button pure-button-primary'
+
+:javascript
+  var conv = new Showdown.converter();
+  $('#setting_rules').keyup(function() {
+    $('#rules-preview').html(conv.makeHtml(this.value));
+  });
+  $(document).on('page:load', function() {
+    $('#rules-preview').html(conv.makeHtml($('#setting_rules').value));
+  });

@@ -4,6 +4,8 @@ Parasol::Application.routes.draw do
 
   devise_for :players
 
+  get 'rules' => 'home#rules'
+
   ### Challenges
   controller :challenges do
     get "challenges"             => :index
