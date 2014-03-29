@@ -25,9 +25,8 @@
     %fieldset
       %legend Description
       = f.text_area :description, class: 'pure-input-1'
-      %p
-        Preview:
-        %div#description-preview
+      %small Preview
+      %div#description-preview
     %fieldset
       %legend Flags
       = f.fields_for :flags
