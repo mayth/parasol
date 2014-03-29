@@ -17,14 +17,19 @@ class ChallengesController < ApplicationController
   def answer
     param = answer_params
     param.merge!({challenge_id: @challenge.id, player_id: current_player.id})
-    @answer = Answer.new(answer_params)
+    @answer = Answer.new(param)
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to challenge_path(@challenge), notice: 'Your flag is correct!'}
-        format.json { {result: 'correct'} }
+        if @answer.correct?
+          format.html { redirect_to challenge_path(@challenge), notice: 'Your flag is correct!' }
+          format.json { {result: 'correct'} }
+        else
+          format.html { redirect_to challenge_path(@challenge), notice: 'Wrong answer...' }
+          format.json { {result: 'wrong'} }
+        end
       else
-        format.html { redirect_to challenge_path(@challenge), notice: 'wrong answer...'}
-        format.json { {result: 'wrong'} }
+        format.html { redirect_to challenge_path(@challenge), alert: 'Something went wrong...' }
+        format.json { {result: 'error'} }
       end
     end
   end
