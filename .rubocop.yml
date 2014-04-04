@@ -6,4 +6,5 @@ AllCops:
     - db/**
     - config/**
     - bin/**
+    - vendor/bundle/**
 
