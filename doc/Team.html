@@ -126,56 +126,6 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#created_at-instance_method" title="#created_at (instance method)">- (DateTime) <strong>created_at</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#name-instance_method" title="#name (instance method)">- (String) <strong>name</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#password-instance_method" title="#password (instance method)">- (String) <strong>password</strong> </a>
     
 
@@ -196,31 +146,6 @@
     <span class="summary_desc"><div class='inline'>
 <p>A team&#39;s password.</p>
 </div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#password_digest-instance_method" title="#password_digest (instance method)">- (String) <strong>password_digest</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -283,92 +208,11 @@
 </li>
 
     
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#suspended_until-instance_method" title="#suspended_until (instance method)">- (DateTime) <strong>suspended_until</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#updated_at-instance_method" title="#updated_at (instance method)">- (DateTime) <strong>updated_at</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-    
   </ul>
 
 
 
 
-  
-    <h2>
-      Has many
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#players-instance_method" title="#players (instance method)">- (Array&lt;Player&gt;) <strong>players</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
   
     <h2>
       Instance Method Summary
@@ -404,7 +248,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#forget_password%21-instance_method" title="#forget_password! (instance method)">- (String) <strong>forget_password!</strong> </a>
+      <a href="#forget_password%21-instance_method" title="#forget_password! (instance method)">- (String?) <strong>forget_password!</strong> </a>
     
 
     
@@ -420,6 +264,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Resets the password.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_password-instance_method" title="#generate_password (instance method)">- (String) <strong>generate_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generates a new password.</p>
 </div></span>
   
 </li>
@@ -483,109 +351,9 @@
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="created_at=-instance_method"></span>
-      <div class="method_details first">
-  <h3 class="signature first" id="created_at-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>created_at</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-90</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 90</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>created_at</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="name=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="name-instance_method">
-  
-    - (<tt>String</tt>) <strong>name</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-87</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 87</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
       <span id="password=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="password-instance_method">
+      <div class="method_details first">
+  <h3 class="signature first" id="password-instance_method">
   
     - (<tt>String</tt>) <strong>password</strong> 
   
@@ -716,7 +484,18 @@
 102
 103
 104
-105</pre>
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/team.rb', line 12</span>
@@ -778,14 +557,25 @@
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Generates a new password.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [String] A new password.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='id identifier rubyid_pw'>pw</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_pw'>pw</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># Resets the password.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @return [String] The new password.
+</span>  <span class='comment'># @return [String?]
+</span>  <span class='comment'>#   A new password is returned if succeeded; otherwise, +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_forget_password!'>forget_password!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_new_password'>new_password</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span>
+    <span class='id identifier rubyid_new_pw'>new_pw</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
+      <span class='id identifier rubyid_new_pw'>new_pw</span>
+    <span class='kw'>else</span>
+      <span class='kw'>nil</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Suspends the team.
@@ -815,56 +605,6 @@
     <span class='id identifier rubyid_save!'>save!</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="password_digest=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="password_digest-instance_method">
-  
-    - (<tt>String</tt>) <strong>password_digest</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-88</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 88</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password_digest</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1004,7 +744,18 @@
 102
 103
 104
-105</pre>
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/team.rb', line 12</span>
@@ -1066,14 +817,25 @@
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Generates a new password.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [String] A new password.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='id identifier rubyid_pw'>pw</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_pw'>pw</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># Resets the password.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @return [String] The new password.
+</span>  <span class='comment'># @return [String?]
+</span>  <span class='comment'>#   A new password is returned if succeeded; otherwise, +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_forget_password!'>forget_password!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_new_password'>new_password</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span>
+    <span class='id identifier rubyid_new_pw'>new_pw</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
+      <span class='id identifier rubyid_new_pw'>new_pw</span>
+    <span class='kw'>else</span>
+      <span class='kw'>nil</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Suspends the team.
@@ -1242,7 +1004,18 @@
 102
 103
 104
-105</pre>
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/team.rb', line 12</span>
@@ -1304,14 +1077,25 @@
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Generates a new password.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [String] A new password.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='id identifier rubyid_pw'>pw</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_pw'>pw</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># Resets the password.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @return [String] The new password.
+</span>  <span class='comment'># @return [String?]
+</span>  <span class='comment'>#   A new password is returned if succeeded; otherwise, +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_forget_password!'>forget_password!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_new_password'>new_password</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span>
-    <span class='id identifier rubyid_new_password'>new_password</span>
+    <span class='id identifier rubyid_new_pw'>new_pw</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
+      <span class='id identifier rubyid_new_pw'>new_pw</span>
+    <span class='kw'>else</span>
+      <span class='kw'>nil</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Suspends the team.
@@ -1341,106 +1125,6 @@
     <span class='id identifier rubyid_save!'>save!</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="suspended_until=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="suspended_until-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>suspended_until</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-91</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 91</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>suspended_until</span><span class='tstring_end'>&quot;</span></span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id="updated_at=-instance_method"></span>
-      <div class="method_details ">
-  <h3 class="signature " id="updated_at-instance_method">
-  
-    - (<tt>DateTime</tt>) <strong>updated_at</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DateTime</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-89</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'db/schema.rb', line 89</span>
-
-<span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>updated_at</span><span class='tstring_end'>&quot;</span></span></pre>
     </td>
   </tr>
 </table>
@@ -1524,7 +1208,7 @@
       <div class="method_details ">
   <h3 class="signature " id="forget_password!-instance_method">
   
-    - (<tt>String</tt>) <strong>forget_password!</strong> 
+    - (<tt>String?</tt>) <strong>forget_password!</strong> 
   
 
   
@@ -1546,13 +1230,82 @@
     <li>
       
       
+        <span class='type'>(<tt>String?</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new password is returned if succeeded; otherwise, <code>nil</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_forget_password!'>forget_password!</span>
+  <span class='id identifier rubyid_new_pw'>new_pw</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_save'>save</span>
+    <span class='id identifier rubyid_new_pw'>new_pw</span>
+  <span class='kw'>else</span>
+    <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="generate_password-instance_method">
+  
+    - (<tt>String</tt>) <strong>generate_password</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generates a new password.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
         <span class='type'>(<tt>String</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>The new password.</p>
+<p>A new password.</p>
 </div>
       
     </li>
@@ -1568,74 +1321,15 @@
 72
 73
 74
-75
-76
-77</pre>
+75</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/team.rb', line 72</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_forget_password!'>forget_password!</span>
-  <span class='id identifier rubyid_new_password'>new_password</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_new_password'>new_password</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save!'>save!</span>
-  <span class='id identifier rubyid_new_password'>new_password</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_password'>generate_password</span>
+  <span class='id identifier rubyid_pw'>pw</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>a</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Z</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_pw'>pw</span>
 <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="players-instance_method">
-  
-    - (<tt>Array&lt;<span class='object_link'><a href="Player.html" title="Player (class)">Player</a></span>&gt;</tt>) <strong>players</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Player.html" title="Player (class)">Player</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li>http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html</li>
-    
-  </ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-15</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 15</span>
-
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:players</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:team</span></pre>
     </td>
   </tr>
 </table>
@@ -1667,13 +1361,13 @@
       <pre class="lines">
 
 
-101
-102
-103
-104</pre>
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resume!'>resume!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_suspended_until'>suspended_until</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -1747,21 +1441,21 @@ until <code>period</code>.</p>
       <pre class="lines">
 
 
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'app/models/team.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_suspend!'>suspend!</span><span class='lparen'>(</span><span class='id identifier rubyid_period'>period</span> <span class='op'>=</span> <span class='int'>900</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>`period&#39; must not be nil.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_period'>period</span>
@@ -1785,9 +1479,9 @@ until <code>period</code>.</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 18 07:55:24 2014 by
+  Generated on Sat Apr  5 06:53:22 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.3 (ruby-2.1.0).
+  0.8.7.3 (ruby-2.1.1).
 </div>
 
   </body>
