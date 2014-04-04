@@ -17,6 +17,22 @@
       .pure-control-group
         = f.label :cooling_down, 'Time for cooling down (sec.)'
         = f.text_field :cooling_down, required: true, type: :number
+      .pure-control-group
+        = f.label 'Team registration period'
+        = f.text_field :team_registrable_from, required: true
+        \-
+        = f.text_field :team_registrable_until, required: true
+        :javascript
+          $('#setting_team_registrable_from').datetimepicker();
+          $('#setting_team_registrable_until').datetimepicker();
+      .pure-control-group
+        = f.label 'Contest period'
+        = f.text_field :contest_opens_at, required: true
+        \-
+        = f.text_field :contest_ends_at, required: true
+        :javascript
+          $('#setting_contest_opens_at').datetimepicker();
+          $('#setting_contest_ends_at').datetimepicker();
       %fieldset
         %legend Rules
         = f.text_area :rules, class: 'pure-input-1'
