@@ -1,5 +1,8 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_player!, only: [:show, :edit]
+  before_action :api_authenticate_player!, only: [:update, :destroy]
+  before_action :check_belonging!, only: [:edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
@@ -63,13 +66,23 @@ class TeamsController < ApplicationController
 
   private
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def team_params
+      params.require(:team).permit(:name, :password)
+    end
+
+    ### Filters
+
     # Use callbacks to share common setup or constraints between actions.
     def set_team
       @team = Team.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def team_params
-      params.require(:team).permit(:name, :password)
+    def api_authenticate_player!
+      redirect_to new_player_session_path, status: :unauthorized unless player_signed_in?
+    end
+
+    def check_belonging!
+      redirect_to teams_url, status: :unauthorized unless @team == current_player.team
     end
 end

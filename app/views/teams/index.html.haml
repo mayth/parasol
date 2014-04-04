@@ -1,17 +1,27 @@
-%h1 Listing teams
+.header
+  %h1 Teams
 
-%table
-  %tr
-    %th
-    %th
-    %th
+.content
+  %table.pure-table
+    %thead
+      %tr
+        %th Name
+        %th # members
+        %th Point
+        - if player_signed_in?
+          %th
+          %th
 
-  - @teams.each do |team|
-    %tr
-      %td= link_to 'Show', team
-      %td= link_to 'Edit', edit_team_path(team)
-      %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %tbody
+      - @teams.each do |team|
+        %tr
+          %td= team.name
+          %td= team.players.count
+          %td= team.point
+          - if player_signed_in?
+            %td= link_to 'Show', team
+            %td= link_to 'Edit', edit_team_path(team)
 
-%br
+  %br
 
-= link_to 'New Team', new_team_path
+  = link_to 'New Team', new_team_path
