@@ -66,14 +66,25 @@ class Team < ActiveRecord::Base
     end
   end
 
+  # Generates a new password.
+  #
+  # @return [String] A new password.
+  def generate_password
+    pw = [*('a'..'z'), *('A'..'Z'), *('0'..'9')].sample(8).join
+    self.password = pw
+  end
+
   # Resets the password.
   #
-  # @return [String] The new password.
+  # @return [String?]
+  #   A new password is returned if succeeded; otherwise, +nil+.
   def forget_password!
-    new_password = [*('a'..'z'), *('A'..'Z'), *('0'..'9')].sample(8).join
-    self.password = new_password
-    self.save!
-    new_password
+    new_pw = generate_password
+    if save
+      new_pw
+    else
+      nil
+    end
   end
 
   # Suspends the team.

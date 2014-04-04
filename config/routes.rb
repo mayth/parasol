@@ -17,6 +17,8 @@ Parasol::Application.routes.draw do
     post "challenges/:id"        => :answer
   end
 
+  resources :teams
+
   devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/sessions',
     registrations: 'admin/registrations',
