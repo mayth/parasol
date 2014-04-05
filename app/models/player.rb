@@ -22,12 +22,8 @@ class Player < ActiveRecord::Base
 
   validates_associated :team
   validates_presence_of :team
-
-  structure do
-    name        'Kogasa Tatara',      validates: :presence
-    email       'kogasa@example.com', validates: [:presence, :uniqueness]
-    timestamps
-  end
+  validates_presence_of :name
+  validates :email, presence: true, uniqueness: true
 
   # Submits the answer.
   #
