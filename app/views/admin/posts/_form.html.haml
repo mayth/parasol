@@ -1,0 +1,21 @@
+= form_for @post, url: (@post.new_record? ? admin_posts_path : admin_post_path(@post)), html: { class: 'pure-form pure-form-aligned' } do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this admin_post from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+
+  %fieldset
+    .pure-control-group
+      = f.label :title
+      = f.text_field :title, required: true
+    .pure-control-group
+      = f.label :public_scope
+      = f.select :public_scope, ['public', 'player']
+    %fieldset
+      %legend Body
+      = f.text_area :body, required: true, class: 'pure-input-1', rows: 10
+
+    .pure-controls
+      = f.submit 'Post', class: 'pure-button pure-button-primary'

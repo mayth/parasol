@@ -1,0 +1,14 @@
+.header
+  %h1= @post.title
+
+.content
+  %article
+    = @post.body
+
+  %p
+    Posted at: #{@post.created_at}
+    %br
+    Last updated at: #{@post.updated_at}
+
+  %p
+    = link_to 'Back', posts_path

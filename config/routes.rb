@@ -12,12 +12,13 @@ Parasol::Application.routes.draw do
 
   ### Challenges
   controller :challenges do
-    get "challenges"             => :index
-    get "challenges/:id"         => :show,  as: 'challenge'
-    post "challenges/:id"        => :answer
+    get 'challenges'             => :index
+    get 'challenges/:id'         => :show,  as: 'challenge'
+    post 'challenges/:id'        => :answer
   end
 
   resources :teams
+  resources :posts, only: %i(index show)
 
   devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/sessions',
@@ -30,6 +31,7 @@ Parasol::Application.routes.draw do
     resources :challenges
     resources :players
     resources :teams
+    resources :posts
     get '/settings' => 'settings#index'
     patch '/settings' => 'settings#update'
     put '/settings' => 'settings#update'

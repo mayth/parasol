@@ -8,10 +8,17 @@
     %p
       Don't have an account?
       = link_to 'Sign up', new_player_registration_path
-  - else
-    %section
-      %h1 Information
-      %p Announcements from the admin goes here.
+
+  %section
+    %h1 Announcements
+    - @posts.take(3).each do |post|
+      %article
+        %h2= link_to post.title, post
+        %small.post-date= post.updated_at
+        %p= truncate(post.body, length: 80)
+    %p= link_to 'All posts', posts_path
+
+  - if player_signed_in?
     %section
       %h1 Challenges
       - if @challenges.present?

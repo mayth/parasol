@@ -1,0 +1,19 @@
+.header
+  %h1= @post.title
+
+.content
+  %article
+    = @post.body
+
+  %dl
+    %dt Scope
+    %dd= @post.public_scope
+    %dt Created at
+    %dd= @post.created_at
+    %dt Updated at
+    %dd= @post.updated_at
+
+  %p
+    = link_to 'Edit', edit_admin_post_path(@post)
+    \|
+    = link_to 'Back', admin_posts_path

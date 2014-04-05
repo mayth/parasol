@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @challenges = Challenge.opened
+    @posts = player_signed_in? ? Post.all : Post.public_only
   end
 
   def rules

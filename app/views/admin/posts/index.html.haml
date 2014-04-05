@@ -1,0 +1,27 @@
+.header
+  %h1 Posts
+
+.content
+  %table.pure-table
+    %thead
+      %tr
+        %th ID
+        %th Title
+        %th Body
+        %th
+        %th
+        %th
+
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %td= post.id
+          %td= post.title
+          %td= truncate(post.body)
+          %td= link_to 'Show', admin_post_path(post)
+          %td= link_to 'Edit', edit_admin_post_path(post)
+          %td= link_to 'Destroy', admin_post_path(post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Post', new_admin_post_path

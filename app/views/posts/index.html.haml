@@ -1,0 +1,17 @@
+.header
+  %h1 Announcements
+
+.content
+  %table.pure-table
+    %thead
+      %tr
+        %th Title
+        %th Body
+        %th
+
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %td= post.title
+          %td= truncate(post.body)
+          %td= link_to 'Show', post
