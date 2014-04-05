@@ -218,6 +218,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#member_of%3F-instance_method" title="#member_of? (instance method)">- (Boolean) <strong>member_of?</strong>(team) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Determines whether this player belongs to the given team or not.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#submit-instance_method" title="#submit (instance method)">- (Flag<sup>?</sup>) <strong>submit</strong>(challenge, flag) </a>
     
 
@@ -323,7 +347,15 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -357,6 +389,14 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Determines whether this player belongs to the given team or not.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Boolean]
+</span>  <span class='comment'>#   +true+ if this player belongs to the given team; otherwise, +false+.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_member_of?'>member_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_team'>team</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
@@ -445,7 +485,15 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -479,6 +527,14 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Determines whether this player belongs to the given team or not.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Boolean]
+</span>  <span class='comment'>#   +true+ if this player belongs to the given team; otherwise, +false+.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_member_of?'>member_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_team'>team</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
@@ -567,7 +623,15 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -603,6 +667,14 @@
     <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Determines whether this player belongs to the given team or not.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Boolean]
+</span>  <span class='comment'>#   +true+ if this player belongs to the given team; otherwise, +false+.
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_member_of?'>member_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_team'>team</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
     <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_correct?'>correct?</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span><span class='period'>.</span><span class='id identifier rubyid_point'>point</span><span class='rbrace'>}</span>
     <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='int'>0</span>
@@ -621,7 +693,67 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="submit-instance_method">
+  <h3 class="signature first" id="member_of?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>member_of?</strong>(team) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Determines whether this player belongs to the given team or not.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p><code>true</code> if this player belongs to the given team; otherwise,
+<code>false</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_member_of?'>member_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_team'>team</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="submit-instance_method">
   
     - (<tt><span class='object_link'><a href="Flag.html" title="Flag (class)">Flag</a></span></tt><sup>?</sup>) <strong>submit</strong>(challenge, flag) 
   
@@ -723,7 +855,7 @@ something wrong while submitting answer, returns <code>nil</code>.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Apr  5 06:53:23 2014 by
+  Generated on Sat Apr  5 16:13:23 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>
