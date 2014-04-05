@@ -44,7 +44,7 @@ class Answer < ActiveRecord::Base
   #
   # @return [Boolean] +true+ if the answer is correct; otherwise, +false+.
   def check
-    @flag = challenge.flags.where(flag: answer).first
+    @flag = challenge.flags.select { |f| /\A#{f.flag}\z/ =~ answer }.first
     self[:is_correct] = !(@flag.nil?)
     true
   end
