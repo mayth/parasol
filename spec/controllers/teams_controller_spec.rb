@@ -16,21 +16,11 @@ describe TeamsController do
   end
 
   describe 'GET show' do
-    context 'when the player signed in' do
-      it 'assigns the requested team as @team' do
-        sign_in player
-        team = create(:team)
-        get :show, id: team.to_param
-        expect(assigns(:team)).to eq team
-      end
-    end
-
-    context 'when non-player' do
-      it 'redirects to the sign-in page' do
-        team = create(:team)
-        get :show, id: team.to_param
-        expect(response).to redirect_to new_player_session_path
-      end
+    it 'assigns the requested team as @team' do
+      sign_in player
+      team = create(:team)
+      get :show, id: team.to_param
+      expect(assigns(:team)).to eq team
     end
   end
 
@@ -89,7 +79,7 @@ describe TeamsController do
 
   describe 'PUT update' do
     context 'if the player signed in' do
-      describe 'with valid params' do
+      describe 'with valid params with' do
         it 'updates the requested team' do
           sign_in player
           team = create(:team)
@@ -101,6 +91,62 @@ describe TeamsController do
           # submitted in the request.
           expect_any_instance_of(Team).to receive(:update).with('name' => 'specspec')
           put :update, id: team.to_param, team: { 'name' => 'specspec' }
+        end
+
+        it 'is authenticated with the new password but it fails with the old password' do
+          old_pw = 'old_password'
+          new_pw = 'new_password!'
+
+          sign_in player
+          team = create(:team, password: old_pw)
+          player.team = team
+          player.save
+          put :update, id: team.to_param, team: attributes_for(:team, password: new_pw)
+          expect(assigns(:team).authenticate(old_pw)).to be_false
+          expect(assigns(:team).authenticate(new_pw)).to be_true
+        end
+
+        it 'assigns the requested team as @team' do
+          sign_in player
+          team = create(:team)
+          player.team = team
+          player.save
+          put :update, id: team.to_param, team: attributes_for(:team)
+          expect(assigns(:team)).to eq team
+        end
+
+        it 'redirects to the team' do
+          sign_in player
+          team = create(:team)
+          player.team = team
+          player.save
+          put :update, id: team.to_param, team: attributes_for(:team)
+          expect(response).to redirect_to team
+        end
+      end
+
+      context 'with valid params without password' do
+        it 'updates the requested team' do
+          sign_in player
+          team = create(:team)
+          player.team = team
+          player.save
+          # Assuming there are no other teams in the database, this
+          # specifies that the Team created on the previous line
+          # receives the :update_attributes message with whatever params are
+          # submitted in the request.
+          expect_any_instance_of(Team).to receive(:update).with('name' => 'specspec')
+          put :update, id: team.to_param, team: { 'name' => 'specspec' }
+        end
+
+        it 'still be authenticated with the existing password' do
+          sign_in player
+          pw = 'NOCHANGE!'
+          team = create(:team, password: pw)
+          player.team = team
+          player.save
+          put :update, id: team.to_param, team: attributes_for(:team, password: '')
+          expect(assigns(:team).authenticate(pw)).to be_true
         end
 
         it 'assigns the requested team as @team' do

@@ -41,6 +41,14 @@ class Player < ActiveRecord::Base
     answer.save ? answer.flag : nil
   end
 
+  # Determines whether this player belongs to the given team or not.
+  #
+  # @return [Boolean]
+  #   +true+ if this player belongs to the given team; otherwise, +false+.
+  def member_of?(team)
+    self.team == team
+  end
+
   def point
     points = answers.select{|ans| ans.correct?}.map{|ans| ans.flag.point}
     points.present? ? points.inject(:+) : 0

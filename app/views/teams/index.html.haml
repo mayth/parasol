@@ -2,26 +2,29 @@
   %h1 Teams
 
 .content
+  %p
+    = link_to 'Team Registration', new_team_path, class: "pure-button #{within_team_registration_period? ? 'pure-button-primary' : 'pure-button-disabled'}"
+    %br
+    (Team registration period: #{Setting.team_registrable_from} - #{Setting.team_registrable_until})
+
   %table.pure-table
     %thead
       %tr
+        %th Rank
         %th Name
         %th # members
         %th Point
         - if player_signed_in?
           %th
-          %th
 
     %tbody
-      - @teams.each do |team|
+      - @teams.each.with_index(1) do |team, rank|
         %tr
-          %td= team.name
+          %td= rank.ordinalize
+          %td= link_to team.name, team
           %td= team.players.count
           %td= team.point
           - if player_signed_in?
-            %td= link_to 'Show', team
-            %td= link_to 'Edit', edit_team_path(team)
-
-  %br
-
-  = link_to 'New Team', new_team_path
+            %td
+              - if team.member?(current_player)
+                = link_to 'Edit', edit_team_path(team)

@@ -1,6 +1,34 @@
-%p#notice= notice
+.header
+  %h1= @team.name
 
+.content
+  %section
+    %h1 Overview
+    %dl
+      %dt Point
+      %dd= @team.point
 
-= link_to 'Edit', edit_team_path(@team)
-\|
-= link_to 'Back', teams_path
+  %section
+    %h1 Members
+    - if @team.players.any?
+      %table.pure-table
+        %thead
+          %tr
+            %th Name
+            %th Point
+        %tbody
+          - @team.players.each do |player|
+            %tr
+              %td
+                = player.name
+                - if current_player == player
+                  (You!)
+              %td= player.point
+    - else
+      %p No members
+
+  %section
+    - if player_signed_in? && @team.member?(current_player)
+      = link_to 'Edit', edit_team_path(@team)
+      \|
+    = link_to 'Back', teams_path

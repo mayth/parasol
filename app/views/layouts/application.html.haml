@@ -23,6 +23,7 @@
             %ul
               %li= link_to 'Sign up', new_player_registration_path
               %li= link_to 'Sign in', new_player_session_path
+              %li= link_to 'Team Registration', new_team_path
           - if admin_signed_in?
             = link_to 'Admin', admin_path, class: 'pure-menu-heading'
             %ul

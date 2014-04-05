@@ -140,4 +140,34 @@ describe Team do
       end
     end
   end
+
+  describe '#member?' do
+    before do
+      @team = create(:team)
+      @player = create(:player)
+    end
+    subject { @team.member?(@player) }
+
+    context 'when the player belongs to the team' do
+      before do
+        @player.team = @team
+        @player.save
+      end
+
+      it 'returns true' do
+        expect(subject).to be_true
+      end
+    end
+
+    context 'when the player does not belong to the team' do
+      before do
+        @player.team = create(:team)
+        @player.save
+      end
+
+      it 'returns false' do
+        expect(subject).to be_false
+      end
+    end
+  end
 end

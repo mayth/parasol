@@ -49,8 +49,7 @@ class Team < ActiveRecord::Base
   end
 
   def point
-    points = players.map{|p| p.point}
-    points.present? ? points.inject(:+) : 0
+    players.any? ? players.reduce(0) { |a, e| a + e.point } : 0
   end
 
   ### Methods
@@ -112,5 +111,13 @@ class Team < ActiveRecord::Base
   def resume!
     self.suspended_until = nil
     save!
+  end
+
+  # Returns whether the given player belongs to this team.
+  #
+  # @return [Boolean]
+  #   +true+ if the given player belongs to this team; otherwise, +false+.
+  def member?(player)
+    players.include?(player)
   end
 end

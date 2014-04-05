@@ -1,7 +1,11 @@
-%h1 Editing team
+.header
+  %h1 Editing #{@team.name}
 
-= render 'form'
+.content
+  = render 'form'
+  %p
+    Leave the password field empty except you want to change the team password.
 
-= link_to 'Show', @team
-\|
-= link_to 'Back', teams_path
+  = link_to 'Show', @team
+  \|
+  = link_to 'Back', teams_path

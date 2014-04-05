@@ -1,13 +1,17 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_player!, only: [:show, :edit]
+  before_action :authenticate_player!, only: [:edit]
   before_action :api_authenticate_player!, only: [:update, :destroy]
   before_action :check_belonging!, only: [:edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    # TODO: sort by last submission
+    # @teams = Team.max()
+    # sort by points (this must be stable sort!)
+    i = 0
+    @teams = Team.all.sort_by { |e| [e.point, i += 1] }
   end
 
   # GET /teams/1
@@ -43,8 +47,11 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    param = team_params
+    # There is no need to be changed if the password field is empty.
+    param.delete(:password) if param[:password].blank?
     respond_to do |format|
-      if @team.update(team_params)
+      if @team.update(param)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
