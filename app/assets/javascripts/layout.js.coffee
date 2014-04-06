@@ -15,13 +15,13 @@ f = (window, document) ->
         classes.push(className)
     element.className = classes.join(' ')
 
-    menuLink.onclick = (e) ->
-        active = 'active'
+  menuLink.onclick = (e) ->
+      active = 'active'
 
-        e.preventDefault()
-        toggleClass(layout, active)
-        toggleClass(menu, active)
-        toggleClass(menuLink, active)
+      e.preventDefault()
+      toggleClass(layout, active)
+      toggleClass(menu, active)
+      toggleClass(menuLink, active)
 
 $(document).ready(() =>
   f(this, this.document)

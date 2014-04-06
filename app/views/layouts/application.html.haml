@@ -9,6 +9,9 @@
   %body
     #layout
       %a#menuLink.menu-link{href: '#menu'}
+        -# this <span> is needed for showing menu's icon.
+        / icon
+        %span
       #menu
         .pure-menu.pure-menu-open
           = link_to Setting.ctf_name, root_path, class: 'pure-menu-heading'
