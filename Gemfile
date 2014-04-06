@@ -53,6 +53,8 @@ gem 'rails-i18n', '~> 4.0.0'
 # automatically insert validation to views
 gem 'html5_validators'
 gem 'nested_form'
+# truncate HTML
+gem 'truncate_html'
 
 # authentication
 gem 'devise'

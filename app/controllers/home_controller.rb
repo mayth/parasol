@@ -4,6 +4,10 @@ class HomeController < ApplicationController
     @posts =
       (player_signed_in? ? Post.all : Post.public_only)
       .order(updated_at: :desc)
+    @renderer = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new,
+      fenced_code_blocks: true, no_intra_emphasis: true
+    )
   end
 
   def rules
