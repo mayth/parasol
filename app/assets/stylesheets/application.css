@@ -12,5 +12,6 @@
  *= require purecss
  *= require purecss-skin
  *= require layout
+ *= require styles/default.css
  *= require_tree .
  */

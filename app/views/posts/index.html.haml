@@ -2,16 +2,16 @@
   %h1 Announcements
 
 .content
-  %table.pure-table
-    %thead
-      %tr
-        %th Title
-        %th Body
-        %th
-
-    %tbody
-      - @posts.each do |post|
-        %tr
-          %td= post.title
-          %td= truncate(post.body)
-          %td= link_to 'Show', post
+  - @posts.each do |post|
+    %article
+      %h1
+        = post.title
+        %small
+          - case post.public_scope
+          - when 'public'
+            for all
+          - when 'player'
+            for players
+      %p.post-date= post.updated_at
+      .body= truncate_html(@render.render(post.body))
+      %p.read-all= link_to 'Read all', post

@@ -1,14 +1,17 @@
 .header
   %h1= @post.title
+  %h2
+    - case @post.public_scope
+    - when 'public'
+      Public Announcement
+    - when 'player'
+      Announcement for Players
 
 .content
-  %article
-    = @post.body
+  %p.post-date= @post.updated_at
 
-  %p
-    Posted at: #{@post.created_at}
-    %br
-    Last updated at: #{@post.updated_at}
+  .post-body
+    != @render.render(@post.body)
 
   %p
     = link_to 'Back', posts_path

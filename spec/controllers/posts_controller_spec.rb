@@ -20,7 +20,7 @@ describe PostsController do
           create(:post, public_scope: 'player')
         ]
         get :index
-        expect(assigns(:posts)).to eq [posts[0]]
+        expect(assigns(:posts)).to include posts[0]
       end
     end
 
@@ -36,7 +36,7 @@ describe PostsController do
           create(:post, public_scope: 'player')
         ]
         get :index
-        expect(assigns(:posts)).to eq posts
+        expect(assigns(:posts)).to include(*posts)
       end
     end
   end
