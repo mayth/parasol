@@ -3,7 +3,6 @@ class Admin::SettingsController < ApplicationController
 
   # GET /admin/settings
   def index
-    @render = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new)
   end
 
   # PATCH/PUT /admin/settings

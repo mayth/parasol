@@ -3,8 +3,7 @@
   %h2 #{@challenge.genre} #{@challenge.point}
 
 .content
-  - md = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new)
-  != md.render(@challenge.description)
+  != markdown_render(@challenge.description)
 
   = form_for @answer, url: challenge_path(@challenge), html: {class: 'pure-form'} do |f|
     %fieldset

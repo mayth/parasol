@@ -15,6 +15,6 @@ describe 'posts/index' do
   it 'renders a list of posts' do
     render
     assert_select 'article>h1', text: 'Awesome Title', count: 2
-    assert_select 'article>p.body', text: 'Incredible!', count: 2
+    assert_select 'article>.body', text: 'Incredible!', count: 2
   end
 end

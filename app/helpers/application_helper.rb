@@ -4,4 +4,13 @@ module ApplicationHelper
       Setting.team_registrable_from, Setting.team_registrable_until
     )
   end
+
+  def markdown_render(md)
+    @render ||=
+      Redcarpet::Markdown.new(
+        Redcarpet::Render::HTML.new,
+        fenced_code_blocks: true, no_intra_emphasis: true
+      )
+    @render.render(md)
+  end
 end

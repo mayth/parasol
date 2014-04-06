@@ -13,5 +13,5 @@
           - when 'player'
             for players
       %p.post-date= post.updated_at
-      .body= truncate_html(@render.render(post.body))
+      .body= truncate_html(markdown_render(post.body))
       %p.read-all= link_to 'Read all', post

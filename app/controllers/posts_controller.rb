@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
-  before_action :setup_render
   before_action :check_public_scope_restriction, only: [:show]
 
   # GET /posts
@@ -20,13 +19,6 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
-    end
-
-    def setup_render
-      @render = Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML.new,
-        fenced_code_blocks: true, no_intra_emphasis: true
-      )
     end
 
     def check_public_scope_restriction

@@ -23,4 +23,7 @@ f = (window, document) ->
         toggleClass(menu, active)
         toggleClass(menuLink, active)
 
-f(this, this.document)
+$(document).ready(() =>
+  f(this, this.document)
+  $('pre code').each((i, e) => hljs.highlightBlock(e))
+)
