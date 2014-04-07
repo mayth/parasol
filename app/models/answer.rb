@@ -9,11 +9,13 @@
 class Answer < ActiveRecord::Base
   belongs_to :player, inverse_of: :answers
   belongs_to :challenge, inverse_of: :answers
+  belongs_to :flag, inverse_of: :answers
 
   validates_associated :player
   validates_presence_of :player
   validates_associated :challenge
   validates_presence_of :challenge
+  validates_associated :flag
 
   before_save :check
 
@@ -21,10 +23,6 @@ class Answer < ActiveRecord::Base
     answer      'FLAG_123456'
     is_correct  true
     timestamps
-  end
-
-  def flag
-    @flag
   end
 
   def correct?
@@ -44,10 +42,8 @@ class Answer < ActiveRecord::Base
   #
   # @return [Boolean] +true+ if the answer is correct; otherwise, +false+.
   def check
-    @flag = challenge.flags.select { |f| /\A#{f.flag}\z/ =~ answer }.first
-    self[:is_correct] = !(@flag.nil?)
+    self.flag = challenge.flags.select { |f| /\A#{f.flag}\z/ =~ answer }.first
+    self[:is_correct] = !(flag.nil?)
     true
   end
-
 end
-

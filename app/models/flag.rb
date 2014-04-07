@@ -8,6 +8,7 @@
 #   @return [String]
 class Flag < ActiveRecord::Base
   belongs_to :challenge, inverse_of: :flags
+  has_many :answers, inverse_of: :flag
 
   structure do
     point       200, validates: :presence

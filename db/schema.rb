@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407081739) do
+ActiveRecord::Schema.define(version: 20140407091550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,11 @@ ActiveRecord::Schema.define(version: 20140407081739) do
     t.datetime "updated_at"
     t.datetime "created_at"
     t.boolean  "is_correct"
+    t.integer  "flag_id"
   end
 
   add_index "answers", ["challenge_id"], name: "index_answers_on_challenge_id", using: :btree
+  add_index "answers", ["flag_id"], name: "index_answers_on_flag_id", using: :btree
   add_index "answers", ["player_id"], name: "index_answers_on_player_id", using: :btree
 
   create_table "challenges", force: true do |t|

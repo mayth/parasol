@@ -7,6 +7,8 @@
         %h1= genre
         %ul
           - @challenges.select{|c| c.genre == genre}.each do |ch|
-            %li #{ch.name} (#{ch.point})
+            %li
+              = link_to ch.name, ch
+              (#{ch.point})
   - else
     %p No challenges are opened...
