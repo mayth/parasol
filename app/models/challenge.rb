@@ -18,7 +18,7 @@ class Challenge < ActiveRecord::Base
   structure do
     name        'Parasol Star Memories', validates: :presence
     genre       'binary', validates: :presence
-    description 'Here is the description!'
+    description "Here is the description!\n" * 2, validates: :presence
     opened_at   Time.new(2014, 3, 18, 9, 0, 0, '+09:00')
     timestamps
   end
