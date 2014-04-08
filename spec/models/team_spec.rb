@@ -170,4 +170,49 @@ describe Team do
       end
     end
   end
+
+  describe '#last_submission' do
+    let(:team) do
+      p = create(:player)
+      p.confirm!
+      create(:team, players: [p])
+    end
+    let(:challenge) { create(:challenge) }
+
+    describe 'with valid_only' do
+      subject { team.last_submission(valid_only: true) }
+      before do
+        player = team.players.first
+        @submissions = 3.times.map do
+          player.answers.create(
+            challenge: challenge,
+            answer: challenge.flags[0].flag)
+        end
+        @submissions << player.answers.create(
+          challenge: challenge,
+          answer: challenge.flags[1].flag)
+      end
+
+      it 'returns the last valid submission' do
+        expect(subject).to eq @submissions.last
+      end
+    end
+
+    describe 'without valid_only' do
+      subject { team.last_submission(valid_only: false) }
+
+      before do
+        player = team.players.first
+        @submissions = 3.times.map do
+          player.answers.create(
+            challenge: challenge,
+            answer: challenge.flags[0].flag)
+        end
+      end
+
+      it 'returns the last submission' do
+        expect(subject).to eq @submissions.last
+      end
+    end
+  end
 end

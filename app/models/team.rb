@@ -52,6 +52,12 @@ class Team < ActiveRecord::Base
     players.any? ? players.reduce(0) { |a, e| a + e.point } : 0
   end
 
+  def last_submission(valid_only: false)
+    players.map { |p| p.last_submission(valid_only: valid_only) }
+           .sort_by { |ans| ans.created_at }
+           .last
+  end
+
   ### Methods
 
   # Authenticates the team.
