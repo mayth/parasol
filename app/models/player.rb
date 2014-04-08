@@ -18,6 +18,7 @@ class Player < ActiveRecord::Base
          :confirmable
 
   has_many :answers, dependent: :destroy, inverse_of: :player
+  has_many :adjustments, dependent: :delete_all, inverse_of: :player
   belongs_to :team, inverse_of: :players
 
   validates_associated :team

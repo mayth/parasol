@@ -9,6 +9,7 @@
 class Challenge < ActiveRecord::Base
   has_many :answers, dependent: :destroy, inverse_of: :challenge
   has_many :flags, dependent: :destroy, inverse_of: :challenge
+  has_many :adjustments, dependent: :delete_all, inverse_of: :challenge
 
   validates_associated :flags
   validates_presence_of :flags
