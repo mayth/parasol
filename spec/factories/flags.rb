@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :flag do
     point 200
-    flag 'FLAG_kogasa'
+    sequence(:flag) { |n| "FLAG_KOGASA_#{n}" }
   end
 end
