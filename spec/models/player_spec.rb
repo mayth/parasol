@@ -14,6 +14,7 @@ describe Player do
       @player = create(:player)
       @player.confirm!
     end
+
     context 'when it is the correct answer' do
       it 'returns the flag' do
         expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
@@ -25,6 +26,7 @@ describe Player do
           .to change { @player.point }.by(@flags[2].point)
       end
     end
+
     context 'when it is the wrong answer' do
       it 'returns nil' do
         expect(@player.submit(@challenge, 'FLAG_piyopiyo')).to be_nil
@@ -41,8 +43,8 @@ describe Player do
         expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
       end
 
-      it 'returns nil' do
-        expect(@player.submit(@challenge, @flags[0].flag)).to eq nil
+      it 'returns the flag' do
+        expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
       end
 
       it "does not change the player's point" do

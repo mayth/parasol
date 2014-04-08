@@ -263,6 +263,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid_answered_flags-instance_method" title="#valid_answered_flags (instance method)">- (Object) <strong>valid_answered_flags</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -351,7 +373,19 @@
 49
 50
 51
-52</pre>
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -391,9 +425,21 @@
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span>
+    <span class='id identifier rubyid_flags_table'>flags_table</span> <span class='op'>=</span> <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_answers_table'>answers_table</span> <span class='op'>=</span> <span class='const'>Answer</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_sub_query'>sub_query</span> <span class='op'>=</span>
+      <span class='id identifier rubyid_flags_table'>flags_table</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_in'>in</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='period'>
+</span><span class='id identifier rubyid_        .where'>        .where</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_correct</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_answered</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:player_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_        .project'>        .project</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:flag_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='rparen'>)</span>
+    <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_query'>sub_query</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
-    <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_correct?'>correct?</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span><span class='period'>.</span><span class='id identifier rubyid_point'>point</span><span class='rbrace'>}</span>
-    <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='symbol'>:point</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -481,7 +527,19 @@
 49
 50
 51
-52</pre>
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -521,9 +579,21 @@
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span>
+    <span class='id identifier rubyid_flags_table'>flags_table</span> <span class='op'>=</span> <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_answers_table'>answers_table</span> <span class='op'>=</span> <span class='const'>Answer</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_sub_query'>sub_query</span> <span class='op'>=</span>
+      <span class='id identifier rubyid_flags_table'>flags_table</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_in'>in</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='period'>
+</span><span class='id identifier rubyid_        .where'>        .where</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_correct</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_answered</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:player_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_        .project'>        .project</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:flag_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='rparen'>)</span>
+    <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_query'>sub_query</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
-    <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_correct?'>correct?</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span><span class='period'>.</span><span class='id identifier rubyid_point'>point</span><span class='rbrace'>}</span>
-    <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='symbol'>:point</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -611,7 +681,19 @@
 49
 50
 51
-52</pre>
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -651,9 +733,21 @@
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span>
+    <span class='id identifier rubyid_flags_table'>flags_table</span> <span class='op'>=</span> <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_answers_table'>answers_table</span> <span class='op'>=</span> <span class='const'>Answer</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+    <span class='id identifier rubyid_sub_query'>sub_query</span> <span class='op'>=</span>
+      <span class='id identifier rubyid_flags_table'>flags_table</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_in'>in</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='period'>
+</span><span class='id identifier rubyid_        .where'>        .where</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_correct</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_answered</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_          .and'>          .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:player_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_        .project'>        .project</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:flag_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='rparen'>)</span>
+    <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_query'>sub_query</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_point'>point</span>
-    <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_correct?'>correct?</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_ans'>ans</span><span class='op'>|</span> <span class='id identifier rubyid_ans'>ans</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span><span class='period'>.</span><span class='id identifier rubyid_point'>point</span><span class='rbrace'>}</span>
-    <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>?</span> <span class='id identifier rubyid_points'>points</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='symbol'>:+</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='int'>0</span>
+    <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span><span class='period'>.</span><span class='id identifier rubyid_sum'>sum</span><span class='lparen'>(</span><span class='symbol'>:point</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -826,12 +920,60 @@ something wrong while submitting answer, returns <code>nil</code>.</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="valid_answered_flags-instance_method">
+  
+    - (<tt>Object</tt>) <strong>valid_answered_flags</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid_answered_flags'>valid_answered_flags</span>
+  <span class='id identifier rubyid_flags_table'>flags_table</span> <span class='op'>=</span> <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+  <span class='id identifier rubyid_answers_table'>answers_table</span> <span class='op'>=</span> <span class='const'>Answer</span><span class='period'>.</span><span class='id identifier rubyid_arel_table'>arel_table</span>
+  <span class='id identifier rubyid_sub_query'>sub_query</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_flags_table'>flags_table</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_in'>in</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='period'>
+</span><span class='id identifier rubyid_      .where'>      .where</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_correct</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_        .and'>        .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:is_answered</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_        .and'>        .and</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:player_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_eq'>eq</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_      .project'>      .project</span><span class='lparen'>(</span><span class='id identifier rubyid_answers_table'>answers_table</span><span class='lbracket'>[</span><span class='symbol'>:flag_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='rparen'>)</span>
+  <span class='const'>Flag</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_query'>sub_query</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 15:55:00 2014 by
+  Generated on Tue Apr  8 18:42:37 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

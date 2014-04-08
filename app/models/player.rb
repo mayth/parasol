@@ -45,8 +45,23 @@ class Player < ActiveRecord::Base
     self.team == team
   end
 
+  # Gets the flags that are already 'captured'.
+  #
+  # @return [Set<Flag>] Captured flags.
+  def captured_flags
+    flags_table = Flag.arel_table
+    answers_table = Answer.arel_table
+    sub_query =
+      flags_table[:id].in(answers_table
+        .where(answers_table[:is_correct].eq(true)
+          .and(answers_table[:is_answered].eq(false))
+          .and(answers_table[:player_id].eq(id)))
+        .project(answers_table[:flag_id])
+      )
+    Flag.where(sub_query)
+  end
+
   def point
-    points = answers.select{|ans| ans.correct?}.map{|ans| ans.flag.point}
-    points.present? ? points.inject(:+) : 0
+    captured_flags.sum(:point)
   end
 end
