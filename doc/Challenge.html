@@ -391,7 +391,8 @@
 62
 63
 64
-65</pre>
+65
+66</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 9</span>
@@ -399,6 +400,7 @@
 <span class='kw'>class</span> <span class='const'>Challenge</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
   <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:answers</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
   <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:flags</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:adjustments</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:delete_all</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
 
   <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:flags</span>
   <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:flags</span>
@@ -555,7 +557,8 @@
 62
 63
 64
-65</pre>
+65
+66</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 9</span>
@@ -563,6 +566,7 @@
 <span class='kw'>class</span> <span class='const'>Challenge</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
   <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:answers</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
   <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:flags</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:adjustments</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:delete_all</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:challenge</span>
 
   <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:flags</span>
   <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:flags</span>
@@ -655,13 +659,13 @@
       <pre class="lines">
 
 
-51
 52
 53
-54</pre>
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close!'>close!</span>
   <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -711,10 +715,10 @@
       <pre class="lines">
 
 
-59</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 60</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:genres</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='symbol'>:genre</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span> <span class='rbrace'>}</span></pre>
     </td>
@@ -766,7 +770,6 @@
       <pre class="lines">
 
 
-37
 38
 39
 40
@@ -775,10 +778,11 @@
 43
 44
 45
-46</pre>
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_open!'>open!</span><span class='lparen'>(</span><span class='id identifier rubyid_time'>time</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span>
@@ -834,10 +838,10 @@
       <pre class="lines">
 
 
-64</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 65</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='lparen'>(</span><span class='label'>opened_at:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre>
     </td>
@@ -850,7 +854,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 18:42:37 2014 by
+  Generated on Tue Apr  8 20:23:45 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

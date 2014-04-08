@@ -1,11 +1,18 @@
 # Represents CTF players.
+#
 # @!attribute [r] point
 #   Gets the current point.
 #   @return [Number]
+#
+# @!attribute [r] adjustment_point
+#   Gets the current adjustment point.
+#   @return [Number]
+#
 # @!attribute name
 #   Gets or sets the player's name.
 #   It should not be blank.
 #   @return [String]
+#
 # @!attribute email
 #   Gets or sets the player's mail address.
 #   It should not be blank.
@@ -62,7 +69,32 @@ class Player < ActiveRecord::Base
     Flag.where(sub_query)
   end
 
+  # Adjusts the point of this player.
+  #
+  # @param point [Integer] A point for adjustment.
+  # @param reason [String] A reason of adjustment.
+  # @param challenge [Challenge] A challenge related to the adjustment.
+  # @return [Adjustment, nil]
+  #   returns an adjustment data if succeeded;
+  #   otherwise (for example, +point+ is not an integer), +nil+.
+  def adjust!(point, reason: nil, challenge: nil)
+    case point
+    when Integer
+      pt = point
+    when String
+      return nil unless point =~ /\A[+-]?\d+\z/
+      pt = Integer(point)
+    else
+      return nil
+    end
+    adjustments.create(point: pt, reason: reason, challenge: challenge)
+  end
+
+  def adjustment_point
+    adjustments.sum(:point)
+  end
+
   def point
-    captured_flags.sum(:point)
+    captured_flags.sum(:point) + adjustment_point
   end
 end
