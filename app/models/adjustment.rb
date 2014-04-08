@@ -4,6 +4,7 @@ class Adjustment < ActiveRecord::Base
   belongs_to :challenge, inverse_of: :adjustments
 
   validates_associated :player
+  validates_presence_of :player
   validates_associated :challenge
 
   structure do

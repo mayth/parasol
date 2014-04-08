@@ -1,4 +1,4 @@
-= form_for @adjustment, url: @adjustment.new_record? ? admin_adjustments_path : admin_adjustment_path(@adjustment) do |f|
+= form_for @adjustment, url: @adjustment.new_record? ? admin_adjustments_path : admin_adjustment_path(@adjustment), html: { class: 'pure-form pure-form-aligned' } do |f|
   - if @adjustment.errors.any?
     #error_explanation
       %h2= "#{pluralize(@adjustment.errors.count, "error")} prohibited this adjustment from being saved:"
@@ -6,5 +6,18 @@
         - @adjustment.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    .pure-control-group
+      = f.label :player
+      = f.select :player_id, Player.pluck(:name, :id)
+    .pure-control-group
+      = f.label :point
+      = f.text_field :point, type: :number, required: true
+    .pure-control-group
+      = f.label :reason
+      = f.text_field :reason
+    .pure-control-group
+      = f.label :challenge
+      = f.select :challenge_id, [['None', nil]] + Challenge.pluck(:name, :id)
+    .pure-controls
+      = f.submit 'Adjust', class: 'pure-button pure-button-primary'

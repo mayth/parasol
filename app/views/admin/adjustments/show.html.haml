@@ -1,6 +1,28 @@
-%p#notice= notice
+.header
+  %h1 Adjustment
+  %h2 for #{@adjustment.player.name} (#{@adjustment.player.team.name})
 
+.content
+  %section
+    %h1 Details
+    %dl
+      %dt Point
+      %dd= @adjustment.point
+      %dt Reason
+      %dd= @adjustment.reason.presence || 'N/A'
+      %dt Challenge
+      %dd
+        - if @adjustment.challenge.present?
+          = link_to @adjustment.challenge.name, admin_challenge_path(@adjustment.challenge)
+        - else
+          N/A
+      %dt Created at
+      %dd= @adjustment.created_at
+      %dt Updated at
+      %dd= @adjustment.updated_at
 
-= link_to 'Edit', edit_admin_adjustment_path(@adjustment)
-\|
-= link_to 'Back', admin_adjustments_path
+  %section
+    %p
+      = link_to 'Edit', edit_admin_adjustment_path(@adjustment)
+      \|
+      = link_to 'Back', admin_adjustments_path

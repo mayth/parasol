@@ -1,17 +1,35 @@
-%h1 Listing adjustment
+.header
+  %h1 Listing All Applied Adjustments
 
-%table
-  %tr
-    %th
-    %th
-    %th
+.content
+  %table.pure-table
+    %thead
+      %tr
+        %th Applied for
+        %th Point
+        %th Reason
+        %th Challenge
+        %th Created at
+        %th
+        %th
+        %th
 
-  - @adjustments.each do |adjustment|
-    %tr
-      %td= link_to 'Show', admin_adjustment_path(adjustment)
-      %td= link_to 'Edit', edit_admin_adjustment_path(adjustment)
-      %td= link_to 'Destroy', admin_adjustment_path(adjustment), :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %tbody
+      - @adjustments.each do |adjustment|
+        %tr
+          %td= link_to adjustment.player.name, admin_player_path(adjustment.player)
+          %td= adjustment.point
+          %td= truncate(adjustment.reason.presence || 'N/A', length: 30)
+          %td
+            - if adjustment.challenge.present?
+              = link_to adjustment.challenge.name, admin_challenge_path(adjustment.challenge)
+            - else
+              N/A
+          %td= adjustment.created_at
+          %td= link_to 'Show', admin_adjustment_path(adjustment)
+          %td= link_to 'Edit', edit_admin_adjustment_path(adjustment)
+          %td= link_to 'Destroy', admin_adjustment_path(adjustment), method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+  %br
 
-= link_to 'New Adjustment', new_admin_adjustment_path
+  = link_to 'Add Adjustment', new_admin_adjustment_path

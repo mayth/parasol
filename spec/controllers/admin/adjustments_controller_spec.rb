@@ -40,18 +40,18 @@ describe Admin::AdjustmentsController do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Adjustment' do
-        expect { post :create, adjustment: attributes_for(:adjustment) }
+        expect { post :create, adjustment: make_adjustment_param_hash(build(:adjustment)) }
           .to change(Adjustment, :count).by(1)
       end
 
       it 'assigns a newly created adjustment as @adjustment' do
-        post :create, adjustment: attributes_for(:adjustment)
+        post :create, adjustment: make_adjustment_param_hash(build(:adjustment))
         expect(assigns(:adjustment)).to be_a Adjustment
         expect(assigns(:adjustment)).to be_persisted
       end
 
       it 'redirects to the created adjustment' do
-        post :create, adjustment: attributes_for(:adjustment)
+        post :create, adjustment: make_adjustment_param_hash(build(:adjustment))
         expect(response).to redirect_to(admin_adjustment_url(Adjustment.last))
       end
     end
@@ -88,13 +88,13 @@ describe Admin::AdjustmentsController do
 
       it 'assigns the requested adjustment as @adjustment' do
         adjustment = create(:adjustment)
-        put :update, id: adjustment.to_param, adjustment: attributes_for(:adjustment)
+        put :update, id: adjustment.to_param, adjustment: make_adjustment_param_hash(build(:adjustment))
         expect(assigns(:adjustment)).to eq adjustment
       end
 
       it 'redirects to the admin/adjustment' do
         adjustment = create(:adjustment)
-        put :update, id: adjustment.to_param, adjustment: attributes_for(:adjustment)
+        put :update, id: adjustment.to_param, adjustment: make_adjustment_param_hash(build(:adjustment))
         expect(response).to redirect_to(admin_adjustment_path(adjustment))
       end
     end
