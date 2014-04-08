@@ -34,7 +34,7 @@ class Player < ActiveRecord::Base
   #   When something wrong while submitting answer, returns +nil+.
   def submit(challenge, flag)
     answer = answers.create(challenge: challenge, answer: flag)
-    answer.save ? answer.flag : nil
+    answer.flag
   end
 
   # Determines whether this player belongs to the given team or not.
