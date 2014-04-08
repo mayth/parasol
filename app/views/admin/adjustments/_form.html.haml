@@ -1,0 +1,10 @@
+= form_for @adjustment, url: @adjustment.new_record? ? admin_adjustments_path : admin_adjustment_path(@adjustment) do |f|
+  - if @adjustment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@adjustment.errors.count, "error")} prohibited this adjustment from being saved:"
+      %ul
+        - @adjustment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

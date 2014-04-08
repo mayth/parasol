@@ -1,0 +1,17 @@
+%h1 Listing adjustment
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @adjustments.each do |adjustment|
+    %tr
+      %td= link_to 'Show', admin_adjustment_path(adjustment)
+      %td= link_to 'Edit', edit_admin_adjustment_path(adjustment)
+      %td= link_to 'Destroy', admin_adjustment_path(adjustment), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Adjustment', new_admin_adjustment_path

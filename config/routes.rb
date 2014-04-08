@@ -32,6 +32,7 @@ Parasol::Application.routes.draw do
     resources :players
     resources :teams
     resources :posts
+    resources :adjustments
     get '/settings' => 'settings#index'
     patch '/settings' => 'settings#update'
     put '/settings' => 'settings#update'

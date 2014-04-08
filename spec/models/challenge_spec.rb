@@ -156,7 +156,7 @@ describe Challenge do
         3.times.each {create(:challenge)}
       end
       it 'returns opened challenges' do
-        expect(subject).to eq @challenges
+        expect(subject).to include(*@challenges)
       end
     end
   end
