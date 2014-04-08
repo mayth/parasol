@@ -54,6 +54,7 @@ class Team < ActiveRecord::Base
 
   def last_submission(valid_only: false)
     players.map { |p| p.last_submission(valid_only: valid_only) }
+           .reject { |ans| ans.nil? }
            .sort_by { |ans| ans.created_at }
            .last
   end

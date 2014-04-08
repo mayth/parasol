@@ -202,35 +202,68 @@ describe Player do
 
     describe 'with valid_only' do
       subject { player.last_submission(valid_only: true) }
-      before do
-        @submissions = 3.times.map do
-          player.answers.create(
-            challenge: challenge,
-            answer: challenge.flags[0].flag)
+
+      context 'if the player submits some answers' do
+        context 'and submitted answers contains a valid one at least one' do
+          before do
+            @submissions = 3.times.map do
+              player.answers.create(
+                challenge: challenge,
+                answer: challenge.flags[0].flag)
+            end
+            @submissions << player.answers.create(
+              challenge: challenge,
+              answer: challenge.flags[1].flag)
+          end
+
+          it 'returns the last valid submission' do
+            expect(subject).to eq @submissions.last
+          end
         end
-        @submissions << player.answers.create(
-          challenge: challenge,
-          answer: challenge.flags[1].flag)
+
+        context 'and all submitted answers are wrong' do
+          before do
+            @submissions = 3.times.map do
+              player.answers.create(
+                challenge: challenge,
+                answer: '!WRONG_FLAG!')
+            end
+          end
+
+          it 'returns nil' do
+            expect(subject).to be_nil
+          end
+        end
       end
 
-      it 'returns the last valid submission' do
-        expect(subject).to eq @submissions.last
+      context 'if the player does not submit any answers yet' do
+        it 'returns nil' do
+          expect(subject).to be_nil
+        end
       end
     end
 
     describe 'without valid_only' do
       subject { player.last_submission(valid_only: false) }
 
-      before do
-        @submissions = 3.times.map do
-          player.answers.create(
-            challenge: challenge,
-            answer: challenge.flags[0].flag)
+      context 'if the player submits some answers' do
+        before do
+          @submissions = 3.times.map do
+            player.answers.create(
+              challenge: challenge,
+              answer: challenge.flags[0].flag)
+          end
+        end
+
+        it 'returns the last submission' do
+          expect(subject).to eq @submissions.last
         end
       end
 
-      it 'returns the last submission' do
-        expect(subject).to eq @submissions.last
+      context 'if the player does not submit any answers yet' do
+        it 'returns nil' do
+          expect(subject).to be_nil
+        end
       end
     end
   end

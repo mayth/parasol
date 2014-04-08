@@ -181,37 +181,89 @@ describe Team do
 
     describe 'with valid_only' do
       subject { team.last_submission(valid_only: true) }
-      before do
-        player = team.players.first
-        @submissions = 3.times.map do
-          player.answers.create(
-            challenge: challenge,
-            answer: challenge.flags[0].flag)
+
+      describe 'with the team that has no members' do
+        before do
+          team.players.clear
         end
-        @submissions << player.answers.create(
-          challenge: challenge,
-          answer: challenge.flags[1].flag)
+
+        it 'returns nil' do
+          expect(subject).to be_nil
+        end
       end
 
-      it 'returns the last valid submission' do
-        expect(subject).to eq @submissions.last
+      describe 'with the team that has some members' do
+        context 'if a one of the team member submits some answers' do
+          context 'and these answers contains a valid one at least one' do
+            before do
+              player = team.players.first
+              @submissions = 3.times.map do
+                player.answers.create(
+                  challenge: challenge,
+                  answer: challenge.flags[0].flag)
+              end
+              @submissions << player.answers.create(
+                challenge: challenge,
+                answer: challenge.flags[1].flag)
+            end
+
+            it 'returns the last valid submission' do
+              expect(subject).to eq @submissions.last
+            end
+          end
+
+          context 'and all of these answers are wrong' do
+            before do
+              player = team.players.first
+              @submissions = 3.times.map do
+                player.answers.create(
+                  challenge: challenge,
+                  answer: '!WRONG_FLAG!')
+              end
+            end
+
+            it 'returns nil' do
+              expect(subject).to be_nil
+            end
+          end
+        end
       end
     end
 
     describe 'without valid_only' do
       subject { team.last_submission(valid_only: false) }
 
-      before do
-        player = team.players.first
-        @submissions = 3.times.map do
-          player.answers.create(
-            challenge: challenge,
-            answer: challenge.flags[0].flag)
+      describe 'with the team that has no members' do
+        before do
+          team.players.clear
+        end
+
+        it 'returns nil' do
+          expect(subject).to be_nil
         end
       end
 
-      it 'returns the last submission' do
-        expect(subject).to eq @submissions.last
+      describe 'with the team that has some members' do
+        context 'if a one of the team member submits some answers' do
+          before do
+            player = team.players.first
+            @submissions = 3.times.map do
+              player.answers.create(
+                challenge: challenge,
+                answer: challenge.flags[0].flag)
+            end
+          end
+
+          it 'returns the last submission' do
+            expect(subject).to eq @submissions.last
+          end
+        end
+
+        context 'if anyone in the team does not submit any answers' do
+          it 'returns nil' do
+            expect(subject).to be_nil
+          end
+        end
       end
     end
   end
