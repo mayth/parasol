@@ -9,9 +9,28 @@ describe TeamsController do
 
   describe 'GET index' do
     it 'assigns all teams as @teams' do
-      team = create(:team)
+      teams = 3.times.map { create(:team) }
       get :index
-      expect(assigns(:teams)).to eq [team]
+      expect(assigns(:teams)).to eq teams
+    end
+
+    it 'assigns all teams as @teams with the point ranking order' do
+      challenge = create(
+        :challenge,
+        flags: 5.times.map { |n| create(:flag, flag: "FLAG_#{n}") })
+      teams = 5.times.map do |i|
+        team = create(:team)
+        player = create(:player, team: team)
+        i.times.each do |n|
+          player.submit(challenge, challenge.flags[n].flag)
+        end
+        team
+      end
+      teams.reverse!
+      get :index
+      (0..4).each do |i|
+        expect(assigns[:teams][i]).to eq teams[i]
+      end
     end
   end
 

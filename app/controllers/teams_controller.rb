@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
     # @teams = Team.max()
     # sort by points (this must be stable sort!)
     i = 0
-    @teams = Team.all.sort_by { |e| [e.point, i += 1] }
+    @teams = Team.all.sort_by { |e| [-e.point, i += 1] }
   end
 
   # GET /teams/1
