@@ -237,13 +237,15 @@
 19
 20
 21
-22</pre>
+22
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/flag.rb', line 9</span>
 
 <span class='kw'>class</span> <span class='const'>Flag</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
   <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:challenge</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:flags</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:answers</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:flag</span>
 
   <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_point'>point</span>       <span class='int'>200</span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='symbol'>:presence</span>
@@ -316,13 +318,15 @@ attempt to set a negative-value, it has no effects.</p>
 19
 20
 21
-22</pre>
+22
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/flag.rb', line 9</span>
 
 <span class='kw'>class</span> <span class='const'>Flag</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
   <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:challenge</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:flags</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:answers</span><span class='comma'>,</span> <span class='label'>inverse_of:</span> <span class='symbol'>:flag</span>
 
   <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_point'>point</span>       <span class='int'>200</span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='symbol'>:presence</span>
@@ -346,7 +350,7 @@ attempt to set a negative-value, it has no effects.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Apr  5 16:13:23 2014 by
+  Generated on Tue Apr  8 15:55:00 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

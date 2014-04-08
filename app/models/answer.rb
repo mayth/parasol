@@ -39,8 +39,6 @@ class Answer < ActiveRecord::Base
   end
 
   # Check the answer.
-  #
-  # @return [Boolean] +true+ if the answer is correct; otherwise, +false+.
   def check
     unless flag
       t = challenge.flags.select { |f| /\A#{f.flag}\z/ =~ answer }.first

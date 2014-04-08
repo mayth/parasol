@@ -2,7 +2,7 @@
 #
 # @!attribute title
 #   @return [String] The post's title.
-# @!attribtue body
+# @!attribute body
 #   @return [String] The post's body.
 # @!attribute public_scope
 #   @return [String] The scope of publication.

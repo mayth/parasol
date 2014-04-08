@@ -351,11 +351,7 @@
 49
 50
 51
-52
-53
-54
-55
-56</pre>
+52</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -372,12 +368,8 @@
 
   <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:team</span>
   <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:team</span>
-
-  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_name'>name</span>        <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Kogasa Tatara</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>      <span class='label'>validates:</span> <span class='symbol'>:presence</span>
-    <span class='id identifier rubyid_email'>email</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>kogasa@example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='lbracket'>[</span><span class='symbol'>:presence</span><span class='comma'>,</span> <span class='symbol'>:uniqueness</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_timestamps'>timestamps</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:name</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
 
   <span class='comment'># Submits the answer.
 </span>  <span class='comment'>#
@@ -388,7 +380,7 @@
 </span>  <span class='comment'>#   When something wrong while submitting answer, returns +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Determines whether this player belongs to the given team or not.
@@ -489,11 +481,7 @@
 49
 50
 51
-52
-53
-54
-55
-56</pre>
+52</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -510,12 +498,8 @@
 
   <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:team</span>
   <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:team</span>
-
-  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_name'>name</span>        <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Kogasa Tatara</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>      <span class='label'>validates:</span> <span class='symbol'>:presence</span>
-    <span class='id identifier rubyid_email'>email</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>kogasa@example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='lbracket'>[</span><span class='symbol'>:presence</span><span class='comma'>,</span> <span class='symbol'>:uniqueness</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_timestamps'>timestamps</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:name</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
 
   <span class='comment'># Submits the answer.
 </span>  <span class='comment'>#
@@ -526,7 +510,7 @@
 </span>  <span class='comment'>#   When something wrong while submitting answer, returns +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Determines whether this player belongs to the given team or not.
@@ -627,11 +611,7 @@
 49
 50
 51
-52
-53
-54
-55
-56</pre>
+52</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/player.rb', line 13</span>
@@ -648,12 +628,8 @@
 
   <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:team</span>
   <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:team</span>
-
-  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_name'>name</span>        <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Kogasa Tatara</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>      <span class='label'>validates:</span> <span class='symbol'>:presence</span>
-    <span class='id identifier rubyid_email'>email</span>       <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>kogasa@example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='lbracket'>[</span><span class='symbol'>:presence</span><span class='comma'>,</span> <span class='symbol'>:uniqueness</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_timestamps'>timestamps</span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_validates_presence_of'>validates_presence_of</span> <span class='symbol'>:name</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
 
   <span class='comment'># Submits the answer.
 </span>  <span class='comment'>#
@@ -664,7 +640,7 @@
 </span>  <span class='comment'>#   When something wrong while submitting answer, returns +nil+.
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+    <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Determines whether this player belongs to the given team or not.
@@ -737,12 +713,12 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_member_of?'>member_of?</span><span class='lparen'>(</span><span class='id identifier rubyid_team'>team</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_team'>team</span> <span class='op'>==</span> <span class='id identifier rubyid_team'>team</span>
@@ -833,17 +809,17 @@ something wrong while submitting answer, returns <code>nil</code>.</p>
       <pre class="lines">
 
 
-39
-40
-41
-42</pre>
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/models/player.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_submit'>submit</span><span class='lparen'>(</span><span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_answer'>answer</span> <span class='op'>=</span> <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>challenge:</span> <span class='id identifier rubyid_challenge'>challenge</span><span class='comma'>,</span> <span class='label'>answer:</span> <span class='id identifier rubyid_flag'>flag</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='op'>?</span> <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_answer'>answer</span><span class='period'>.</span><span class='id identifier rubyid_flag'>flag</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -855,7 +831,7 @@ something wrong while submitting answer, returns <code>nil</code>.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Apr  5 16:13:23 2014 by
+  Generated on Tue Apr  8 15:55:00 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

@@ -209,14 +209,12 @@
 
 
 5
-6
-7</pre>
+6</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/admin/settings_controller.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='ivar'>@render</span> <span class='op'>=</span> <span class='const'>Redcarpet</span><span class='op'>::</span><span class='const'>Markdown</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Redcarpet</span><span class='op'>::</span><span class='const'>Render</span><span class='op'>::</span><span class='const'>HTML</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -249,6 +247,7 @@
       <pre class="lines">
 
 
+9
 10
 11
 12
@@ -256,11 +255,10 @@
 14
 15
 16
-17
-18</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/admin/settings_controller.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/admin/settings_controller.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_settings_params'>settings_params</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
@@ -281,7 +279,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Apr  5 16:13:24 2014 by
+  Generated on Tue Apr  8 15:55:01 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

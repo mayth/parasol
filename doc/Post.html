@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Post
+  
+    &mdash; Documentation by YARD 0.8.7.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (P)</a> &raquo;
+    
+    
+    <span class="title">Post</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Post
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">Post</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/post.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Represents a post for announcement.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#body-instance_method" title="#body (instance method)">- (String) <strong>body</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The post&#39;s body.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#public_scope-instance_method" title="#public_scope (instance method)">- (String) <strong>public_scope</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The scope of publication.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title-instance_method" title="#title (instance method)">- (String) <strong>title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The post&#39;s title.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="body=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="body-instance_method">
+  
+    - (<tt>String</tt>) <strong>body</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The post&#39;s body.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The post&#39;s body.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/post.rb', line 9</span>
+
+<span class='kw'>class</span> <span class='const'>Post</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_title'>title</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Awesome Post!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_body'>body</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The quick brown fox jumps over the lazy dog.\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>20</span><span class='comma'>,</span>
+         <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_public_scope'>public_scope</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>player</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                 <span class='label'>validation:</span> <span class='symbol'>:presence</span><span class='comma'>,</span> <span class='label'>inclusion:</span> <span class='lbrace'>{</span> <span class='label'>in:</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>player</span><span class='words_sep'> </span><span class='tstring_content'>public</span><span class='words_sep'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_timestamps'>timestamps</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:public_only</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>public_scope:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>public</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="public_scope=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="public_scope-instance_method">
+  
+    - (<tt>String</tt>) <strong>public_scope</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The scope of publication.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The scope of publication.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/post.rb', line 9</span>
+
+<span class='kw'>class</span> <span class='const'>Post</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_title'>title</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Awesome Post!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_body'>body</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The quick brown fox jumps over the lazy dog.\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>20</span><span class='comma'>,</span>
+         <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_public_scope'>public_scope</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>player</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                 <span class='label'>validation:</span> <span class='symbol'>:presence</span><span class='comma'>,</span> <span class='label'>inclusion:</span> <span class='lbrace'>{</span> <span class='label'>in:</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>player</span><span class='words_sep'> </span><span class='tstring_content'>public</span><span class='words_sep'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_timestamps'>timestamps</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:public_only</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>public_scope:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>public</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="title=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="title-instance_method">
+  
+    - (<tt>String</tt>) <strong>title</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The post&#39;s title.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The post&#39;s title.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/post.rb', line 9</span>
+
+<span class='kw'>class</span> <span class='const'>Post</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+  <span class='id identifier rubyid_structure'>structure</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_title'>title</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Awesome Post!</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_body'>body</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The quick brown fox jumps over the lazy dog.\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>20</span><span class='comma'>,</span>
+         <span class='label'>validates:</span> <span class='symbol'>:presence</span>
+    <span class='id identifier rubyid_public_scope'>public_scope</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>player</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                 <span class='label'>validation:</span> <span class='symbol'>:presence</span><span class='comma'>,</span> <span class='label'>inclusion:</span> <span class='lbrace'>{</span> <span class='label'>in:</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>player</span><span class='words_sep'> </span><span class='tstring_content'>public</span><span class='words_sep'>)</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_timestamps'>timestamps</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:public_only</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>public_scope:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>public</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Apr  8 15:55:00 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.3 (ruby-2.1.1).
+</div>
+
+  </body>
+</html>

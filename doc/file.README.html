@@ -64,10 +64,48 @@
     <div id="content"><div id='filecontents'><h1>parasol</h1>
 
 <p>CAPTURE THE FUTURE.</p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Ruby 2.1</li>
+<li>PostgreSQL 9.3</li>
+<li>Bundler</li>
+</ul>
+
+<h1>Setup</h1>
+
+<ol>
+<li>Clone this repository.</li>
+<li>Create database user (role) on PostgreSQL. The user name is <code>parasol</code> by default (it can be changed by modifying <code>database.yml</code>). Note that the user should be able to create databases (CREATEDB). If not, you must create databases by your hand.</li>
+<li>Remove <code>config/initializers/default_settings.rb</code> temporally.</li>
+<li>Run <code>rake db:create</code></li>
+<li>Check the database. There will be <code>parasol_{development,test}</code>. In addition, if you want to run this server in a production environment, you must create a database named <code>parasol_production</code>.</li>
+<li>Run <code>rake db:migrate</code></li>
+<li>Run <code>git checkout config/initializers/default_settings.rb</code> to restore the file removed in step 3.</li>
+<li>Run <code>rails s</code>. Enjoy!</li>
+</ol>
+
+<h1>License</h1>
+
+<p>This program is licensed under the MIT License. See <code>LICENSE</code>.</p>
+
+<h1>Copyright</h1>
+
+<p>Copyright (c) 2014 Mei Akizuru</p>
+
+<h1>Contact</h1>
+
+<ul>
+<li>Edit wiki</li>
+<li>Create issues</li>
+<li>Create pull-req</li>
+<li>Twitter(<a href="https://twitter.com/maytheplic">@maytheplic</a>)</li>
+</ul>
 </div></div>
 
     <div id="footer">
-  Generated on Sat Apr  5 16:13:23 2014 by
+  Generated on Tue Apr  8 15:55:00 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>
