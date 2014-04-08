@@ -7,11 +7,21 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    # TODO: sort by last submission
-    # @teams = Team.max()
-    # sort by points (this must be stable sort!)
+    # sorting on latter step must be stable!
+    t, t_nil = Team.all.partition { |x| x.last_submission(valid_only: true) }
+    # sorting for teams which has some submissions.
     i = 0
-    @teams = Team.all.sort_by { |e| [-e.point, i += 1] }
+    t = t.sort_by { |e| e.last_submission(valid_only: true).created_at }
+         .sort_by { |e| [-e.point, i += 1] }
+    t.each { |t| puts "#{t.name} #{t.point} pt." }
+    # sorting for teams which has not any submissions.
+    # this is required because there may be teams which does not have points
+    # by submission but has some points by adjustment.
+    i = 0
+    t_nil = t_nil.sort_by { |e| e.created_at }
+                 .sort_by { |e| [-e.point, i += 1] }
+    t_nil.each { |t| puts "#{t.name} #{t.point} pt." }
+    @teams = t + t_nil
   end
 
   # GET /teams/1
