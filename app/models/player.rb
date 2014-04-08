@@ -97,4 +97,9 @@ class Player < ActiveRecord::Base
   def point
     captured_flags.sum(:point) + adjustment_point
   end
+
+  def last_submission(valid_only: false)
+    (valid_only ? answers.merge(Answer.valid) : answers)
+      .order(created_at: :desc).first
+  end
 end
