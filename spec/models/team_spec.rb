@@ -340,4 +340,53 @@ describe Team do
       end
     end
   end
+
+  describe '.ranking' do
+    subject { Team.ranking }
+    context 'with teams that has no points nor submissions' do
+      it 'returns teams in acending order of team registration date' do
+        teams = 3.times.map { create(:team) }
+        3.times.each do |i|
+          expect(subject[i]).to eq teams[i]
+        end
+      end
+    end
+
+    context 'with some teams and their point differ each other' do
+      it 'returns teams in descending order of the team point' do
+        challenge = create(
+          :challenge,
+          flags: 5.times.map { |n| create(:flag) })
+        teams = 5.times.map do |i|
+          team = create(:team)
+          player = create(:player, team: team)
+          i.times.each do |n|
+            player.submit(challenge, challenge.flags[n].flag)
+          end
+          team
+        end
+        teams.reverse!
+        (0..4).each do |i|
+          expect(subject[i]).to eq teams[i]
+        end
+      end
+    end
+
+    context 'with some teams that has the same point' do
+      it 'returns teams in ascending order of last submission date' do
+        challenge = create(
+          :challenge,
+          flags: 5.times.map { |n| create(:flag) })
+        teams = 5.times.map do
+          team = create(:team)
+          player = create(:player, team: team)
+          player.submit(challenge, challenge.flags.first.flag)
+          team
+        end
+        (0..4).each do |i|
+          expect(subject[i]).to eq teams[i]
+        end
+      end
+    end
+  end
 end
