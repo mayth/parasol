@@ -5,6 +5,12 @@ module ApplicationHelper
     )
   end
 
+  def within_contest_period?
+    Time.zone.now.between?(
+      Setting.contest_starts_at, Setting.contest_ends_at
+    )
+  end
+
   def markdown_render(md)
     @render ||=
       Redcarpet::Markdown.new(
