@@ -62,6 +62,10 @@ class Answer < ActiveRecord::Base
   alias_attribute :correct?, :is_correct
   alias_attribute :answered?, :is_answered
 
+  def valid_answer?
+    correct? && !answered?
+  end
+
   scope :valid, -> { where(is_correct: true, is_answered: false) }
 
   private

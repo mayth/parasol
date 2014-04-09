@@ -31,6 +31,7 @@ describe Answer do
       end
     end
   end
+
   describe '#flag' do
     before do
       @challenge = build(:challenge, flags: [])
@@ -70,5 +71,81 @@ describe Answer do
         end
       end
     end
+  end
+
+  describe '#valid_answer?' do
+    before do
+      @challenge = build(:challenge, flags: [])
+      @flags = [
+        create(:flag, flag: 'FLAG_01234',  point: 100),
+        create(:flag, flag: 'FLAG_56789',  point: 200),
+        create(:flag, flag: '(?i)flAg_kogaSA', point: 300)
+      ]
+      @flags.each { |f| @challenge.flags << f }
+      @challenge.save!
+      @player = create(:player)
+      @player.confirm!
+    end
+
+    context 'when it is the correct answer' do
+      context 'and the player does not answer for it' do
+        it 'returns true' do
+          answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
+          expect(answer.flag).to be_true
+          answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
+          expect(answer.flag).to be_true
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+          expect(answer.flag).to be_true
+        end
+      end
+
+      context 'but the player already answered for it' do
+        before do
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+        end
+
+        it 'returns false' do
+          answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+          expect(answer.valid_answer?).to be_false
+        end
+      end
+    end
+
+    context 'when it is the wrong answer' do
+      context 'and the player does not answer for it' do
+        it 'returns false' do
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG!')
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG?')
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_MARISA')
+          expect(answer.valid_answer?).to be_false
+        end
+      end
+
+      context 'and the player already answered for it' do
+        before do
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+        end
+
+        it 'returns false' do
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG!')
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG?')
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_MARISA')
+          expect(answer.valid_answer?).to be_false
+        end
+      end
+    end
+
   end
 end
