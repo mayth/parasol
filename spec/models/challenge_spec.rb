@@ -167,4 +167,42 @@ describe Challenge do
       end
     end
   end
+
+  describe '#first_break' do
+    let(:challenge) { create(:challenge) }
+    let(:player) do
+      player = create(:player)
+      player.confirm!
+      player
+    end
+
+    subject { challenge.first_break }
+
+    context 'when no players submit correct answers' do
+      before do
+        3.times.each do
+          player.submit(challenge, '!WRONG_FLAG!')
+        end
+      end
+
+      it 'returns nil' do
+        expect(subject).to be_nil
+      end
+    end
+
+    context 'when a player submits an correct answer' do
+      before do
+        3.times.each do
+          player.submit(challenge, '!WRONG_FLAG!')
+        end
+        @answers = 3.times.map do
+          player.submit(challenge, challenge.flags.first.flag)
+        end
+      end
+
+      it 'returns the first answer' do
+        expect(subject).to eq @answers.first
+      end
+    end
+  end
 end

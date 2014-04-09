@@ -54,6 +54,10 @@ class Challenge < ActiveRecord::Base
     save!
   end
 
+  def first_break
+    answers.valid.order(created_at: :desc).first
+  end
+
   # Gets all genres.
   #
   # @return [Set<String>]
