@@ -2,13 +2,23 @@
   %h1 Challenges
 .content
   - if @challenges.present?
-    - @genres.each do |genre|
-      %section
-        %h1= genre
-        %ul
-          - @challenges.select{|c| c.genre == genre}.each do |ch|
-            %li
-              = link_to ch.name, ch
-              (#{ch.point})
+    %table#challenge-board.pure-table.pure-table-bordered
+      %thead
+        %th
+        - @genres.each do |genre|
+          %th= genre
+      %tbody
+        - @challenges.group_by { |c| c.point }.sort_by { |k, v| -k }.each do |point, arr|
+          %tr
+            %th= point
+            - @genres.each do |genre|
+              - chs = arr.select { |c| c.genre == genre }
+              - if chs.any?
+                %td
+                  - chs.each do |ch|
+                    %div
+                      = link_to ch.name, ch
+              - else
+                %td
   - else
     %p No challenges are opened...
