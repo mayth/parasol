@@ -41,12 +41,12 @@ class Player < ActiveRecord::Base
   #
   # @param challenge [Challenge] A challenge to submit.
   # @param flag [String] A flag.
-  # @return [Flag, nil]
-  #   +Flag+ if the flag is correct; otherwise, +nil+.
-  #   When something wrong while submitting answer, returns +nil+.
+  # @return [Answer, nil]
+  #   +Answer+ object if successfully submitted (no matter is it correct);
+  #   otherwise, +nil+.
   def submit(challenge, flag)
-    answer = answers.create(challenge: challenge, answer: flag)
-    answer.flag
+    ans = answers.build(challenge: challenge, answer: flag)
+    ans.save ? ans : nil
   end
 
   # Determines whether this player belongs to the given team or not.

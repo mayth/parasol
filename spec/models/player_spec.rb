@@ -16,9 +16,21 @@ describe Player do
     end
 
     context 'when it is the correct answer' do
-      it 'returns the flag' do
-        expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
-        expect(@player.submit(@challenge, @flags[1].flag)).to eq @flags[1]
+      before do
+        @answers =
+        [
+          @player.submit(@challenge, @flags[0].flag),
+          @player.submit(@challenge, @flags[1].flag)
+        ]
+      end
+
+      it 'returns an answer object with #valid_answer? is true' do
+        # TODO: in RSpec3, matchers must be +be_truthy+.
+        expect(@answers[0]).to be_true
+        expect(@answers[1]).to be_true
+        # These expectation's matcher will be OK with +be_true+ in RSpec3
+        expect(@answers[0].valid_answer?).to be_true
+        expect(@answers[1].valid_answer?).to be_true
       end
 
       it "adds the flag point to the player's point" do
@@ -28,8 +40,10 @@ describe Player do
     end
 
     context 'when it is the wrong answer' do
-      it 'returns nil' do
-        expect(@player.submit(@challenge, 'FLAG_piyopiyo')).to be_nil
+      it 'returns an answer object with #valid_answer? is false' do
+        answer = @player.submit(@challenge, 'FLAG_piyopiyo')
+        expect(answer).to be_true
+        expect(answer.valid_answer?).to be_false
       end
 
       it "does not change the player's point" do
@@ -40,11 +54,15 @@ describe Player do
 
     context 'when it is the correct answer but already answered' do
       before do
-        expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
+        @player.submit(@challenge, @flags[0].flag)
+        @answer = @player.submit(@challenge, @flags[0].flag)
       end
 
-      it 'returns the flag' do
-        expect(@player.submit(@challenge, @flags[0].flag)).to eq @flags[0]
+      it 'returns an answer object' do
+        expect(@answer).to be_true
+        expect(@answer.valid_answer?).to be_false
+        expect(@answer.correct?).to be_true
+        expect(@answer.answered?).to be_true
       end
 
       it "does not change the player's point" do
