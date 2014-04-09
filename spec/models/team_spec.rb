@@ -141,6 +141,30 @@ describe Team do
     end
   end
 
+  describe '#adjustment_point' do
+    subject { @team.adjustment_point }
+    context 'if the team has no members' do
+      before do
+        @team = create(:team, players: [])
+      end
+      it 'returns 0' do
+        expect(subject).to eq 0
+      end
+    end
+    context 'if the team has some members' do
+      before do
+        @players = 2.times.map { create(:player) }
+        @team = create(:team, players: @players)
+        @players.each.with_index { |p, n| p.adjust!(n * 100) }
+      end
+      it "returns summation of the players' point" do
+        expect(subject)
+          .to eq @players.map { |p| p.adjustment_point }.inject(:+)
+      end
+    end
+  end
+
+
   describe '#member?' do
     before do
       @team = create(:team)

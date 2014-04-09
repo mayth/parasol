@@ -52,6 +52,10 @@ class Team < ActiveRecord::Base
     players.any? ? players.reduce(0) { |a, e| a + e.point } : 0
   end
 
+  def adjustment_point
+    players.map { |p| p.adjustment_point }.reduce(:+) || 0
+  end
+
   def last_submission(valid_only: false)
     players.map { |p| p.last_submission(valid_only: valid_only) }
            .reject { |ans| ans.nil? }
