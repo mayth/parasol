@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :set_page_id, except: %i(index)
   def index
     @challenges = Challenge.opened
     @posts =
@@ -7,6 +8,15 @@ class HomeController < ApplicationController
   end
 
   def rules
-    @page_id = :rules
   end
+
+  def ranking
+    @teams = Team.ranking
+  end
+
+  private
+
+    def set_page_id
+      @page_id = action_name
+    end
 end

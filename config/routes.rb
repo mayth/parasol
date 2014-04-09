@@ -8,7 +8,10 @@ Parasol::Application.routes.draw do
     passwords: 'players/passwords'
   }
 
-  get 'rules' => 'home#rules'
+  controller :home do
+    get 'rules'   => :rules
+    get 'ranking' => :ranking
+  end
 
   ### Challenges
   controller :challenges do

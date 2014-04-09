@@ -1,0 +1,17 @@
+.header
+  %h1 Ranking
+
+.content
+  %table#ranking-board.pure-table.pure-table-striped
+    %thead
+      %tr
+        %th Rank
+        %th Name
+        %th Point
+
+    %tbody
+      - @teams.each.with_index(1) do |team, rank|
+        %tr
+          %td= rank.ordinalize
+          %td= team.name
+          %td= team.point

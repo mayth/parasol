@@ -18,11 +18,10 @@
           %ul
             %li= link_to 'Announcements', posts_path
             %li= link_to 'Rules', rules_path
+            %li= link_to 'Ranking', ranking_path
           - if player_signed_in?
             %ul
               %li= link_to 'Challenges', challenges_path
-              %li
-                %a Ranking
               %li= link_to 'Sign out', destroy_player_session_path, method: :delete
           - else
             %ul
