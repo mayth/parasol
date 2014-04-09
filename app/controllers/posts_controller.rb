@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
   before_action :check_public_scope_restriction, only: [:show]
+  before_action :set_page_id
 
   # GET /posts
   # GET /posts.json
@@ -26,5 +27,9 @@ class PostsController < ApplicationController
         @post = nil
         redirect_to new_player_session_path, status: :unauthorized
       end
+    end
+
+    def set_page_id
+      @page_id = :announcements
     end
 end

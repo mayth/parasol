@@ -17,6 +17,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
+    @page_id = :team_registration
     @team = Team.new
   end
 

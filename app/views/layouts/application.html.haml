@@ -6,7 +6,7 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
+  %body{id: @page_id.presence || controller.controller_name}
     #layout
       %a#menuLink.menu-link{href: '#menu'}
         -# this <span> is needed for showing menu's icon.

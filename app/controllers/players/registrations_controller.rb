@@ -1,4 +1,9 @@
 class Players::RegistrationsController < Devise::RegistrationsController
+  def new
+    @page_id = :sign_up
+    super
+  end
+
   def create
     param = sign_up_params
     team_id = param.delete(:team_id)

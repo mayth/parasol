@@ -28,6 +28,8 @@ Add transition to containers so they can push in and out.
   transition: all 0.2s ease-out;
 }
 
+$menu-width: 150px;
+
 /*
 This is the parent `<div>` that contains the menu and the content area.
 */
@@ -37,13 +39,13 @@ This is the parent `<div>` that contains the menu and the content area.
 
   &.active {
       position: relative;
-      left: 150px;
+      left: $menu-width;
       #menu {
-        left: 150px;
-        width: 150px;
+        left: $menu-width;
+        width: $menu-width;
       }
       .menu-link {
-        left: 150px;
+        left: $menu-width;
       }
   }
 }
@@ -92,8 +94,8 @@ appears on the left side of the page.
 */
 
 #menu {
-  margin-left: -150px; /* "#menu" width */
-  width: 150px;
+  margin-left: -$menu-width; /* "#menu" width */
+  width: $menu-width;
   position: fixed;
   top: 0;
   left: 0;
@@ -129,17 +131,26 @@ appears on the left side of the page.
     border-top: 1px solid #333;
   }
 
-  .pure-menu li a {
+  .pure-menu li:not(.pure-menu-selected) a {
     &:hover, &:focus {
       background: #333;
     }
   }
 
+  .pure-menu li.pure-menu-selected a {
+    &:hover, &:focus {
+      background: #1f8dd6;
+    }
+  }
+
+  .pure-menu-heading {
+    background: #333;
+  }
+
   /*
   This styles the selected menu item `<li>`.
   */
-  .pure-menu-selected,
-  .pure-menu-heading {
+  .pure-menu-selected {
     background: #1f8dd6;
   }
 
@@ -222,20 +233,20 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   }
 
   #layout {
-    padding-left: 150px; /* left col width "#menu" */
+    padding-left: $menu-width; /* left col width "#menu" */
     left: 0;
   }
   #menu {
-    left: 150px;
+    left: $menu-width;
   }
   .menu-link {
     position: fixed;
-    left: 150px;
+    left: $menu-width;
     display: none;
   }
 
   #layout.active .menu-link {
-    left: 150px;
+    left: $menu-width;
   }
 }
 

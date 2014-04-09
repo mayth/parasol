@@ -7,5 +7,6 @@ class HomeController < ApplicationController
   end
 
   def rules
+    @page_id = :rules
   end
 end
