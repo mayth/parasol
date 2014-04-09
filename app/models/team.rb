@@ -52,6 +52,10 @@ class Team < ActiveRecord::Base
     players.map { |p| p.point }.reduce(:+) || 0
   end
 
+  def flag_point
+    players.map { |p| p.flag_point }.reduce(:+) || 0
+  end
+
   def adjustment_point
     players.map { |p| p.adjustment_point }.reduce(:+) || 0
   end

@@ -141,6 +141,56 @@ describe Team do
     end
   end
 
+  describe '#flag_point' do
+    let(:team) { create(:team) }
+    let(:challenge) do
+      points = [100, 200, 400]
+      create(:challenge, flags: points.map { |p| create(:flag, point: p) })
+    end
+
+    subject { team.flag_point }
+
+    describe 'with the team that has no members' do
+      before do
+        team.players.clear
+      end
+
+      it 'returns 0' do
+        expect(subject).to eq 0
+      end
+    end
+
+    describe 'with the team that has some members' do
+      before do
+        3.times.each do
+          player = create(:player)
+          player.confirm!
+          team.players << player
+        end
+      end
+
+      context 'if the team members submits some valid flags' do
+        before do
+          team.players[0].submit(challenge, challenge.flags[0].flag)
+          team.players[1].submit(challenge, challenge.flags[1].flag)
+        end
+        it "returns the summation of members' flag point" do
+          expect(subject).to eq 300 # flag[0] + flag[1]
+        end
+      end
+
+      context 'if the team members do not submit any valid flags' do
+        before do
+          team.players[0].submit(challenge, '!WRONG_FLAG!')
+          team.players[1].submit(challenge, '!WRONG_FLAG_2!')
+        end
+        it 'returns 0' do
+          expect(subject).to eq 0
+        end
+      end
+    end
+  end
+
   describe '#adjustment_point' do
     subject { @team.adjustment_point }
     context 'if the team has no members' do
@@ -163,7 +213,6 @@ describe Team do
       end
     end
   end
-
 
   describe '#member?' do
     before do
