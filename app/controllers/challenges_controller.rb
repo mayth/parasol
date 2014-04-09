@@ -15,21 +15,34 @@ class ChallengesController < ApplicationController
 
   # /challenges/:id
   def answer
-    param = answer_params
-    param.merge!({challenge_id: @challenge.id, player_id: current_player.id})
-    @answer = Answer.new(param)
+    answer = current_player.submit(@challenge, answer_params[:answer])
     respond_to do |format|
-      if @answer.save
-        if @answer.correct?
-          format.html { redirect_to challenge_path(@challenge), notice: 'Your flag is correct!' }
-          format.json { {result: 'correct'} }
+      if answer
+        if answer.valid_answer?
+          format.html do
+            redirect_to challenge_path(@challenge),
+                        notice: 'Your flag is correct!'
+          end
+          format.json { { result: 'correct' } }
+        elsif answer.answered?
+          format.html do
+            redirect_to challenge_path(@challenge),
+                        notice: 'Flag is correct, but you already answered.'
+          end
+          format.json { { result: 'answered' } }
         else
-          format.html { redirect_to challenge_path(@challenge), notice: 'Wrong answer...' }
-          format.json { {result: 'wrong'} }
+          format.html do
+            redirect_to challenge_path(@challenge),
+                        notice: 'Wrong answer...'
+          end
+          format.json { { result: 'wrong' } }
         end
       else
-        format.html { redirect_to challenge_path(@challenge), alert: 'Something went wrong...' }
-        format.json { {result: 'error'} }
+        format.html do
+          redirect_to challenge_path(@challenge),
+                      alert: 'Something went wrong...'
+        end
+        format.json { { result: 'error' } }
       end
     end
   end
