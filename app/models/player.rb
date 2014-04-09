@@ -4,6 +4,10 @@
 #   Gets the current point.
 #   @return [Number]
 #
+# @!attribute [r] flag_point
+#   Gets the current point by submitting flags.
+#   @return [Number]
+#
 # @!attribute [r] adjustment_point
 #   Gets the current adjustment point.
 #   @return [Number]
@@ -94,8 +98,12 @@ class Player < ActiveRecord::Base
     adjustments.sum(:point)
   end
 
+  def flag_point
+    captured_flags.sum(:point)
+  end
+
   def point
-    captured_flags.sum(:point) + adjustment_point
+    flag_point + adjustment_point
   end
 
   def last_submission(valid_only: false)

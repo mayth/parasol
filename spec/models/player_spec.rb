@@ -54,11 +54,11 @@ describe Player do
     end
   end
 
-  describe '#point' do
+  describe '#flag_point' do
     before do
       @challenges = 3.times.map { create(:challenge) }
     end
-    subject { @player.point }
+    subject { @player.flag_point }
     context 'when the player answered some challenges' do
       context 'with the correct flag' do
         before do
@@ -188,6 +188,58 @@ describe Player do
 
       it 'has effects to the total point' do
         expect(player.point).to eq @flag_point + @adjusts.reduce(:+)
+      end
+    end
+  end
+
+  describe '#point' do
+    let(:player) do
+      player = create(:player)
+      player.confirm!
+      player
+    end
+
+    subject { player.point }
+
+    context 'with the player who has flag point but no adjustments' do
+      before do
+        challenge = create(
+          :challenge,
+          flags: [create(:flag, point: 300)]
+        )
+        player.submit(challenge, challenge.flags.first.flag)
+      end
+
+      it 'returns same as #flag_point' do
+        expect(subject).to eq player.flag_point
+        expect(subject).to eq 300
+      end
+    end
+
+    context 'with the player who has adjustment point but has no flag point' do
+      before do
+        player.adjust!(200)
+      end
+
+      it 'returns same as #adjustment_point' do
+        expect(subject).to eq player.adjustment_point
+        expect(subject).to eq 200
+      end
+    end
+
+    context 'with the player who has flag point and also adjustment point' do
+      before do
+        challenge = create(
+          :challenge,
+          flags: [create(:flag, point: 300)]
+        )
+        player.submit(challenge, challenge.flags.first.flag)
+        player.adjust!(200)
+      end
+
+      it 'returns summation of flag point and adjustment point' do
+        expect(subject).to eq player.flag_point + player.adjustment_point
+        expect(subject).to eq 500
       end
     end
   end
