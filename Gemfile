@@ -70,6 +70,10 @@ group :development do
   gem 'yard-activerecord', require: false
 end
 
+group :test do
+  gem 'timecop'
+end
+
 group :development, :test do
   # preloader
   gem 'spring'
