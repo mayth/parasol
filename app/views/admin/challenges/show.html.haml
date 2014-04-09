@@ -3,11 +3,32 @@
   %h2 #{@challenge.genre} #{@challenge.point}
 
 .content
-  %p
+  %section
+    %h1 Status
     - if @challenge.opened?
-      = @challenge.opened_at
+      %p
+        Opened (opened at #{@challenge.opened_at})
+      - if @challenge.answers.valid.any?
+        %p First break by #{@challenge.first_break.player.name} (#{@challenge.first_break.player.team.name}) at #{@challenge.first_break.created_at} 
+        %p #{pluralize(@challenge.answers.valid.count, 'player')} solved
+      - else
+        No one submits correct answer...
     - else
-      Closed...
+      %p
+        Closed
+        - if @challenge.opened_at.present?
+          (but will be opened at #{@challenge.opened_at}, in #{distance_of_time_in_words_to_now(@challenge.opened_at, include_seconds: true)})
+
+  %section
+    %h1 Details
+    %section
+      %h2 Description
+      != markdown_render(@challenge.description)
+    %section
+      %h2 Flags
+      %ul
+        - @challenge.flags.each do |flag|
+          %li #{flag.flag} (#{flag.point} pt.)
 
   = link_to 'Edit', edit_admin_challenge_path(@challenge)
   \|

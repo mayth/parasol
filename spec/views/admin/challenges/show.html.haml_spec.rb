@@ -1,12 +1,24 @@
 require 'spec_helper'
 
-describe "admin/challenges/show" do
-  before(:each) do
-    @challenge = assign(:challenge, create(:challenge))
-  end
+describe 'admin/challenges/show' do
+  context 'for the challenge that are opened' do
+    before(:each) do
+      @challenge = create(:challenge)
+      @challenge.open!
+      assigns[:challenge] = @challenge
+    end
 
-  it "renders attributes in <p>" do
-    render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    it 'renders genre and point' do
+      render
+      expect(rendered).to match @challenge.genre
+      expect(rendered).to match @challenge.point.to_s
+    end
+
+    it 'renders flags' do
+      render
+      @challenge.flags.each do |flag|
+        expect(rendered).to match flag.flag
+      end
+    end
   end
 end
