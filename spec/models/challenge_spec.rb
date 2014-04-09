@@ -151,12 +151,19 @@ describe Challenge do
 
     context 'when some challenges are registered' do
       before do
-        @challenges = 3.times.map { create(:challenge) }
-        @challenges.each {|c| c.open!}
-        3.times.each {create(:challenge)}
+        Timecop.freeze do
+          @opened_challenges = 3.times.map { create(:challenge) }
+          @opened_challenges.each { |c| c.open! }
+          @closed_challenges = create(:challenge)
+          @future_challenges =
+            create(:challenge, opened_at: Time.zone.now.tomorrow)
+        end
       end
+
       it 'returns opened challenges' do
-        expect(subject).to include(*@challenges)
+        expect(subject).to include(*@opened_challenges)
+        expect(subject).not_to include(@closed_challenges)
+        expect(subject).not_to include(@future_challenges)
       end
     end
   end

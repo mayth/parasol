@@ -62,5 +62,10 @@ class Challenge < ActiveRecord::Base
   # Gets all opened challenges.
   #
   # @return [Set<Challenge>]
-  scope :opened, -> { where.not(opened_at: nil) }
+  scope :opened, (lambda do
+    where(
+      arel_table[:opened_at].not_eq(nil)
+      .and(arel_table[:opened_at].lt(Time.zone.now))
+    )
+  end)
 end
