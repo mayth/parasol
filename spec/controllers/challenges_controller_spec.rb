@@ -29,7 +29,7 @@ describe ChallengesController do
 
   describe "POST 'answer'" do
     context 'with valid parameter' do
-      it 'returns http success' do
+      it 'redirects to the requested challenge page' do
         sign_in player
         post 'answer', id: @challenge.id, answer: { answer: 'FLAG_SPEC' }
         expect(response).to redirect_to challenge_path(@challenge)
