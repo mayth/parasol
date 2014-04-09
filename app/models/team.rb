@@ -49,7 +49,7 @@ class Team < ActiveRecord::Base
   end
 
   def point
-    players.any? ? players.reduce(0) { |a, e| a + e.point } : 0
+    players.map { |p| p.point }.reduce(:+) || 0
   end
 
   def adjustment_point
