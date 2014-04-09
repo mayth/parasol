@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: [:show, :answer]
   before_action :authenticate_player!
+  before_action :set_challenge, only: [:show, :answer]
 
   # /challenges
   def index
@@ -50,6 +50,7 @@ class ChallengesController < ApplicationController
   private
     def set_challenge
       @challenge = Challenge.find(params[:id])
+      fail ActiveRecord::RecordNotFound unless @challenge.opened?
     end
 
     def answer_params
