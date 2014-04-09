@@ -44,6 +44,10 @@ RSpec.configure do |config|
     FactoryGirl.reload
   end
 
+  config.before :each do
+    Timecop.return
+  end
+
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
