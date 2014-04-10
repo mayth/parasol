@@ -23,26 +23,26 @@ class ChallengesController < ApplicationController
             redirect_to challenge_path(@challenge),
                         notice: 'Your flag is correct!'
           end
-          format.json { { result: 'correct' } }
+          format.json { render json: { result: 'correct' } }
         elsif answer.answered?
           format.html do
             redirect_to challenge_path(@challenge),
                         notice: 'Flag is correct, but you already answered.'
           end
-          format.json { { result: 'answered' } }
+          format.json { render json: { result: 'answered' } }
         else
           format.html do
             redirect_to challenge_path(@challenge),
                         notice: 'Wrong answer...'
           end
-          format.json { { result: 'wrong' } }
+          format.json { render json: { result: 'wrong' } }
         end
       else
         format.html do
           redirect_to challenge_path(@challenge),
                       alert: 'Something went wrong...'
         end
-        format.json { { result: 'error' } }
+        format.json { render json: { result: 'error' } }
       end
     end
   end
