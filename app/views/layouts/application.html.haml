@@ -37,6 +37,13 @@
               %li= link_to 'Posts', admin_posts_path
               %li= link_to 'Settings', admin_settings_path
       #main
+        - if flash.any?
+          .flash-wrapper
+            .flash
+              - [:alert, :notice].each do |klass|
+                - if flash[klass].present?
+                  %div{class: klass}
+                    = flash[klass]
         - if player_signed_in?
           .pure-menu.pure-menu-open.pure-menu-horizontal
             %ul
@@ -46,8 +53,4 @@
                 %a (#{current_player.team.name})
               %li
                 %a #{current_player.team.point} pt.
-        - [:notice, :alert].each do |klass|
-          - if flash[klass].present?
-            %div{class: "flash #{klass}"}
-              = flash[klass]
         = yield

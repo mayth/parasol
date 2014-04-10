@@ -272,3 +272,32 @@ article .body,
 article .body + .read-all {
   margin-left: 1em;
 }
+
+.flash-wrapper {
+  position: relative;
+  z-index: 999;
+  .flash {
+    position: absolute;
+    width: 100%;
+    * {
+      top: 0;
+      left: 0;
+      padding: 10px;
+      text-align: center;
+    }
+    .notice {
+      background: transparentize(#97FCBB, 0.2);
+    }
+    .alert {
+      background: transparentize(#FCC097, 0.2);
+    }
+    .closing-instruction {
+      font-size: 75%;
+      padding: 0;
+      text-align: right;
+    }
+    .close {
+      font-size: 80%;
+    }
+  }
+}
