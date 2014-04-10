@@ -58,8 +58,8 @@ describe PostsController do
       context 'with the non-public post' do
         it 'does not assign the requested post as @post' do
           post = create(:post, public_scope: 'player')
-          get :show, id: post.to_param
-          expect(assigns(:post)).not_to eq post
+          expect { get :show, id: post.to_param }
+            .to raise_error ActiveRecord::RecordNotFound
         end
       end
     end
