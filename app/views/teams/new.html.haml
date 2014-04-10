@@ -2,6 +2,9 @@
   %h1 Team Registration
 
 .content
-  = render 'form'
+  - if within_team_registration_period?
+    = render 'form'
+  - else
+    %p Team Registration is closed now.
 
   = link_to 'Back', teams_path

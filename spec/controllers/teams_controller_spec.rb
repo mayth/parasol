@@ -85,37 +85,68 @@ describe TeamsController do
   end
 
   describe 'POST create' do
-    describe 'with valid params' do
-      it 'creates a new Team' do
-        expect { post :create, team: attributes_for(:team) }
-          .to change(Team, :count).by(1)
+    describe 'when team registration is opened' do
+      before do
+        Timecop.freeze
+        Setting.team_registrable_from = Time.zone.now.yesterday
+        Setting.team_registrable_until = Time.zone.now.tomorrow
       end
 
-      it 'assigns a newly created team as @team' do
-        post :create, team: attributes_for(:team)
-        expect(assigns(:team)).to be_a(Team)
-        expect(assigns(:team)).to be_persisted
+      describe 'with valid params' do
+        it 'creates a new Team' do
+          expect { post :create, team: attributes_for(:team) }
+            .to change(Team, :count).by(1)
+        end
+
+        it 'assigns a newly created team as @team' do
+          post :create, team: attributes_for(:team)
+          expect(assigns(:team)).to be_a(Team)
+          expect(assigns(:team)).to be_persisted
+        end
+
+        it 'redirects to the created team' do
+          post :create, team: attributes_for(:team)
+          expect(response).to redirect_to Team.last
+        end
       end
 
-      it 'redirects to the created team' do
-        post :create, team: attributes_for(:team)
-        expect(response).to redirect_to Team.last
+      describe 'with invalid params' do
+        it 'assigns a newly created but unsaved team as @team' do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Team.any_instance.stub(:save).and_return(false)
+          post :create, team: { 'name' => '' }
+          expect(assigns(:team)).to be_a_new Team
+        end
+
+        it 're-renders the "new" template' do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Team.any_instance.stub(:save).and_return(false)
+          post :create, team: { 'name' => '' }
+          expect(response).to render_template('new')
+        end
       end
     end
 
-    describe 'with invalid params' do
-      it 'assigns a newly created but unsaved team as @team' do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
-        post :create, team: { 'name' => '' }
-        expect(assigns(:team)).to be_a_new Team
+    describe 'when team registration is closed' do
+      before do
+        Timecop.freeze
+        Setting.team_registrable_from = Time.zone.now.days_ago(2)
+        Setting.team_registrable_until = Time.zone.now.yesterday
       end
 
-      it 're-renders the "new" template' do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
-        post :create, team: { 'name' => '' }
-        expect(response).to render_template('new')
+      it 'does not create a new Team' do
+        expect { post :create, team: attributes_for(:team) }
+          .not_to change(Team, :count)
+      end
+
+      it 'redirects to the team index' do
+        post :create, team: attributes_for(:team)
+        expect(response).to redirect_to teams_path
+      end
+
+      it 'does not assign a newly created team as @team' do
+        post :create, team: attributes_for(:team)
+        expect(assigns(:team)).to be_nil
       end
     end
   end

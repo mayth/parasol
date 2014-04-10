@@ -28,6 +28,14 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
+    unless team_registrable?
+      respond_to do |format|
+        format.html { redirect_to teams_path, alert: 'Team registration is closed.' }
+        format.json { render json: { status: 'closed' } }
+      end
+      return
+    end
+
     @team = Team.new(team_params)
 
     respond_to do |format|
@@ -88,5 +96,11 @@ class TeamsController < ApplicationController
 
     def check_belonging!
       redirect_to teams_url, status: :unauthorized unless @team == current_player.team
+    end
+
+    ### helpers
+
+    def team_registrable?
+      ApplicationController.helpers.within_team_registration_period?
     end
 end
