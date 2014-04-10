@@ -15,6 +15,14 @@ class ChallengesController < ApplicationController
 
   # /challenges/:id
   def answer
+    unless can_submit?
+      respond_to do |format|
+        format.html { redirect_to @challenge, alert: 'Contest Closed!' }
+        format.json { { result: 'closed' } }
+      end
+      return
+    end
+
     answer = current_player.submit(@challenge, answer_params[:answer])
     respond_to do |format|
       if answer
@@ -55,5 +63,9 @@ class ChallengesController < ApplicationController
 
     def answer_params
       params.require(:answer).permit(:answer)
+    end
+
+    def can_submit?
+      ApplicationController.helpers.within_contest_period?
     end
 end

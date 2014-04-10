@@ -124,6 +124,20 @@ describe ChallengesController do
           }.to raise_error ActiveRecord::RecordNotFound
         end
       end
+
+      context 'when the contest is closed' do
+        before do
+          Timecop.freeze
+          Setting.contest_starts_at = Time.zone.now.days_ago(2)
+          Setting.contest_ends_at = Time.zone.now.yesterday
+          challenge.open!
+        end
+
+        it 'redirects to the challenges page' do
+          post :answer, id: challenge.id, answer: { answer: 'FLAG_SPEC' }
+          expect(response).to redirect_to challenge_path(challenge)
+        end
+      end
     end
 
     context 'with the player not logged in' do
