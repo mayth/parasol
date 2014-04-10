@@ -29,7 +29,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def opened?
-    opened_at.present? && opened_at < Time.now
+    opened_at.present? && opened_at <= Time.now
   end
 
   # Opens the challenge.
@@ -69,7 +69,7 @@ class Challenge < ActiveRecord::Base
   scope :opened, (lambda do
     where(
       arel_table[:opened_at].not_eq(nil)
-      .and(arel_table[:opened_at].lt(Time.zone.now))
+      .and(arel_table[:opened_at].lteq(Time.zone.now))
     )
   end)
 end
