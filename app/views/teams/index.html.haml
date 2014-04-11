@@ -10,21 +10,20 @@
   %table.pure-table
     %thead
       %tr
-        %th Rank
         %th Name
         %th # members
         %th Point
-        - if player_signed_in?
-          %th
+        - @challenges.each do |challenge|
+          %th= challenge.name
 
     %tbody
-      - @teams.each.with_index(1) do |team, rank|
+      - @teams.each do |team|
         %tr
-          %td= rank.ordinalize
           %td= link_to team.name, team
           %td= team.players.count
           %td= team.point
-          - if player_signed_in?
+          - @challenges.each do |challenge|
+            - answered = Answer.valid.where(challenge: challenge).select { |ans| ans.player.team == team }
             %td
-              - if team.member?(current_player)
-                = link_to 'Edit', edit_team_path(team)
+              - answered.count.times do
+                &#x2713;

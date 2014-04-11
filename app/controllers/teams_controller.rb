@@ -7,7 +7,8 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.ranking
+    @teams = Team.order(:created_at)
+    @challenges = Challenge.opened
   end
 
   # GET /teams/1
