@@ -48,10 +48,8 @@
         - if player_signed_in?
           .pure-menu.pure-menu-open.pure-menu-horizontal
             %ul
-              %li
-                %a= current_player.name
-              %li
-                %a (#{current_player.team.name})
+              %li= link_to current_player.name, edit_player_registration_path
+              %li= link_to current_player.team.name, current_player.team
               %li
                 %a #{current_player.team.point} pt.
         = yield
