@@ -5,7 +5,10 @@
 .content
   != markdown_render(@challenge.description)
 
-  = form_for @answer, url: challenge_path(@challenge), html: {class: 'pure-form'} do |f|
-    %fieldset
-      = f.text_field :answer, placeholder: 'Flag'
-      = f.submit 'Submit', class: 'pure-button pure-button-primary'
+  - if within_contest_period?
+    = form_for @answer, url: challenge_path(@challenge), html: {class: 'pure-form'} do |f|
+      %fieldset
+        = f.text_field :answer, placeholder: 'Flag'
+        = f.submit 'Submit', class: 'pure-button pure-button-primary'
+  - else
+    %p The contest is closed...
