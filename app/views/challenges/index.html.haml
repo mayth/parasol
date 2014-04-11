@@ -17,7 +17,9 @@
                 %td
                   - chs.each do |ch|
                     %div
+                      - answered = current_player.answers.valid.where(challenge: ch)
                       = link_to ch.name, ch
+                      (#{answered.count})
               - else
                 %td
   - else
