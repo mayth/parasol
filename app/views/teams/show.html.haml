@@ -11,19 +11,12 @@
   %section
     %h1 Members
     - if @team.players.any?
-      %table.pure-table
-        %thead
-          %tr
-            %th Name
-            %th Point
-        %tbody
-          - @team.players.each do |player|
-            %tr
-              %td
-                = player.name
-                - if current_player == player
-                  (You!)
-              %td= player.point
+      %ul
+        - @team.players.each do |player|
+          %li
+            = player.name
+            - if current_player == player
+              (You!)
     - else
       %p No members
 
