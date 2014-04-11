@@ -17,7 +17,7 @@
                 %td
                   - chs.each do |ch|
                     %div
-                      - answered = current_player.answers.valid.where(challenge: ch)
+                      - answered = Answer.valid.where(challenge: ch).select { |ans| ans.player.team == current_player.team }
                       = link_to ch.name, ch
                       (#{answered.count})
               - else
