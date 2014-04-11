@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @posts =
       (player_signed_in? ? Post.all : Post.public_only)
       .order(updated_at: :desc)
+    @teams = Team.ranking
   end
 
   def rules

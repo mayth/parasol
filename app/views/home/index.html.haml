@@ -19,18 +19,18 @@
           %p= truncate_html(markdown_render(post.body), length: 80)
     %p= link_to 'All posts', posts_path
 
-  - if player_signed_in?
     %section
-      %h1 Challenges
-      - if @challenges.present?
-        %ul
-          - @challenges.each do |challenge|
-            %li= link_to challenge.name, challenge_path(challenge)
-      - else
-        %p No challenges are opened yet.
+      %h1 Ranking
+      %table.pure-table.pure-table-horizontal
+        %tbody
+          - @teams.each.with_index(1) do |team, rank|
+            %tr
+              %td= rank.ordinalize
+              %td= team.name
+              %td= team.point
 
     %section
-      %h1 Activities
+      %h1 Point History
       %ul
-        %li Marisa submits the answer for 'Problem A' => +200pt.
-        %li Remillia submits the answer for 'Problem A' => Wrong Answer...
+        - Answer.valid.order(created_at: :desc).limit(10).each do |ans|
+          %li [#{ans.created_at}] #{ans.player.team.name}: #{ans.valid_answer? ? '+' + ans.flag.point.to_s : 0} pt. (#{ans.challenge.name})
