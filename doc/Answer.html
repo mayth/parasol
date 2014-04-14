@@ -268,6 +268,39 @@ same flag; otherwise, <code>false</code>.</p>
 
 
 
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid_answer%3F-instance_method" title="#valid_answer? (instance method)">- (Boolean) <strong>valid_answer?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   
   <div id="instance_attr_details" class="attr_details">
@@ -394,7 +427,11 @@ returns <code>nil</code>.</p>
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 28</span>
@@ -435,6 +472,10 @@ returns <code>nil</code>.</p>
 </span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:correct?</span><span class='comma'>,</span> <span class='symbol'>:is_correct</span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:answered?</span><span class='comma'>,</span> <span class='symbol'>:is_answered</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+    <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:valid</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>is_correct:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>is_answered:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
@@ -592,7 +633,11 @@ returns <code>nil</code>.</p>
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 28</span>
@@ -633,6 +678,10 @@ returns <code>nil</code>.</p>
 </span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:correct?</span><span class='comma'>,</span> <span class='symbol'>:is_correct</span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:answered?</span><span class='comma'>,</span> <span class='symbol'>:is_answered</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+    <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:valid</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>is_correct:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>is_answered:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
@@ -805,7 +854,11 @@ determine it with this returns the flag.</p>
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 28</span>
@@ -846,6 +899,10 @@ determine it with this returns the flag.</p>
 </span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:correct?</span><span class='comma'>,</span> <span class='symbol'>:is_correct</span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:answered?</span><span class='comma'>,</span> <span class='symbol'>:is_answered</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+    <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:valid</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>is_correct:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>is_answered:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
@@ -1012,7 +1069,11 @@ returns <code>nil</code>.</p>
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 28</span>
@@ -1053,6 +1114,10 @@ returns <code>nil</code>.</p>
 </span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:correct?</span><span class='comma'>,</span> <span class='symbol'>:is_correct</span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:answered?</span><span class='comma'>,</span> <span class='symbol'>:is_answered</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+    <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:valid</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>is_correct:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>is_answered:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
@@ -1208,7 +1273,11 @@ returns <code>nil</code>.</p>
 98
 99
 100
-101</pre>
+101
+102
+103
+104
+105</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 28</span>
@@ -1249,6 +1318,10 @@ returns <code>nil</code>.</p>
 </span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:correct?</span><span class='comma'>,</span> <span class='symbol'>:is_correct</span>
   <span class='id identifier rubyid_alias_attribute'>alias_attribute</span> <span class='symbol'>:answered?</span><span class='comma'>,</span> <span class='symbol'>:is_answered</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+    <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+  <span class='kw'>end</span>
 
   <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:valid</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>is_correct:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>is_answered:</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
@@ -1295,10 +1368,68 @@ returns <code>nil</code>.</p>
   </div>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="valid_answer?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid_answer?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/answer.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid_answer?'>valid_answer?</span>
+  <span class='id identifier rubyid_correct?'>correct?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_answered?'>answered?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 20:54:44 2014 by
+  Generated on Mon Apr 14 14:11:32 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

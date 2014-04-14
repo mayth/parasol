@@ -143,6 +143,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#ranking-instance_method" title="#ranking (instance method)">- (Object) <strong>ranking</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#rules-instance_method" title="#rules (instance method)">- (Object) <strong>rules</strong> </a>
     
 
@@ -193,21 +215,53 @@
       <pre class="lines">
 
 
-2
 3
 4
 5
 6
-7</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@challenges</span> <span class='op'>=</span> <span class='const'>Challenge</span><span class='period'>.</span><span class='id identifier rubyid_opened'>opened</span>
   <span class='ivar'>@posts</span> <span class='op'>=</span>
     <span class='lparen'>(</span><span class='id identifier rubyid_player_signed_in?'>player_signed_in?</span> <span class='op'>?</span> <span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span> <span class='op'>:</span> <span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_public_only'>public_only</span><span class='rparen'>)</span><span class='period'>
 </span><span class='id identifier rubyid_    .order'>    .order</span><span class='lparen'>(</span><span class='label'>updated_at:</span> <span class='symbol'>:desc</span><span class='rparen'>)</span>
+  <span class='ivar'>@teams</span> <span class='op'>=</span> <span class='const'>Team</span><span class='period'>.</span><span class='id identifier rubyid_ranking'>ranking</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ranking-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ranking</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ranking'>ranking</span>
+  <span class='ivar'>@teams</span> <span class='op'>=</span> <span class='const'>Team</span><span class='period'>.</span><span class='id identifier rubyid_ranking'>ranking</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -229,11 +283,11 @@
       <pre class="lines">
 
 
-9
-10</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/home_controller.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rules'>rules</span>
 <span class='kw'>end</span></pre>
@@ -247,7 +301,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 20:54:44 2014 by
+  Generated on Mon Apr 14 14:11:32 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

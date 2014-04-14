@@ -217,6 +217,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#first_break-instance_method" title="#first_break (instance method)">- (Object) <strong>first_break</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#genres-instance_method" title="#genres (instance method)">- (Set&lt;String&gt;) <strong>genres</strong> </a>
     
 
@@ -392,7 +414,16 @@
 63
 64
 65
-66</pre>
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 9</span>
@@ -420,7 +451,7 @@
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_opened?'>opened?</span>
-    <span class='id identifier rubyid_opened_at'>opened_at</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_opened_at'>opened_at</span> <span class='op'>&lt;</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='id identifier rubyid_opened_at'>opened_at</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_opened_at'>opened_at</span> <span class='op'>&lt;=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Opens the challenge.
@@ -445,6 +476,10 @@
     <span class='id identifier rubyid_save!'>save!</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_first_break'>first_break</span>
+    <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_valid'>valid</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='label'>created_at:</span> <span class='symbol'>:desc</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># Gets all genres.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @return [Set&lt;String&gt;]
@@ -453,7 +488,12 @@
   <span class='comment'># Gets all opened challenges.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @return [Set&lt;Challenge&gt;]
-</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='lparen'>(</span><span class='label'>opened_at:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span>
+      <span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_not_eq'>not_eq</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_      .and'>      .and</span><span class='lparen'>(</span><span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_lteq'>lteq</span><span class='lparen'>(</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -558,7 +598,16 @@
 63
 64
 65
-66</pre>
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 9</span>
@@ -586,7 +635,7 @@
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_opened?'>opened?</span>
-    <span class='id identifier rubyid_opened_at'>opened_at</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_opened_at'>opened_at</span> <span class='op'>&lt;</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='id identifier rubyid_opened_at'>opened_at</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_opened_at'>opened_at</span> <span class='op'>&lt;=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Opens the challenge.
@@ -611,6 +660,10 @@
     <span class='id identifier rubyid_save!'>save!</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_first_break'>first_break</span>
+    <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_valid'>valid</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='label'>created_at:</span> <span class='symbol'>:desc</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># Gets all genres.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @return [Set&lt;String&gt;]
@@ -619,7 +672,12 @@
   <span class='comment'># Gets all opened challenges.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @return [Set&lt;Challenge&gt;]
-</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='lparen'>(</span><span class='label'>opened_at:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+</span>  <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span>
+      <span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_not_eq'>not_eq</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_      .and'>      .and</span><span class='lparen'>(</span><span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_lteq'>lteq</span><span class='lparen'>(</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -677,6 +735,36 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="first_break-instance_method">
+  
+    - (<tt>Object</tt>) <strong>first_break</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_first_break'>first_break</span>
+  <span class='id identifier rubyid_answers'>answers</span><span class='period'>.</span><span class='id identifier rubyid_valid'>valid</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='label'>created_at:</span> <span class='symbol'>:desc</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="genres-instance_method">
   
     - (<tt>Set&lt;String&gt;</tt>) <strong>genres</strong> 
@@ -715,10 +803,10 @@
       <pre class="lines">
 
 
-60</pre>
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 64</span>
 
 <span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:genres</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='symbol'>:genre</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span> <span class='rbrace'>}</span></pre>
     </td>
@@ -838,12 +926,22 @@
       <pre class="lines">
 
 
-65</pre>
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'app/models/challenge.rb', line 69</span>
 
-<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='tlambda'>-&gt;</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_where'>where</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='lparen'>(</span><span class='label'>opened_at:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre>
+<span class='id identifier rubyid_scope'>scope</span> <span class='symbol'>:opened</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_not_eq'>not_eq</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span><span class='period'>
+</span><span class='id identifier rubyid_    .and'>    .and</span><span class='lparen'>(</span><span class='id identifier rubyid_arel_table'>arel_table</span><span class='lbracket'>[</span><span class='symbol'>:opened_at</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_lteq'>lteq</span><span class='lparen'>(</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span><span class='rparen'>)</span></pre>
     </td>
   </tr>
 </table>
@@ -854,7 +952,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 20:54:44 2014 by
+  Generated on Mon Apr 14 14:11:32 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

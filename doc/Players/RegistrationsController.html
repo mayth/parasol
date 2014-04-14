@@ -138,6 +138,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -163,11 +185,6 @@
       <pre class="lines">
 
 
-2
-3
-4
-5
-6
 7
 8
 9
@@ -194,10 +211,15 @@
 30
 31
 32
-33</pre>
+33
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/players/registrations_controller.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/players/registrations_controller.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_param'>param</span> <span class='op'>=</span> <span class='id identifier rubyid_sign_up_params'>sign_up_params</span>
@@ -236,12 +258,44 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/players/registrations_controller.rb', line 2</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@page_id</span> <span class='op'>=</span> <span class='symbol'>:sign_up</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Tue Apr  8 20:54:45 2014 by
+  Generated on Mon Apr 14 14:11:33 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.3 (ruby-2.1.1).
 </div>

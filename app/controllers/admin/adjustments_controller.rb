@@ -1,15 +1,19 @@
+# Controls point adjustments as an admin.
 class Admin::AdjustmentsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_adjustment, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/adjustments
-  # GET /admin/adjustments.json
+  # GET /admin/adjustments(.json)
+  #
+  # Gets the all adjustments.
   def index
     @adjustments = Adjustment.all
   end
 
-  # GET /admin/adjustments/1
-  # GET /admin/adjustments/1.json
+  # GET /admin/adjustments/:id(.json)
+  #
+  # Gets the specified adjustment.
+  # @param id [Integer] ID for an adjustment.
   def show
   end
 
@@ -18,12 +22,20 @@ class Admin::AdjustmentsController < ApplicationController
     @adjustment = Adjustment.new
   end
 
-  # GET /admin/adjustments/1/edit
+  # GET /admin/adjustments/:id/edit
+  #
+  # @param id [Integer] ID for an adjustment.
   def edit
   end
 
-  # POST /admin/adjustments
-  # POST /admin/adjustments.json
+  # POST /admin/adjustments(.json)
+  #
+  # Creates a new adjustment.
+  # @param point [Integer] Point for adjustment
+  # @param player_id [Integer] A player's ID to be applied point adjustment.
+  # @param reason [String, nil] A reason of adjustment
+  # @param challenge_id [Integer, nil]
+  #   A challenge's ID related to point adjustment.
   def create
     @adjustment = Adjustment.new(admin_adjustment_params)
 
@@ -38,8 +50,15 @@ class Admin::AdjustmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /admin/adjustments/1
-  # PATCH/PUT /admin/adjustments/1.json
+  # PATCH/PUT /admin/adjustments/:id(.json)
+  #
+  # Updates the specified adjustment.
+  # @param id [Integer] An adjustment's ID to update.
+  # @param point [Integer] Point for adjustment
+  # @param player_id [Integer] A player's ID to be applied point adjustment.
+  # @param reason [String, nil] A reason of adjustment
+  # @param challenge_id [Integer, nil]
+  #   A challenge's ID related to point adjustment.
   def update
     respond_to do |format|
       if @adjustment.update(admin_adjustment_params)
@@ -52,8 +71,10 @@ class Admin::AdjustmentsController < ApplicationController
     end
   end
 
-  # DELETE /admin/adjustments/1
-  # DELETE /admin/adjustments/1.json
+  # DELETE /admin/adjustments/:id(.json)
+  #
+  # Deletes the adjustment.
+  # @param id [Integer] An adjustment's ID to delete.
   def destroy
     @adjustment.destroy
     respond_to do |format|
@@ -63,6 +84,7 @@ class Admin::AdjustmentsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_adjustment
       @adjustment = Adjustment.find(params[:id])
