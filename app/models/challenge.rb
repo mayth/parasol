@@ -25,7 +25,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def point
-    flags.pluck(:point).inject(:+)
+    flags.sum(:point)
   end
 
   def opened?
