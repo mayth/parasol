@@ -46,7 +46,12 @@ class Player < ActiveRecord::Base
   #   otherwise, +nil+.
   def submit(challenge, flag)
     ans = answers.build(challenge: challenge, answer: flag)
-    ans.save ? ans : nil
+    if ans.save
+      adjust_first_break_point(challenge, ans) if ans.valid_answer?
+      ans
+    else
+      nil
+    end
   end
 
   # Determines whether this player belongs to the given team or not.
@@ -109,5 +114,40 @@ class Player < ActiveRecord::Base
   def last_submission(valid_only: false)
     (valid_only ? answers.merge(Answer.valid) : answers)
       .order(created_at: :desc).first
+  end
+
+  private
+
+  # Adjusts the player's point by first break point.
+  #
+  # @param challenge [Challenge] An answered challenge.
+  # @param ans [Answer] An answer object.
+  # @return [Integer] Adjusted point.
+  def adjust_first_break_point(challenge, ans)
+    bonus = get_first_break_point(challenge, ans)
+    unless bonus.zero?
+      adjust!(
+        bonus,
+        reason: 'First break!',
+        challenge: challenge
+      )
+    end
+    bonus
+  end
+
+  # Gets the adjustment by the first break point.
+  #
+  # @param challenge [Challenge] An answered challenge.
+  # @param ans [Answer] An answer object.
+  # @return [Integer] A point for adjustment.
+  def get_first_break_point(challenge, ans)
+    setting =
+      ApplicationController.helpers.first_break_point_setting
+    answers = challenge.answers.valid.where(flag: ans.flag)
+    if setting.any? && answers.count <= setting.count
+      (setting[answers.count - 1] * ans.flag.point).to_i
+    else
+      0
+    end
   end
 end

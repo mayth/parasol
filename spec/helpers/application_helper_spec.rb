@@ -116,4 +116,63 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe 'first_break_point_setting' do
+    subject { helper.first_break_point_setting }
+    context 'if the setting is nil' do
+      before do
+        Setting[:first_break_point] = nil
+      end
+
+      it 'returns empty array' do
+        expect(subject).to be_empty
+      end
+    end
+
+    context 'if the setting is a numeric value' do
+      before do
+        Setting[:first_break_point] = 0.3
+      end
+
+      it 'returns an array which has 1 element' do
+        expect(subject).to have(1).item
+      end
+
+      it 'returns an array that consists of the setting value' do
+        expect(subject).to eq [0.3]
+      end
+    end
+
+    context 'if the setting is an array' do
+      before do
+        Setting[:first_break_point] = [0.3, 0.2, 0.1]
+      end
+
+      it 'returns that array' do
+        expect(subject).to eq [0.3, 0.2, 0.1]
+      end
+    end
+
+    context 'if the setting is a string' do
+      describe 'which wrote with Array format' do
+        before do
+          Setting[:first_break_point] = '[0.3, 0.2, 0.1]'
+        end
+
+        it 'returns an array whose meaning is the same as the setting value' do
+          expect(subject).to eq [0.3, 0.2, 0.1]
+        end
+      end
+
+      describe 'which wrote with Array format without "[]"' do
+        before do
+          Setting[:first_break_point] = '0.3, 0.2, 0.1'
+        end
+
+        it 'returns an array whose meaning is the same as the setting value' do
+          expect(subject).to eq [0.3, 0.2, 0.1]
+        end
+      end
+    end
+  end
 end

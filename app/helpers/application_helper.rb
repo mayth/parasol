@@ -21,4 +21,20 @@ module ApplicationHelper
       )
     @render.render(md)
   end
+
+  def first_break_point_setting
+    case Setting[:first_break_point]
+    when Array
+      Setting[:first_break_point]
+    when String
+      s = Setting[:first_break_point]
+      s = s[1..-2] if s.start_with?('[') && s.end_with?(']')
+      s.split(',').map { |t| t.strip.to_f }
+    when Numeric
+      [Setting[:first_break_point]]
+    when nil
+      []
+    else
+    end
+  end
 end

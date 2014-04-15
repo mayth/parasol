@@ -33,6 +33,9 @@
         :javascript
           $('#setting_contest_opens_at').datetimepicker();
           $('#setting_contest_ends_at').datetimepicker();
+      .pure-control-group
+        = f.label 'First break points'
+        = f.text_field :first_break_points
       %fieldset
         %legend Rules
         = f.text_area :rules, class: 'pure-input-1'
