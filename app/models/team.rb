@@ -15,7 +15,11 @@ class Team < ActiveRecord::Base
   has_many :players, inverse_of: :team
 
   structure do
-    name            validates: [:presence, :uniqueness]
+    name            validates: [
+      :presence,
+      :uniqueness,
+      format: { with: /\A[ [:word:]]+\z/ }
+    ]
     password_digest validates: :presence
     suspended_until Time.now.tomorrow
     timestamps
