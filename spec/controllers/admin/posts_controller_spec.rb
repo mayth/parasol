@@ -56,7 +56,7 @@ describe Admin::PostsController do
       it 'redirects to the created post' do
         sign_in admin
         post :create, post: attributes_for(:post)
-        expect(response).to redirect_to(Post.last)
+        expect(response).to redirect_to(admin_post_url(Post.last))
       end
     end
 
@@ -104,7 +104,7 @@ describe Admin::PostsController do
         sign_in admin
         post = create(:post)
         put :update, id: post.to_param, post: attributes_for(:post)
-        expect(response).to redirect_to(post)
+        expect(response).to redirect_to(admin_post_url(post))
       end
     end
 
