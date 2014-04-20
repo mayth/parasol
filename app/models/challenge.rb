@@ -29,7 +29,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def opened?
-    opened_at.present? && opened_at <= Time.now
+    opened_at.present? && opened_at <= Time.zone.now
   end
 
   # Opens the challenge.
