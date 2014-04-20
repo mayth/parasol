@@ -36,7 +36,7 @@ class Player < ActiveRecord::Base
   validates_presence_of :team
   validates :name,
             presence: true,
-            format: { with: /\A[ [:word:]]+\z/ }
+            format: { with: /\A[- [:word:]]+\z/ }
   validates :email, presence: true, uniqueness: true
 
   # Submits the answer.

@@ -18,7 +18,7 @@ class Team < ActiveRecord::Base
     name            validates: [
       :presence,
       :uniqueness,
-      format: { with: /\A[ [:word:]]+\z/ }
+      format: { with: /\A[- [:word:]]+\z/ }
     ]
     password_digest validates: :presence
     suspended_until Time.now.tomorrow
