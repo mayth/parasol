@@ -1,0 +1,25 @@
+#menu
+  .pure-menu.pure-menu-open
+    = link_to Setting.ctf_name, root_path, class: 'pure-menu-heading'
+    %ul
+      %li= link_to 'Announcements', posts_path
+      %li= link_to 'Rules', rules_path
+      %li= link_to 'Ranking', ranking_path
+      %li= link_to 'Teams', teams_path
+    - if player_signed_in?
+      %ul
+        %li= link_to 'Challenges', challenges_path
+        %li= link_to 'Sign out', destroy_player_session_path, method: :delete
+    - else
+      %ul
+        %li= link_to 'Sign up', new_player_registration_path
+        %li= link_to 'Sign in', new_player_session_path
+        %li= link_to 'Team Registration', new_team_path
+    - if admin_signed_in?
+      = link_to 'Admin', admin_path, class: 'pure-menu-heading'
+      %ul#admin-menu
+        %li= link_to 'Challenges', admin_challenges_path
+        %li= link_to 'Players', admin_players_path
+        %li= link_to 'Teams', admin_teams_path
+        %li= link_to 'Posts', admin_posts_path
+        %li= link_to 'Settings', admin_settings_path

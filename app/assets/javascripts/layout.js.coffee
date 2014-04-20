@@ -10,8 +10,12 @@ activateMenu = () ->
 
 addActiveClassInMenu = () ->
   page_id = $('body').attr('id').replace(/_/g, ' ')
-  e = $.grep(
-    $('#menu ul li a'),
+  menu_target =
+    if /^\/admin\//.test(location.pathname)
+    then $('ul#admin-menu li a')
+    else $('#menu ul li a')
+
+  e = $.grep(menu_target,
     (n, i) -> page_id == $(n).text().toLowerCase()
   )
   if e
