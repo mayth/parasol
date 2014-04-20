@@ -1,5 +1,5 @@
 .header
-  %h1 Edit #{resource_name.to_s.humanize}
+  %h1 Edit Profile
 
 .content
   %section
@@ -7,29 +7,32 @@
       = devise_error_messages!
       %fieldset
         .pure-control-group
+          = f.label :name
+          = f.text_field :name, required: true
+        .pure-control-group
           = f.label :email
-          = f.email_field :email, :autofocus => true
+          = f.email_field :email, :autofocus => true, required: true
           - if devise_mapping.confirmable? && resource.pending_reconfirmation?
             %small
               Currently waiting confirmation for: #{resource.unconfirmed_email}
         .pure-control-group
           = f.label :password
           = f.password_field :password, :autocomplete => "off"
-          %small leave blank if you don't want to change it
+          %small leave this blank if you don't want to change it
         .pure-control-group
           = f.label :password_confirmation
           = f.password_field :password_confirmation
         .pure-control-group
           = f.label :current_password
-          = f.password_field :current_password
+          = f.password_field :current_password, required: true
           %small we need your current password to confirm your changes
         .pure-controls
           = f.submit "Update", class: 'pure-button pure-button-primary'
 
   %section
-    %h1 Cancel my account
+    %h1 Delete my account
     %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'pure-button'}
+      Unhappy? #{button_to "Delete my account", registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'pure-button'}
 
   %section
     = link_to "Back", :back
