@@ -13,7 +13,7 @@ class Admin::SettingsController < ApplicationController
       cooling_down:       -> (s) { s.to_i },
       team_registrable_from:  -> (s) { Time.parse(s) },
       team_registrable_until: -> (s) { Time.parse(s) },
-      contest_opens_at: -> (s) { Time.parse(s) },
+      contest_starts_at: -> (s) { Time.parse(s) },
       contest_ends_at:  -> (s) { Time.parse(s) }
     }
     settings_params.each do |k, v|
