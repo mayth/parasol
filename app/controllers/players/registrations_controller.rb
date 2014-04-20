@@ -45,4 +45,9 @@ class Players::RegistrationsController < Devise::RegistrationsController
       devise_parameter_sanitizer.for(:sign_up) << :name
       devise_parameter_sanitizer.sanitize(:sign_up)
     end
+
+    def account_update_params
+      devise_parameter_sanitizer.for(:account_update) << :name
+      devise_parameter_sanitizer.sanitize(:account_update)
+    end
 end
