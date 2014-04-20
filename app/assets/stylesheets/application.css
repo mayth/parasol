@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require purecss
+ *= require grids-responsive
  *= require purecss-skin
  *= require layout
  *= require styles/default.css
