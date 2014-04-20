@@ -23,16 +23,20 @@
         \-
         = f.text_field :team_registrable_until, required: true
         :javascript
-          $('#setting_team_registrable_from').datetimepicker();
-          $('#setting_team_registrable_until').datetimepicker();
+          var datetimeFormat = 'Y-m-d H:i:00 \\U\\T\\C';
+          var opts = { format: datetimeFormat };
+          $('#setting_team_registrable_from').datetimepicker(opts);
+          $('#setting_team_registrable_until').datetimepicker(opts);
       .pure-control-group
         = f.label 'Contest period'
         = f.text_field :contest_opens_at, required: true
         \-
         = f.text_field :contest_ends_at, required: true
         :javascript
-          $('#setting_contest_opens_at').datetimepicker();
-          $('#setting_contest_ends_at').datetimepicker();
+          var datetimeFormat = 'Y-m-d H:i:00 \\U\\T\\C';
+          var opts = { format: datetimeFormat };
+          $('#setting_contest_opens_at').datetimepicker(opts);
+          $('#setting_contest_ends_at').datetimepicker(opts);
       .pure-control-group
         = f.label 'First break points'
         = f.text_field :first_break_points
