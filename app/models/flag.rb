@@ -11,7 +11,7 @@ class Flag < ActiveRecord::Base
   has_many :answers, inverse_of: :flag
 
   structure do
-    point       200, validates: :presence
+    point       200, validates: [:presence, :numericality]
     flag        'FLAG_kogasa', validates: :presence
     timestamps
   end
