@@ -12,7 +12,7 @@ require 'bcrypt'
 class Team < ActiveRecord::Base
   include ::BCrypt
 
-  has_many :players, inverse_of: :team
+  has_many :players, inverse_of: :team, dependent: :restrict_with_error
 
   structure do
     name            validates: [

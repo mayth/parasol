@@ -55,10 +55,17 @@ class Admin::TeamsController < ApplicationController
   # DELETE /admin/teams/1
   # DELETE /admin/teams/1.json
   def destroy
-    @team.destroy
     respond_to do |format|
-      format.html { redirect_to admin_teams_url }
-      format.json { head :no_content }
+      if @team.destroy
+        format.html { redirect_to admin_teams_url }
+        format.json { head :no_content }
+      else
+        format.html do
+          redirect_to :back,
+                      alert: @team.errors.full_messages.join("\n")
+        end
+        format.json { render json: @team.errors, status: :unprocessable_entity }
+      end
     end
   end
 

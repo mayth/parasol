@@ -151,19 +151,44 @@ describe Admin::TeamsController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested team" do
-      sign_in admin
-      team = create(:team)
-      expect {
+    context 'for the team which has no members' do
+      it "destroys the requested team" do
+        sign_in admin
+        team = create(:team)
+        expect {
+          delete :destroy, {id: team.to_param}
+        }.to change(Team, :count).by(-1)
+      end
+
+      it "redirects to the teams list" do
+        sign_in admin
+        team = create(:team)
         delete :destroy, {id: team.to_param}
-      }.to change(Team, :count).by(-1)
+        expect(response).to redirect_to admin_teams_path
+      end
     end
 
-    it "redirects to the teams list" do
-      sign_in admin
-      team = create(:team)
-      delete :destroy, {id: team.to_param}
-      expect(response).to redirect_to admin_teams_path
+    context 'for the team which has some members' do
+      it 'does not destroy the requested team' do
+        sign_in admin
+        team = create(:team)
+        player = create(:player)
+        player.confirm!
+        team.players << player
+        expect { delete :destroy, id: team.to_param }
+          .not_to change(Team, :count)
+      end
+
+      it 'redirects to the requested team' do
+        sign_in admin
+        team = create(:team)
+        player = create(:player)
+        player.confirm!
+        team.players << player
+        request.env['HTTP_REFERER'] = admin_team_path(team)
+        delete :destroy, id: team.to_param
+        expect(response).to redirect_to(admin_team_path(team))
+      end
     end
   end
 
