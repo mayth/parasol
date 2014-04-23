@@ -112,7 +112,3 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spring'
 end
-
-group :production do
-  gem 'rails_12factor'
-end
