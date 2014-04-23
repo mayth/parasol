@@ -20,24 +20,12 @@ class Team < ActiveRecord::Base
       :uniqueness,
       format: { with: /\A[- [:word:]]+\z/ }
     ]
+    email validates: [:presence, :uniqueness]
     password_digest validates: :presence
     suspended_until Time.now.tomorrow
     timestamps
   end
-
-  def password
-    @password ||= Password.new(password_digest)
-  end
-
-  def password=(new_password)
-    if new_password.present?
-      @password = Password.create(new_password)
-      self.password_digest = @password
-    else
-      @password = nil
-      self.password_digest = nil
-    end
-  end
+  has_secure_password
 
   def suspended?
     if self.suspended_until
@@ -85,23 +73,11 @@ class Team < ActiveRecord::Base
     end
   end
 
-  # Authenticates the team.
-  #
-  # @return [Team, nil] +self+ if the successfully authenticated; otherwise, +nil+.
-  def authenticate(password)
-    if self.password == password
-      self
-    else
-      nil
-    end
-  end
-
   # Generates a new password.
   #
   # @return [String] A new password.
   def generate_password
-    pw = [*('a'..'z'), *('A'..'Z'), *('0'..'9')].sample(8).join
-    self.password = pw
+    [*('a'..'z'), *('A'..'Z'), *('0'..'9')].sample(8).join
   end
 
   # Resets the password.
@@ -110,6 +86,8 @@ class Team < ActiveRecord::Base
   #   A new password is returned if succeeded; otherwise, +nil+.
   def forget_password!
     new_pw = generate_password
+    self.password = new_pw
+    self.password_confirmation = new_pw
     if save
       new_pw
     else

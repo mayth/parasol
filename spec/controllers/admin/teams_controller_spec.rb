@@ -62,20 +62,14 @@ describe Admin::TeamsController do
         sign_in admin
         pw = 'teampw'
         expect {
-          post :create,
-            {
-              team: make_valid_team_param_hash(build(:team, password: pw)) {|h| h[:password] = pw}
-            }
+          post :create, team: attributes_for(:team)
         }.to change(Team, :count).by(1)
       end
 
       it "assigns a newly created team as @team" do
         sign_in admin
         pw = 'teampw'
-        post :create,
-          {
-            team: make_valid_team_param_hash(build(:team, password: pw)) {|h| h[:password] = pw}
-          }
+        post :create, team: attributes_for(:team)
         expect(assigns(:team)).to be_a(Team)
         expect(assigns(:team)).to be_persisted
       end
@@ -83,10 +77,7 @@ describe Admin::TeamsController do
       it "redirects to the created team" do
         sign_in admin
         pw = 'teampw'
-        post :create,
-          {
-            team: make_valid_team_param_hash(build(:team, password: pw)) {|h| h[:password] = pw}
-          }
+        post :create, team: attributes_for(:team)
         expect(response).to redirect_to admin_team_path(Team.last)
       end
     end
@@ -96,7 +87,7 @@ describe Admin::TeamsController do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        post :create, {team: make_invalid_team_param_hash(build(:team))}
+        post :create, team: attributes_for(:team, name: '')
         expect(assigns(:team)).to be_a_new(Team)
       end
 
@@ -104,7 +95,7 @@ describe Admin::TeamsController do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        post :create, {team: make_invalid_team_param_hash(build(:team))}
+        post :create, team: attributes_for(:team, name: '')
         expect(response).to render_template('new')
       end
     end
@@ -126,14 +117,14 @@ describe Admin::TeamsController do
       it "assigns the requested team as @team" do
         sign_in admin
         team = create(:team)
-        put :update, {id: team.to_param, team: make_valid_team_param_hash(team)}
+        put :update, id: team.to_param, team: make_valid_team_param_hash(team)
         expect(assigns(:team)).to eq team
       end
 
       it "redirects to the team" do
         sign_in admin
         team = create(:team)
-        put :update, {id: team.to_param, team: make_valid_team_param_hash(team)}
+        put :update, id: team.to_param, team: make_valid_team_param_hash(team)
         expect(response).to redirect_to admin_team_path(team)
       end
     end
@@ -144,7 +135,7 @@ describe Admin::TeamsController do
         team = create(:team)
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        put :update, {id: team.to_param, team: make_invalid_team_param_hash(team)}
+        put :update, id: team.to_param, team: make_invalid_team_param_hash(team)
         expect(assigns(:team)).to eq team
       end
 
@@ -153,7 +144,7 @@ describe Admin::TeamsController do
         team = create(:team)
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        put :update, {id: team.to_param, team: make_invalid_team_param_hash(team)}
+        put :update, id: team.to_param, team: make_invalid_team_param_hash(team)
         expect(response).to render_template('edit')
       end
     end

@@ -70,6 +70,6 @@ class Admin::TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_team_params
-      params.require(:team).permit(:name, :password, :suspended_until)
+      params.require(:team).permit!
     end
 end

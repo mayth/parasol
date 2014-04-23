@@ -11,8 +11,16 @@
       = f.label :name
       = f.text_field :name, required: true
     .pure-control-group
+      = f.label :email
+      = f.email_field :email, required: true
+    .pure-control-group
       = f.label :password
       = f.password_field :password, required: true
-    %small REMEMBER THE PASSWORD! If you forget this, the member of this team (includes you, of course) cannot sign up with this team.
+    .pure-control-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, required: true
+    %small
+      <strong>REMEMBER THE PASSWORD!</strong> The member of this team (includes you, of course) cannot sign up with this team if you forget the password.
+      In an emergency, please contact the admin <strong>from the address you entered above</strong> (if not so, we cannot help you).
     .pure-controls
       = f.submit 'Register', class: 'pure-button pure-button-primary'
