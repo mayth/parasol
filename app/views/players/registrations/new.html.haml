@@ -29,6 +29,9 @@
       .pure-control-group
         = f.label :team_password
         = f.password_field :team_password, required: true
+        %small If you don't have the team password, ask the leader.
+        %br
+        %small (for the team leaders) If you forget the team password, please contact the admin <strong>from the email address that you entered on registering the team</strong> (if not so, we cannot help you).
       .pure-controls
         = f.submit "Sign up", class: 'pure-button pure-button-primary'
   = render "players/shared/links"
