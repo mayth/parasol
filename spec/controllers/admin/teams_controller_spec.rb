@@ -175,6 +175,7 @@ describe Admin::TeamsController do
         player = create(:player)
         player.confirm!
         team.players << player
+        request.env['HTTP_REFERER'] = admin_team_path(team)
         expect { delete :destroy, id: team.to_param }
           .not_to change(Team, :count)
       end
