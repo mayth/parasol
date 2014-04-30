@@ -27,8 +27,8 @@ describe TeamsController do
       put("/teams/1").should route_to("teams#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      delete("/teams/1").should route_to("teams#destroy", :id => "1")
+    it "does not route to #destroy" do
+      delete("/teams/1").should_not route_to("teams#destroy", :id => "1")
     end
 
   end

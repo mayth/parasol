@@ -20,7 +20,7 @@ Parasol::Application.routes.draw do
     post 'challenges/:id'        => :answer
   end
 
-  resources :teams
+  resources :teams, except: %i(destroy)
   resources :posts, only: %i(index show)
 
   devise_for :admins, path: 'admin', controllers: {
