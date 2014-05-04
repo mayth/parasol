@@ -35,7 +35,7 @@ class ChallengesController < ApplicationController
         elsif answer.answered?
           format.html do
             redirect_to challenge_path(@challenge),
-                        notice: 'Flag is correct, but you already answered.'
+                        notice: 'The flag is correct, but you or your team mate has already answered.'
           end
           format.json { render json: { result: 'answered' } }
         else
