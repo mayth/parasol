@@ -146,7 +146,7 @@ class Player < ActiveRecord::Base
     setting =
       ApplicationController.helpers.first_break_point_setting
     answers = challenge.answers.valid.where(flag: ans.flag)
-    if setting.any? && answers.count <= setting.count
+    if setting.any? && (answers.count - 1) < setting.count
       (setting[answers.count - 1] * ans.flag.point).to_i
     else
       0

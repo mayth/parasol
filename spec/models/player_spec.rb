@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Player do
   before do
     # Set the first break point setting explicitly
-    Setting.first_break_point = nil
+    Setting.first_break_points = nil
   end
 
   describe '#submit' do
@@ -18,6 +18,12 @@ describe Player do
       @challenge.save!
       @player = create(:player)
       @player.confirm!
+      players = 2.times.map do
+        player = create(:player)
+        player.confirm!
+        player
+      end
+      @players = [@player, *players]
     end
 
     context 'when it is the correct answer' do
@@ -40,19 +46,28 @@ describe Player do
 
       context 'and the first break point is active' do
         before do
-          Setting.first_break_point = [0.3, 0.2, 0.1]
+          Setting.first_break_points = [0.3, 0.2, 0.1]
         end
 
         it "adds the flag point to the player's point with first break point" do
           bonus = (@flags[2].point * 0.3).to_i
-          expect { @player.submit(@challenge, @flags[2].flag) }
-            .to change { @player.point }.by(@flags[2].point + bonus)
+          expect { @players[0].submit(@challenge, @flags[2].flag) }
+            .to change { @players[0].point }.by(@flags[2].point + bonus)
+
+          bonus = (@flags[2].point * 0.2).to_i
+          expect { @players[1].submit(@challenge, @flags[2].flag) }
+            .to change { @players[1].point }.by(@flags[2].point + bonus)
+
+          bonus = (@flags[2].point * 0.1).to_i
+          expect { @players[2].submit(@challenge, @flags[2].flag) }
+            .to change { @players[2].point }.by(@flags[2].point + bonus)
+
         end
       end
 
       context 'and the first break point is not active' do
         before do
-          Setting.first_break_point = nil
+          Setting.first_break_points = nil
         end
 
         it "adds the flag point to the player's point" do
