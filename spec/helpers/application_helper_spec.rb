@@ -121,7 +121,7 @@ describe ApplicationHelper do
     subject { helper.first_break_point_setting }
     context 'if the setting is nil' do
       before do
-        Setting[:first_break_point] = nil
+        Setting[:first_break_points] = nil
       end
 
       it 'returns empty array' do
@@ -131,7 +131,7 @@ describe ApplicationHelper do
 
     context 'if the setting is a numeric value' do
       before do
-        Setting[:first_break_point] = 0.3
+        Setting[:first_break_points] = 0.3
       end
 
       it 'returns an array which has 1 element' do
@@ -145,7 +145,7 @@ describe ApplicationHelper do
 
     context 'if the setting is an array' do
       before do
-        Setting[:first_break_point] = [0.3, 0.2, 0.1]
+        Setting[:first_break_points] = [0.3, 0.2, 0.1]
       end
 
       it 'returns that array' do
@@ -156,7 +156,7 @@ describe ApplicationHelper do
     context 'if the setting is a string' do
       describe 'which wrote with Array format' do
         before do
-          Setting[:first_break_point] = '[0.3, 0.2, 0.1]'
+          Setting[:first_break_points] = '[0.3, 0.2, 0.1]'
         end
 
         it 'returns an array whose meaning is the same as the setting value' do
@@ -166,7 +166,7 @@ describe ApplicationHelper do
 
       describe 'which wrote with Array format without "[]"' do
         before do
-          Setting[:first_break_point] = '0.3, 0.2, 0.1'
+          Setting[:first_break_points] = '0.3, 0.2, 0.1'
         end
 
         it 'returns an array whose meaning is the same as the setting value' do

@@ -23,15 +23,15 @@ module ApplicationHelper
   end
 
   def first_break_point_setting
-    case Setting[:first_break_point]
+    case Setting[:first_break_points]
     when Array
-      Setting[:first_break_point]
+      Setting[:first_break_points]
     when String
-      s = Setting[:first_break_point]
+      s = Setting[:first_break_points]
       s = s[1..-2] if s.start_with?('[') && s.end_with?(']')
       s.split(',').map { |t| t.strip.to_f }
     when Numeric
-      [Setting[:first_break_point]]
+      [Setting[:first_break_points]]
     when nil
       []
     else
