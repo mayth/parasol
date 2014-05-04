@@ -68,7 +68,8 @@ class Team < ActiveRecord::Base
         -t.flag_point, # in descending order of the point by submission
         t.last_submission(valid_only: true) || Time.zone.now,
           # in ascending order of last submission date
-        t.created_at   # in ascending order of team registration date
+        t.created_at,  # in ascending order of team registration date
+        t.id
       ]
     end
   end
@@ -128,5 +129,19 @@ class Team < ActiveRecord::Base
   #   +true+ if the given player belongs to this team; otherwise, +false+.
   def member?(player)
     players.include?(player)
+  end
+
+  def answers
+    answers_table = Answer.arel_table
+    players_table = Player.arel_table
+    query = answers_table[:player_id].in(players_table
+      .where(players_table[:team_id].eq(id))
+      .project(players_table[:id])
+    )
+    Answer.where(query)
+  end
+
+  def valid_answers
+    Answer.valid.merge(answers)
   end
 end

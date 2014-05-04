@@ -85,6 +85,8 @@ describe Answer do
       @challenge.save!
       @player = create(:player)
       @player.confirm!
+      @player2 = create(:player, team: @player.team)
+      @player2.confirm!
     end
 
     context 'when it is the correct answer' do
@@ -112,6 +114,23 @@ describe Answer do
           answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
           expect(answer.valid_answer?).to be_false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+          expect(answer.valid_answer?).to be_false
+        end
+      end
+
+      context 'but the team-mate already answered for it' do
+        before do
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
+          create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
+        end
+
+        it 'returns false' do
+          answer = create(:answer, player: @player2, challenge: @challenge, answer: @flags[0].flag)
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player2, challenge: @challenge, answer: @flags[1].flag)
+          expect(answer.valid_answer?).to be_false
+          answer = create(:answer, player: @player2, challenge: @challenge, answer: 'FLAG_KOGASA')
           expect(answer.valid_answer?).to be_false
         end
       end

@@ -94,9 +94,13 @@ class Answer < ActiveRecord::Base
   def check_answered?
     self.is_answered =
       if flag
-        player.answers
-              .where(challenge: challenge, flag: flag, is_correct: true)
-              .any?
+        p = player.answers
+          .where(challenge: challenge, flag: flag, is_correct: true)
+          .any?
+        t = player.team.answers
+          .where(challenge: challenge, flag: flag, is_correct: true)
+          .any?
+        p || t
       else
         nil
       end
