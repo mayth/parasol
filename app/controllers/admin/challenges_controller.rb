@@ -5,7 +5,7 @@ class Admin::ChallengesController < ApplicationController
   # GET /admin/challenges
   # GET /admin/challenges.json
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.order(:created_at)
   end
 
   # GET /admin/challenges/1

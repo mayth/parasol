@@ -5,7 +5,7 @@ class Admin::PlayersController < ApplicationController
   # GET /admin/players
   # GET /admin/players.json
   def index
-    @players = Player.all
+    @players = Player.order(:created_at)
   end
 
   # GET /admin/players/1
