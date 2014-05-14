@@ -13,8 +13,8 @@ module ValidAdminRequestHelper
     # We action the login request using the parameters before we begin.
     # The login requests will match these to the user we just created in the factory, and authenticate us.
     post_via_redirect admin_session_path,
-      'admin[email]' => @admin.email,
-      'admin[password]' => @admin.password
+                      'admin[email]' => @admin.email,
+                      'admin[password]' => @admin.password
   end
 end
 
