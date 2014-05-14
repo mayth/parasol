@@ -62,11 +62,12 @@ class Team < ActiveRecord::Base
   ### Methods
 
   def self.ranking
+    now = Time.zone.now
     Team.all.sort_by do |t|
       [
         -t.point,      # in descending order of the point
         -t.flag_point, # in descending order of the point by submission
-        t.last_submission(valid_only: true) || Time.zone.now,
+        t.last_submission(valid_only: true) || now,
           # in ascending order of last submission date
         t.created_at,  # in ascending order of team registration date
         t.id
