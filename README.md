@@ -22,10 +22,6 @@ CAPTURE THE FUTURE.
 This program is licensed under the MIT License. See `LICENSE`.
 
 # Copyright
-Copyright (c) 2014 Mei Akizuru
+Copyright (c) 2014 Mei Akizuru (mayth)
 
-# Contact
-* Edit wiki
-* Create issues
-* Create pull-req
-* Twitter([@maytheplic](https://twitter.com/maytheplic))
+Twitter: [@maytheplic](https://twitter.com/maytheplic)
