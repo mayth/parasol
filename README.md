@@ -8,6 +8,13 @@ CAPTURE THE FUTURE.
 * PostgreSQL 9.3
 * Bundler
 
+## Packages
+On Ubuntu, you may need to install these packages to install required gems:
+
+* build-essential
+* ruby-dev
+* libpq-dev
+
 # Setup
 1. Clone this repository.
 2. Create database user (role) on PostgreSQL. The user name is `parasol` by default (it can be changed by modifying `database.yml`). Note that the user should be able to create databases (CREATEDB). If not, you must create databases by your hand.
