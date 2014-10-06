@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @challenges = Challenge.opened
     @posts =
-      (player_signed_in? ? Post.all : Post.public_only)
+      (accessible_to_secret_zone? ? Post.all : Post.public_only)
       .order(updated_at: :desc)
     @teams = Team.ranking
   end

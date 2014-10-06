@@ -7,6 +7,8 @@ describe PostsController do
     player
   end
 
+  let(:admin) { create(:admin) }
+
   describe 'GET index' do
     context 'if the user is not signed in' do
       before do
@@ -21,6 +23,22 @@ describe PostsController do
         ]
         get :index
         expect(assigns(:posts)).to include posts[0]
+      end
+
+      context 'but the user signed in as an admin' do
+        before do
+          sign_in admin
+        end
+        
+        it 'assigns all posts as @ posts' do
+          posts =
+          [
+            create(:post, public_scope: 'public'),
+            create(:post, public_scope: 'player')
+          ]
+          get :index
+          expect(assigns(:posts)).to include(*posts)
+        end
       end
     end
 

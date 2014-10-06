@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts =
-      (player_signed_in? ? Post.all : Post.public_only)
+      (accessible_to_secret_zone? ? Post.all : Post.public_only)
       .order(updated_at: :desc)
   end
 
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
-      unless @post.public_scope == 'public' || player_signed_in?
+      unless @post.public_scope == 'public' || accessible_to_secret_zone?
         fail ActiveRecord::RecordNotFound
       end
     end
