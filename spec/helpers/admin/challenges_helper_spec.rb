@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::ChallengesHelper do
+describe Admin::ChallengesHelper, :type => :helper do
 end

@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::PostsHelper do
+describe Admin::PostsHelper, :type => :helper do
 end

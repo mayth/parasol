@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/adjustments/edit' do
+describe 'admin/adjustments/edit', :type => :view do
   before(:each) do
     @adjustment = assign(:adjustment, create(:adjustment))
   end

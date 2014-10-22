@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/posts/index' do
+describe 'admin/posts/index', :type => :view do
   before(:each) do
     assign(:posts, [
       create(:post),

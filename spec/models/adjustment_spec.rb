@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Adjustment do
+describe Adjustment, :type => :model do
 end

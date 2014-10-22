@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Flag do
+describe Flag, :type => :model do
   describe '#point=' do
     before do
       @flag = create(:flag)

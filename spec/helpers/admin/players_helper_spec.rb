@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::PlayersHelper do
+describe Admin::PlayersHelper, :type => :helper do
 end

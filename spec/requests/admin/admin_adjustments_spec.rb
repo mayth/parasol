@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Admin::Adjustments" do
+describe "Admin::Adjustments", :type => :request do
   describe "GET /admin/adjustments" do
     it "works! (now write some real specs)" do
       sign_in_as_a_valid_admin

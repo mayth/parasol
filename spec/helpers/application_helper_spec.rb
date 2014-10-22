@@ -10,7 +10,7 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   describe 'within_team_registration_period?' do
     subject { helper.within_team_registration_period? }
     describe 'without parameter' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::PostsController do
+describe Admin::PostsController, :type => :controller do
   let(:admin) { create(:admin) }
 
   describe 'GET index' do
@@ -64,7 +64,7 @@ describe Admin::PostsController do
       it 'assigns a newly created but unsaved post as @post' do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Post).to receive(:save).and_return(false)
         post :create, post: { 'title' => '' }
         expect(assigns(:post)).to be_a_new Post
       end
@@ -72,7 +72,7 @@ describe Admin::PostsController do
       it 're-renders the "new" template' do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Post).to receive(:save).and_return(false)
         post :create, post: { 'title' => '' }
         expect(response).to render_template('new')
       end
@@ -113,7 +113,7 @@ describe Admin::PostsController do
         sign_in admin
         post = create(:post)
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Post).to receive(:save).and_return(false)
         put :update, id: post.to_param, post: { 'title' => '' }
         expect(assigns(:post)).to eq post
       end
@@ -122,7 +122,7 @@ describe Admin::PostsController do
         sign_in admin
         post = create(:post)
         # Trigger the behavior that occurs when invalid params are submitted
-        Post.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Post).to receive(:save).and_return(false)
         put :update, id: post.to_param, post: { 'title' => '' }
         expect(response).to render_template('edit')
       end

@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Admin::PlayersController do
+describe Admin::PlayersController, :type => :controller do
   let(:admin) { create(:admin) }
 
   describe "GET index" do
@@ -86,7 +86,7 @@ describe Admin::PlayersController do
       it "assigns a newly created but unsaved player as @player" do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Player).to receive(:save).and_return(false)
         post :create, {player: make_invalid_player_param_hash(build(:player))}
         expect(assigns(:player)).to be_a_new(Player)
       end
@@ -94,7 +94,7 @@ describe Admin::PlayersController do
       it "re-renders the 'new' template" do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Player).to receive(:save).and_return(false)
         post :create, {player: make_invalid_player_param_hash(build(:player))}
         expect(response).to render_template('new')
       end
@@ -138,7 +138,7 @@ describe Admin::PlayersController do
         player = create(:player)
         player.confirm!
         # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Player).to receive(:save).and_return(false)
         put :update, {id: player.to_param, player: make_invalid_player_param_hash(player)}
         expect(assigns(:player)).to eq player
       end
@@ -148,7 +148,7 @@ describe Admin::PlayersController do
         player = create(:player)
         player.confirm!
         # Trigger the behavior that occurs when invalid params are submitted
-        Player.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Player).to receive(:save).and_return(false)
         put :update, {id: player.to_param, player: make_invalid_player_param_hash(player)}
         expect(response).to render_template('edit')
       end

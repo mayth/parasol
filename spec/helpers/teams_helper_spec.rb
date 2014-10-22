@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe TeamsHelper do
+describe TeamsHelper, :type => :helper do
 end

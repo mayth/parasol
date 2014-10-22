@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Challenge do
+describe Challenge, :type => :model do
   describe '#point' do
     before do
       @challenge = create(:challenge)

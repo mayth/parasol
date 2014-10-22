@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'posts/index' do
+describe 'posts/index', :type => :view do
   before(:each) do
     posts = 2.times.map do
       create(:post, title: 'Awesome Title', body: 'Incredible!')

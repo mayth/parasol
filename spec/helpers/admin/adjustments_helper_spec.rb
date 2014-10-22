@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::AdjustmentsHelper do
+describe Admin::AdjustmentsHelper, :type => :helper do
 end

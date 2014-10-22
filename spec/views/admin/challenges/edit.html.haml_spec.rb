@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/challenges/edit" do
+describe "admin/challenges/edit", :type => :view do
   before(:each) do
     @challenge = assign(:challenge, create(:challenge))
   end

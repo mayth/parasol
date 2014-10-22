@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "teams/index" do
+describe "teams/index", :type => :view do
   before(:each) do
     assign(:teams, 2.times.map { create(:team) })
     assign(:challenges, 3.times.map { create(:challenge) })

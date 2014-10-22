@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Admin::ChallengesController do
+describe Admin::ChallengesController, :type => :controller do
   let(:admin) { create(:admin) }
 
   describe "GET index" do
@@ -92,7 +92,7 @@ describe Admin::ChallengesController do
       it "assigns a newly created but unsaved challenge as @challenge" do
         # Trigger the behavior that occurs when invalid params are submitted
         sign_in admin
-        Challenge.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Challenge).to receive(:save).and_return(false)
         post :create, {challenge: make_challenge_param_hash(build(:challenge, name: nil))}
         expect(assigns(:challenge)).to be_a_new(Challenge)
       end
@@ -100,7 +100,7 @@ describe Admin::ChallengesController do
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         sign_in admin
-        Challenge.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Challenge).to receive(:save).and_return(false)
         post :create, {challenge: make_challenge_param_hash(build(:challenge, name: nil))}
         expect(response).to render_template('new')
       end
@@ -141,7 +141,7 @@ describe Admin::ChallengesController do
         sign_in admin
         challenge = create(:challenge)
         # Trigger the behavior that occurs when invalid params are submitted
-        Challenge.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Challenge).to receive(:save).and_return(false)
         put :update, {:id => challenge.to_param, :challenge => make_challenge_param_hash(build(:challenge, name: nil))}
         expect(assigns(:challenge)).to eq challenge
       end
@@ -150,7 +150,7 @@ describe Admin::ChallengesController do
         sign_in admin
         challenge = create(:challenge)
         # Trigger the behavior that occurs when invalid params are submitted
-        Challenge.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Challenge).to receive(:save).and_return(false)
         put :update, {:id => challenge.to_param, :challenge => make_challenge_param_hash(build(:challenge, name: nil))}
         expect(response).to render_template('edit')
       end

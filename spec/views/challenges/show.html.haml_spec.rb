@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe "challenges/show.html.haml" do
+describe "challenges/show.html.haml", :type => :view do
 end

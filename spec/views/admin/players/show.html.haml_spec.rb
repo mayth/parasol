@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/players/show" do
+describe "admin/players/show", :type => :view do
   before(:each) do
     player = create(:player)
     player.confirm!

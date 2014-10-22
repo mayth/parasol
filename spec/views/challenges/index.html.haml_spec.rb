@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "challenges/index.html.haml" do
+describe "challenges/index.html.haml", :type => :view do
   context 'when no challenges are available' do
     it 'renders nothing but "not-available" message' do
       assign(:challenges, [])

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Admin::TeamsController do
+describe Admin::TeamsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "teams/edit" do
+describe "teams/edit", :type => :view do
   before(:each) do
     @team = assign(:team, create(:team))
   end

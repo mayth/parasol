@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::AdjustmentsController do
+describe Admin::AdjustmentsController, :type => :controller do
   let(:admin) { create(:admin) }
   before do
     sign_in admin
@@ -59,14 +59,14 @@ describe Admin::AdjustmentsController do
     describe 'with invalid params' do
       it 'assigns a newly created but unsaved adjustment as @adjustment' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Adjustment.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
         post :create, adjustment: { point: 'abc' }
         expect(assigns(:adjustment)).to be_a_new Adjustment
       end
 
       it 're-renders the "new" template' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Adjustment.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
         post :create, adjustment: { point: 'abc' }
         expect(response).to render_template('new')
       end
@@ -103,7 +103,7 @@ describe Admin::AdjustmentsController do
       it 'assigns the adjustment as @adjustment' do
         adjustment = create(:adjustment)
         # Trigger the behavior that occurs when invalid params are submitted
-        Adjustment.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
         put :update, id: adjustment.to_param, adjustment: { 'point' => 'abc' }
         expect(assigns(:adjustment)).to eq adjustment
       end
@@ -111,7 +111,7 @@ describe Admin::AdjustmentsController do
       it 're-renders the "edit" template' do
         adjustment = create(:adjustment)
         # Trigger the behavior that occurs when invalid params are submitted
-        Adjustment.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
         put :update, id: adjustment.to_param, adjustment: { 'point' => 'abc' }
         expect(response).to render_template('edit')
       end

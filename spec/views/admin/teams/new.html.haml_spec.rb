@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/teams/new" do
+describe "admin/teams/new", :type => :view do
   before(:each) do
     assign(:team, build(:team))
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TeamsController do
+describe TeamsController, :type => :controller do
   let(:player) do
     p = create(:player)
     p.confirm!
@@ -75,14 +75,14 @@ describe TeamsController do
       describe 'with invalid params' do
         it 'assigns a newly created but unsaved team as @team' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Team.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Team).to receive(:save).and_return(false)
           post :create, team: { 'name' => '' }
           expect(assigns(:team)).to be_a_new Team
         end
 
         it 're-renders the "new" template' do
           # Trigger the behavior that occurs when invalid params are submitted
-          Team.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Team).to receive(:save).and_return(false)
           post :create, team: { 'name' => '' }
           expect(response).to render_template('new')
         end
@@ -211,7 +211,7 @@ describe TeamsController do
           player.team = team
           player.save
           # Trigger the behavior that occurs when invalid params are submitted
-          Team.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Team).to receive(:save).and_return(false)
           put :update, id: team.to_param, team: { 'name' => '' }
           expect(assigns(:team)).to eq team
         end
@@ -222,7 +222,7 @@ describe TeamsController do
           player.team = team
           player.save
           # Trigger the behavior that occurs when invalid params are submitted
-          Team.any_instance.stub(:save).and_return(false)
+          allow_any_instance_of(Team).to receive(:save).and_return(false)
           put :update, id: team.to_param, team: { 'name' => '' }
           expect(response).to render_template('edit')
         end
@@ -232,7 +232,7 @@ describe TeamsController do
     context 'with non-player' do
       it 'assigns the team as @team' do
         team = create(:team)
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         put :update, id: team.to_param, team: { 'name' => '' }
         expect(assigns(:team)).to eq team
       end
@@ -248,7 +248,7 @@ describe TeamsController do
       it 'assigns the team as @team' do
         sign_in player
         team = create(:team)
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         put :update, id: team.to_param, team: { 'name' => '' }
         expect(assigns(:team)).to eq team
       end

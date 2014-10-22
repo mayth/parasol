@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/adjustments/new' do
+describe 'admin/adjustments/new', :type => :view do
   before(:each) do
     assign(:adjustment, build(:adjustment))
   end

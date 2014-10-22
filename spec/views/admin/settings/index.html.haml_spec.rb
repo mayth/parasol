@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/settings/index" do
+describe "admin/settings/index", :type => :view do
   before(:each) do
   end
 

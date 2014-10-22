@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "teams/show" do
+describe "teams/show", :type => :view do
   before(:each) do
     @team = assign(:team, create(:team))
   end

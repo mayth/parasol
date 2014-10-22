@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/teams/index" do
+describe "admin/teams/index", :type => :view do
   before(:each) do
     assign(:teams, 2.times.map {create(:team)})
   end

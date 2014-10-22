@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ChallengesController do
+describe ChallengesController, :type => :controller do
   let(:player) do
     p = create(:player)
     p.confirm!

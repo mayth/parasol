@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Admin::TeamsController do
+describe Admin::TeamsController, :type => :controller do
   let(:admin) { create(:admin) }
 
   describe "GET index" do
@@ -86,7 +86,7 @@ describe Admin::TeamsController do
       it "assigns a newly created but unsaved team as @team" do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         post :create, team: attributes_for(:team, name: '')
         expect(assigns(:team)).to be_a_new(Team)
       end
@@ -94,7 +94,7 @@ describe Admin::TeamsController do
       it "re-renders the 'new' template" do
         sign_in admin
         # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         post :create, team: attributes_for(:team, name: '')
         expect(response).to render_template('new')
       end
@@ -134,7 +134,7 @@ describe Admin::TeamsController do
         sign_in admin
         team = create(:team)
         # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         put :update, id: team.to_param, team: make_invalid_team_param_hash(team)
         expect(assigns(:team)).to eq team
       end
@@ -143,7 +143,7 @@ describe Admin::TeamsController do
         sign_in admin
         team = create(:team)
         # Trigger the behavior that occurs when invalid params are submitted
-        Team.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Team).to receive(:save).and_return(false)
         put :update, id: team.to_param, team: make_invalid_team_param_hash(team)
         expect(response).to render_template('edit')
       end

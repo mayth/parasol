@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Admin do
+describe Admin, :type => :model do
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe Post, :type => :model do
   describe 'scope public_only' do
     subject { Post.public_only }
 

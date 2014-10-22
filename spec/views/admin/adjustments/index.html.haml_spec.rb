@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'admin/adjustments/index' do
+describe 'admin/adjustments/index', :type => :view do
   before(:each) do
     assign(:adjustments, 2.times.map { create(:adjustment) })
   end

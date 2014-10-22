@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe Admin::HomeHelper do
+describe Admin::HomeHelper, :type => :helper do
 end

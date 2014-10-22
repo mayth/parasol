@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Answer do
+describe Answer, :type => :model do
   describe '#correct?' do
     before do
       @challenge = build(:challenge, flags: [])

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostsController do
+describe PostsController, :type => :controller do
   let(:player) do
     player = create(:player)
     player.confirm!
