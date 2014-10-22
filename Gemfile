@@ -99,7 +99,7 @@ group :development, :test do
   gem 'awesome_print'
 
   # RSpec
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.99'
   gem 'rake_shared_context'
 
   # fixture-replacement
