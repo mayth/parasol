@@ -17,17 +17,17 @@ describe Answer do
     context 'when it is the correct answer' do
       it 'returns true' do
         answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
-        expect(answer.flag).to be_true
+        expect(answer.flag).to be_truthy
         answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
-        expect(answer.flag).to be_true
+        expect(answer.flag).to be_truthy
         answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
-        expect(answer.flag).to be_true
+        expect(answer.flag).to be_truthy
       end
     end
     context 'when it is the incorrect answer' do
       it 'returns false' do
         answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_mofmof')
-        expect(answer.flag).to be_false
+        expect(answer.flag).to be_falsey
       end
     end
   end
@@ -93,11 +93,11 @@ describe Answer do
       context 'and the player does not answer for it' do
         it 'returns true' do
           answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
-          expect(answer.flag).to be_true
+          expect(answer.flag).to be_truthy
           answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
-          expect(answer.flag).to be_true
+          expect(answer.flag).to be_truthy
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
-          expect(answer.flag).to be_true
+          expect(answer.flag).to be_truthy
         end
       end
 
@@ -110,11 +110,11 @@ describe Answer do
 
         it 'returns false' do
           answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[0].flag)
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: @flags[1].flag)
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_KOGASA')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
         end
       end
 
@@ -127,11 +127,11 @@ describe Answer do
 
         it 'returns false' do
           answer = create(:answer, player: @player2, challenge: @challenge, answer: @flags[0].flag)
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player2, challenge: @challenge, answer: @flags[1].flag)
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player2, challenge: @challenge, answer: 'FLAG_KOGASA')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
         end
       end
     end
@@ -140,11 +140,11 @@ describe Answer do
       context 'and the player does not answer for it' do
         it 'returns false' do
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG!')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG?')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_MARISA')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
         end
       end
 
@@ -157,11 +157,11 @@ describe Answer do
 
         it 'returns false' do
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG!')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'WRONG_FLAG?')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
           answer = create(:answer, player: @player, challenge: @challenge, answer: 'FLAG_MARISA')
-          expect(answer.valid_answer?).to be_false
+          expect(answer.valid_answer?).to be false
         end
       end
     end

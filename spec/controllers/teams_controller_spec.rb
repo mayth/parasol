@@ -138,8 +138,8 @@ describe TeamsController do
           player.team = team
           player.save
           put :update, id: team.to_param, team: attributes_for(:team, password: new_pw)
-          expect(assigns(:team).authenticate(old_pw)).to be_false
-          expect(assigns(:team).authenticate(new_pw)).to be_true
+          expect(assigns(:team).authenticate(old_pw)).to be_falsey
+          expect(assigns(:team).authenticate(new_pw)).to be_truthy
         end
 
         it 'assigns the requested team as @team' do
@@ -182,7 +182,7 @@ describe TeamsController do
           player.team = team
           player.save
           put :update, id: team.to_param, team: attributes_for(:team, password: '')
-          expect(assigns(:team).authenticate(pw)).to be_true
+          expect(assigns(:team).authenticate(pw)).to be_truthy
         end
 
         it 'assigns the requested team as @team' do

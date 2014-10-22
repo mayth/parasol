@@ -23,7 +23,7 @@ describe Challenge do
     context 'when it is closed' do
       context 'because it is a new challenge' do
         it 'returns false' do
-          expect(subject).to be_false
+          expect(subject).to be false
         end
       end
       context 'because the time to open has not come yet' do
@@ -39,7 +39,7 @@ describe Challenge do
         @challenge.open!
       end
       it 'returns true' do
-        expect(subject).to be_true
+        expect(subject).to be true
       end
     end
   end
@@ -53,7 +53,7 @@ describe Challenge do
       context 'without the parameter' do
         it 'opens the challenge immediately' do
           @challenge.open!
-          expect(@challenge.opened?).to be_true
+          expect(@challenge.opened?).to be true
         end
       end
 
@@ -65,7 +65,7 @@ describe Challenge do
           end
           it 'changes the opened date but the challenge is still closed' do
             expect(@challenge.opened_at).to eq @time
-            expect(@challenge.opened?).to be_false
+            expect(@challenge.opened?).to be false
           end
         end
         context 'which represents the past datetime' do
@@ -76,7 +76,7 @@ describe Challenge do
           end
           it 'opens the challenge immediately and sets to opened time to now' do
             expect(@challenge.opened_at).to eq @opened_at
-            expect(@challenge.opened?).to be_true
+            expect(@challenge.opened?).to be true
           end
         end
       end
@@ -90,7 +90,7 @@ describe Challenge do
         expect{@challenge.open!}.not_to change {@challenge.opened_at}
       end
       it 'has no effects so the challenge is still opened' do
-        expect(@challenge.opened?).to be_true
+        expect(@challenge.opened?).to be true
       end
     end
   end
@@ -102,7 +102,7 @@ describe Challenge do
     context 'if the challenge is already closed' do
       it 'has no effects and the challenge still be closed' do
         @challenge.close!
-        expect(@challenge.opened?).to be_false
+        expect(@challenge.opened?).to be false
       end
     end
     context 'if the challenge is opened' do
@@ -111,7 +111,7 @@ describe Challenge do
       end
       it 'closes the challenge' do
         @challenge.close!
-        expect(@challenge.opened?).to be_false
+        expect(@challenge.opened?).to be false
       end
     end
   end

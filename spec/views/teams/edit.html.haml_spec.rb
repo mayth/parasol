@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "teams/edit" do
   before(:each) do
-    @team = assign(:team, stub_model(Team))
+    @team = assign(:team, create(:team))
   end
 
   it "renders the edit team form" do

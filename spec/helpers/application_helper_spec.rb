@@ -22,7 +22,7 @@ describe ApplicationHelper do
         end
 
         it 'returns false' do
-          expect(subject).to be_false
+          expect(subject).to be false
         end
       end
 
@@ -34,7 +34,7 @@ describe ApplicationHelper do
         end
 
         it 'returns true' do
-          expect(subject).to be_true
+          expect(subject).to be true
         end
       end
 
@@ -46,7 +46,7 @@ describe ApplicationHelper do
         end
 
         it 'returns false' do
-          expect(subject).to be_false
+          expect(subject).to be false
         end
       end
     end
@@ -63,7 +63,7 @@ describe ApplicationHelper do
         end
 
         it 'returns false' do
-          expect(subject).to be_false
+          expect(subject).to be false
         end
       end
 
@@ -75,7 +75,7 @@ describe ApplicationHelper do
         end
 
         it 'returns true' do
-          expect(subject).to be_true
+          expect(subject).to be true
         end
       end
 
@@ -87,7 +87,7 @@ describe ApplicationHelper do
         end
 
         it 'returns false' do
-          expect(subject).to be_false
+          expect(subject).to be false
         end
       end
     end
@@ -135,7 +135,7 @@ describe ApplicationHelper do
       end
 
       it 'returns an array which has 1 element' do
-        expect(subject).to have(1).item
+        expect(subject.size).to eq 1
       end
 
       it 'returns an array that consists of the setting value' do

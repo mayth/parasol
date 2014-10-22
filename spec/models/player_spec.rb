@@ -36,12 +36,10 @@ describe Player do
       end
 
       it 'returns an answer object with #valid_answer? is true' do
-        # TODO: in RSpec3, matchers must be +be_truthy+.
-        expect(@answers[0]).to be_true
-        expect(@answers[1]).to be_true
-        # These expectation's matcher will be OK with +be_true+ in RSpec3
-        expect(@answers[0].valid_answer?).to be_true
-        expect(@answers[1].valid_answer?).to be_true
+        expect(@answers[0]).to be_truthy
+        expect(@answers[1]).to be_truthy
+        expect(@answers[0].valid_answer?).to be true
+        expect(@answers[1].valid_answer?).to be true
       end
 
       context 'and the first break point is active' do
@@ -80,8 +78,8 @@ describe Player do
     context 'when it is the wrong answer' do
       it 'returns an answer object with #valid_answer? is false' do
         answer = @player.submit(@challenge, 'FLAG_piyopiyo')
-        expect(answer).to be_true
-        expect(answer.valid_answer?).to be_false
+        expect(answer).to be_truthy
+        expect(answer.valid_answer?).to be false
       end
 
       it "does not change the player's point" do
@@ -97,10 +95,10 @@ describe Player do
       end
 
       it 'returns an answer object' do
-        expect(@answer).to be_true
-        expect(@answer.valid_answer?).to be_false
-        expect(@answer.correct?).to be_true
-        expect(@answer.answered?).to be_true
+        expect(@answer).to be_truthy
+        expect(@answer.valid_answer?).to be false
+        expect(@answer.correct?).to be true
+        expect(@answer.answered?).to be true
       end
 
       it "does not change the player's point" do
@@ -160,7 +158,7 @@ describe Player do
 
     context 'when the player belongs to the given team' do
       it 'returns true' do
-        expect(subject).to be_true
+        expect(subject).to be true
       end
     end
 
@@ -171,7 +169,7 @@ describe Player do
       end
 
       it 'returns false' do
-        expect(subject).to be_false
+        expect(subject).to be false
       end
     end
   end

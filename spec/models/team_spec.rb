@@ -21,7 +21,7 @@ describe Team do
     end
     context 'if the team is not suspended' do
       it 'returns false' do
-        expect(@team.suspended?).to be_false
+        expect(@team.suspended?).to be false
       end
     end
     context 'if the team is suspended' do
@@ -29,7 +29,7 @@ describe Team do
         @team.suspend!
       end
       it 'returns true' do
-        expect(@team.suspended?).to be_true
+        expect(@team.suspended?).to be true
       end
     end
   end
@@ -44,7 +44,7 @@ describe Team do
         @team.suspend!(@suspend_until)
       end
       it 'suspends the team' do
-        expect(@team.suspended?).to be_true
+        expect(@team.suspended?).to be true
         expect(@team.suspended_until).to eq @suspend_until
       end
     end
@@ -57,7 +57,7 @@ describe Team do
     context 'if the team is not suspended' do
       it 'does nothing' do
         @team.resume!
-        expect(@team.suspended?).to be_false
+        expect(@team.suspended?).to be false
       end
     end
     context 'if the team is suspended' do
@@ -66,7 +66,7 @@ describe Team do
       end
       it 'resumes the team' do
         @team.resume!
-        expect(@team.suspended?).to be_false
+        expect(@team.suspended?).to be false
       end
     end
   end
@@ -188,7 +188,7 @@ describe Team do
       end
 
       it 'returns true' do
-        expect(subject).to be_true
+        expect(subject).to be true
       end
     end
 
@@ -199,7 +199,7 @@ describe Team do
       end
 
       it 'returns false' do
-        expect(subject).to be_false
+        expect(subject).to be false
       end
     end
   end
