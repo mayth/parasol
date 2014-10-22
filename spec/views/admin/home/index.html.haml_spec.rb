@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "admin/home/index.html.haml", :type => :view do
+RSpec.describe "admin/home/index.html.haml", type: :view do
   it 'shows the login page' do
     render
     expect(rendered).to include('Admin Home')

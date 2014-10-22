@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Post, :type => :model do
+RSpec.describe Post, type: :model do
   describe 'scope public_only' do
     subject { Post.public_only }
 

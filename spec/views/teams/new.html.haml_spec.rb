@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'teams/new', :type => :view do
+RSpec.describe 'teams/new', type: :view do
   before(:each) do
     assign(:team, build(:team))
   end

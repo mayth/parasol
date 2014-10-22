@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Flag, :type => :model do
+RSpec.describe Flag, type: :model do
   describe '#point=' do
     before do
       @flag = create(:flag)

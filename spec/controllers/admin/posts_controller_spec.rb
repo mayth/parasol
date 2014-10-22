@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::PostsController, :type => :controller do
+RSpec.describe Admin::PostsController, type: :controller do
   let(:admin) { create(:admin) }
 
   describe 'GET index' do

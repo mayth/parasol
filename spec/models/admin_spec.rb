@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin, :type => :model do
+RSpec.describe Admin, type: :model do
 end

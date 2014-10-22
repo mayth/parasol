@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Admin::Challenges", :type => :request do
+RSpec.describe "Admin::Challenges", type: :request do
   describe "GET /admin_challenges" do
     it "works! (now write some real specs)" do
       sign_in_as_a_valid_admin

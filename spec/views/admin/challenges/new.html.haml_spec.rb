@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "admin/challenges/new", :type => :view do
+RSpec.describe "admin/challenges/new", type: :view do
   let(:admin) {create(:admin)}
   before(:each) do
     assign(:challenge, build(:challenge))
@@ -10,7 +10,6 @@ describe "admin/challenges/new", :type => :view do
     sign_in admin
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", admin_challenges_path, "post" do
     end
   end
