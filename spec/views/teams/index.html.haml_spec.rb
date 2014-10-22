@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "teams/index", :type => :view do
+RSpec.describe "teams/index", type: :view do
   before(:each) do
     assign(:teams, 2.times.map { create(:team) })
     assign(:challenges, 3.times.map { create(:challenge) })
@@ -8,6 +8,5 @@ describe "teams/index", :type => :view do
 
   it "renders a list of teams" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
   end
 end

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "admin/teams/show", :type => :view do
+RSpec.describe "admin/teams/show", type: :view do
   before(:each) do
     @team = assign(:team, create(:team))
   end

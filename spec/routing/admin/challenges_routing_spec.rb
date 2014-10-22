@@ -1,6 +1,6 @@
-require "spec_helper"
+require "rails_helper"
 
-describe Admin::ChallengesController, :type => :routing do
+RSpec.describe Admin::ChallengesController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

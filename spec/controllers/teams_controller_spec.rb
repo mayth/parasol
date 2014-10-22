@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe TeamsController, :type => :controller do
+RSpec.describe TeamsController, type: :controller do
   let(:player) do
     p = create(:player)
     p.confirm!

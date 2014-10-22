@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'admin/posts/edit', :type => :view do
+RSpec.describe 'admin/posts/edit', type: :view do
   before(:each) do
     @post = assign(:post, create(:post))
   end

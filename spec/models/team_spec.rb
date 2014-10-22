@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Team, :type => :model do
+RSpec.describe Team, type: :model do
   describe '#forget_password!' do
     before do
       @old_pw = 'test'

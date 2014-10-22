@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "challenges/show.html.haml", :type => :view do
+RSpec.describe "challenges/show.html.haml", type: :view do
 end

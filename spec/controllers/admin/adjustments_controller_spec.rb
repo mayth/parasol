@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Admin::AdjustmentsController, :type => :controller do
+RSpec.describe Admin::AdjustmentsController, type: :controller do
   let(:admin) { create(:admin) }
   before do
     sign_in admin

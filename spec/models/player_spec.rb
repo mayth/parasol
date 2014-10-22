@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Player, :type => :model do
+RSpec.describe Player, type: :model do
   before do
     # Set the first break point setting explicitly
     Setting.first_break_points = nil

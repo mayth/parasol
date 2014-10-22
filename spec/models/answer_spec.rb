@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Answer, :type => :model do
+RSpec.describe Answer, type: :model do
   describe '#correct?' do
     before do
       @challenge = build(:challenge, flags: [])

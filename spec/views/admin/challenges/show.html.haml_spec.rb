@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'admin/challenges/show', :type => :view do
+RSpec.describe 'admin/challenges/show', type: :view do
   context 'for the challenge that are opened' do
     before(:each) do
       @challenge = create(:challenge)

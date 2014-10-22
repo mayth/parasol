@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'posts/show', :type => :view do
+RSpec.describe 'posts/show', type: :view do
   before(:each) do
     @post = assign(:post, create(:post, title: 'Title', body: 'MyText'))
     assign(:render, Redcarpet::Markdown.new(

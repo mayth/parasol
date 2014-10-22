@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Admin::Players", :type => :request do
+RSpec.describe "Admin::Players", type: :request do
   describe "GET /admin_players" do
     it "works! (now write some real specs)" do
       sign_in_as_a_valid_admin
