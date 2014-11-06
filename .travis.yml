@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.1.4
+addons:
+  postgresql: "9.3"
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - cp config/application.yml.sample config/application.yml
+  - psql -c 'create database parasol;' -U postgres
+  - bundle exec rake db:reset
+script:
+  - bundle exec rake spec
