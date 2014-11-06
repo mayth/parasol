@@ -67,9 +67,9 @@ gem 'unicorn'
 ### environment specific gems
 
 group :development do
-  gem 'erb2haml'
   gem 'yard', require: false
   gem 'yard-activerecord', require: false
+  gem 'brakeman', '~> 2.6.3', require: false
 end
 
 group :test do
