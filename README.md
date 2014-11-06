@@ -3,6 +3,8 @@ parasol
 
 CAPTURE THE FUTURE.
 
+[![Build Status](https://travis-ci.org/mayth/parasol.svg?branch=master)](https://travis-ci.org/mayth/parasol)
+
 # Requirements
 * Ruby 2.1
 * PostgreSQL 9.3
