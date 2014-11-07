@@ -5,6 +5,7 @@ CAPTURE THE FUTURE.
 
 [![Build Status](https://travis-ci.org/mayth/parasol.svg?branch=master)](https://travis-ci.org/mayth/parasol)
 [![Coverage Status](https://img.shields.io/coveralls/mayth/parasol.svg)](https://coveralls.io/r/mayth/parasol?branch=master)
+[![Code Climate](https://codeclimate.com/github/mayth/parasol/badges/gpa.svg)](https://codeclimate.com/github/mayth/parasol)
 
 # Requirements
 * Ruby 2.1
