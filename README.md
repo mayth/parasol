@@ -8,6 +8,10 @@ CAPTURE THE FUTURE.
 [![Code Climate](https://codeclimate.com/github/mayth/parasol/badges/gpa.svg)](https://codeclimate.com/github/mayth/parasol)
 [![Dependency Status](https://gemnasium.com/mayth/parasol.svg)](https://gemnasium.com/mayth/parasol)
 
+# About
+
+**parasol** is a score server application for "Capture the Flag" (CTF) contest made with [Rails](http://rubyonrails.org/).
+
 # Requirements
 * Ruby 2.1
 * PostgreSQL 9.3
@@ -19,6 +23,8 @@ On Ubuntu, you may need to install these packages to install required gems:
 * build-essential
 * ruby-dev
 * libpq-dev
+
+On CentOS? Sorry, I have no idea...
 
 # Setup
 1. Clone this repository.
