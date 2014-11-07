@@ -1,10 +1,10 @@
-Setting.save_default(:ctf_name, 'Parasol')
-Setting.save_default(:submit_burst_count, 10)
-Setting.save_default(:submit_burst_time, 10)
-Setting.save_default(:cooling_down, 900)
-Setting.save_default(:rules, '**No rules, No world.**')
-Setting.save_default(:team_registrable_from, Time.zone.now)
-Setting.save_default(:team_registrable_until, Time.zone.now.weeks_since(2))
-Setting.save_default(:contest_starts_at, Time.zone.now.next_month)
-Setting.save_default(:contest_ends_at, Time.zone.now.next_month.tomorrow)
-Setting.save_default(:first_break_points, '0.1, 0.08, 0.05')
+Setting.defaults[:ctf_name] = 'Parasol'
+Setting.defaults[:submit_burst_count] = 10
+Setting.defaults[:submit_burst_time] = 10
+Setting.defaults[:cooling_down] = 900
+Setting.defaults[:rules] = '**No rules, No world.**'
+Setting.defaults[:team_registrable_from] = Time.zone.now
+Setting.defaults[:team_registrable_until] = Time.zone.now.weeks_since(2)
+Setting.defaults[:contest_starts_at] = Time.zone.now.next_month
+Setting.defaults[:contest_ends_at] = Time.zone.now.next_month.tomorrow
+Setting.defaults[:first_break_points] = '0.1, 0.08, 0.05'
