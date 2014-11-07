@@ -68,6 +68,12 @@ GEM
     commonjs (0.2.7)
     coolline (0.5.0)
       unicode_utils (~> 1.4)
+    coveralls (0.7.1)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
     database_rewinder (0.4.1)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -79,6 +85,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -165,6 +172,7 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     nested_form (0.3.2)
+    netrc (0.8.0)
     newrelic_rpm (3.9.6.257)
     orm_adapter (0.5.0)
     pg (0.17.1)
@@ -222,6 +230,9 @@ GEM
     ref (1.0.5)
     responders (1.1.1)
       railties (>= 3.2, < 4.2)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -257,6 +268,11 @@ GEM
     showdown-rails (0.0.4)
       actionpack (>= 3.1)
       railties (>= 3.1)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slim (2.1.0)
       temple (~> 0.6.9)
       tilt (>= 1.3.3, < 2.1)
@@ -321,6 +337,7 @@ DEPENDENCIES
   binding_of_caller
   brakeman (~> 2.6.3)
   coffee-rails (~> 4.0.0)
+  coveralls
   database_rewinder
   devise
   factory_girl_rails

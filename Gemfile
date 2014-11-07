@@ -34,6 +34,7 @@ gem 'showdown-rails'
 
 # monitor
 gem 'newrelic_rpm'
+gem 'coveralls', require: false
 
 # process manager
 gem 'foreman'
