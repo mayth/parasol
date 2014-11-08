@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery_nested_form
+//= require jquery.datetimepicker
 //= require turbolinks
 //= require showdown
 //= require layout
