@@ -98,8 +98,8 @@ RSpec.describe Admin::ChallengesController, type: :controller do
         # specifies that the Challenge created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        expect_any_instance_of(Challenge).to receive(:update).with({'these' => 'params'})
-        put :update, {id: challenge.to_param, challenge: {"these" => "params" }}
+        expect_any_instance_of(Challenge).to receive(:update).with(name: 'kogasa')
+        put :update, {id: challenge.to_param, challenge: {name: 'kogasa'}}
       end
 
       it "assigns the requested challenge as @challenge" do

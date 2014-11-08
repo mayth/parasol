@@ -93,8 +93,8 @@ RSpec.describe Admin::PlayersController, type: :controller do
         # specifies that the Player created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        expect_any_instance_of(Player).to receive(:update).with({'these' => 'params'})
-        put :update, {id: player.to_param, player: {'these' => 'params'}}
+        expect_any_instance_of(Player).to receive(:update).with(name: 'kogasa')
+        put :update, {id: player.to_param, player: {name: 'kogasa'}}
       end
 
       it "assigns the requested player as @player" do
