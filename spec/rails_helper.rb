@@ -30,15 +30,12 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.before :suite do
+    FactoryGirl.reload
     DatabaseRewinder.clean_all
   end
 
   config.after :each do
     DatabaseRewinder.clean
-  end
-
-  config.before :all do
-    FactoryGirl.reload
   end
 
   config.before :each do

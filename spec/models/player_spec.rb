@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Player, type: :model do
   before do
     # Set the first break point setting explicitly
-    Setting.first_break_points = nil
+    Setting.first_break_points = []
   end
 
   describe '#submit' do
@@ -65,7 +65,7 @@ RSpec.describe Player, type: :model do
 
       context 'and the first break point is not active' do
         before do
-          Setting.first_break_points = nil
+          Setting.first_break_points = []
         end
 
         it "adds the flag point to the player's point" do

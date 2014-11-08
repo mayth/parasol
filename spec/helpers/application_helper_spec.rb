@@ -114,8 +114,8 @@ RSpec.describe ApplicationHelper, type: :helper do
         Setting[:first_break_points] = nil
       end
 
-      it 'returns empty array' do
-        expect(subject).to be_empty
+      it 'returns the default value' do
+        expect(subject).to eq [0.1, 0.08, 0.05]
       end
     end
 
