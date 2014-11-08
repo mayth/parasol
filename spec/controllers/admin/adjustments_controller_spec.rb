@@ -58,16 +58,12 @@ RSpec.describe Admin::AdjustmentsController, type: :controller do
 
     describe 'with invalid params' do
       it 'assigns a newly created but unsaved adjustment as @adjustment' do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
-        post :create, adjustment: { point: 'abc' }
+        post :create, adjustment: build(:adjustment).attributes.merge(player_id: nil)
         expect(assigns(:adjustment)).to be_a_new Adjustment
       end
 
       it 're-renders the "new" template' do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(Adjustment).to receive(:save).and_return(false)
-        post :create, adjustment: { point: 'abc' }
+        post :create, adjustment: build(:adjustment).attributes.merge(player_id: nil)
         expect(response).to render_template('new')
       end
     end
