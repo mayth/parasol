@@ -28,6 +28,10 @@ class Admin::SettingsController < ApplicationController
   private
 
     def settings_params
-      params.require(:setting).permit!
+      params.require(:setting).permit(
+        :ctf_name, :submit_burst_count, :submit_burst_time, :cooling_down,
+        :team_registrable_from, :team_registrable_until,
+        :contest_starts_at, :contest_ends_at, :first_break_points, :rules
+      )
     end
 end

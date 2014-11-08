@@ -92,6 +92,6 @@ class Admin::AdjustmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_adjustment_params
-      params.require(:adjustment).permit!
+      params.require(:adjustment).permit(:player_id, :challenge_id, :point, :reason)
     end
 end

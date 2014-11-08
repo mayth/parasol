@@ -71,6 +71,9 @@ class Admin::ChallengesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_challenge_params
-      params.require(:challenge).permit!
+      params.require(:challenge).permit(
+        :name, :genre, :description, :opened_at,
+        { flags_attributes: [:flag, :point] }
+      )
     end
 end

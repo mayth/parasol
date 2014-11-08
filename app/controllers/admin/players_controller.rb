@@ -71,6 +71,6 @@ class Admin::PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_player_params
-      params.require(:player).permit!
+      params.require(:player).permit(:name, :email, :team_id)
     end
 end
