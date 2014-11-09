@@ -24,7 +24,7 @@
         $('#challenge_opened_at').datetimepicker();
     %fieldset
       %legend Description
-      = f.text_area :description, class: 'pure-input-1'
+      = f.text_area :description, rows: 10, class: 'pure-input-1'
       %small Preview
       %div#description-preview
     %fieldset
