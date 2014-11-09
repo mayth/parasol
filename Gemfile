@@ -72,6 +72,7 @@ group :development do
   gem 'yard-activerecord', require: false
   gem 'brakeman', '~> 2.6.3', require: false
   gem 'guard-brakeman'
+  gem 'bullet'
 end
 
 group :test do
