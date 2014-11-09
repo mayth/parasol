@@ -36,8 +36,11 @@ configureFlashes = () ->
   )
 
 $(document).ready(() ->
+  marked.setOptions(
+    langPrefix: ''
+  )
   activateMenu()
   addActiveClassInMenu()
   configureFlashes()
-  $('pre code').each((i, e) -> hljs.highlightBlock(e))
+  hljs.initHighlighting();
 )

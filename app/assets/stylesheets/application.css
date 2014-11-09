@@ -13,6 +13,6 @@
  *= require grids-responsive
  *= require purecss-skin
  *= require layout
- *= require styles/default.css
+ *= require styles/tomorrow.css
  *= require_tree .
  */

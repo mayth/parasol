@@ -49,9 +49,13 @@
         = f.submit 'Submit', class: 'pure-button pure-button-primary'
 
 :javascript
-  $('#setting_rules').keyup(function() {
-    $('#rules-preview').html(marked(this.value));
+  var $previewElement = $('#rules-preview');
+  var $editingElement = $('#setting_rules');
+  $editingElement.keyup(function() {
+    $previewElement.html(marked(this.value));
+    $previewElement.children('pre').children('code').each(function(i, e) { hljs.highlightBlock(e) });
   });
-  $(document).on('page:load', function() {
-    $('#rules-preview').html(marked($('#setting_rules').value));
+  $(document).on('page:change', function() {
+    $previewElement.html(marked($editingElement.text()));
+    $previewElement.children('pre').children('code').each(function(i, e) { hljs.highlightBlock(e) });
   });

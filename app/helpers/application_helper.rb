@@ -16,8 +16,11 @@ module ApplicationHelper
   def markdown_render(md)
     @render ||=
       Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML.new,
-        fenced_code_blocks: true, no_intra_emphasis: true, tables: true
+        Redcarpet::Render::HTML.new(escape_html: true),
+        fenced_code_blocks: true,
+        disable_indented_code_blocks: true,
+        no_intra_emphasis: true,
+        tables: true
       )
     @render.render(md)
   end
