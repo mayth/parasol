@@ -35,7 +35,6 @@
       = f.submit 'Save', class: 'pure-button pure-button-primary'
 
 :javascript
-  var conv = new Showdown.converter();
   $('#challenge_description').keyup(function() {
-    $('#description-preview').html(conv.makeHtml(this.value));
+    $('#description-preview').html(marked(this.value));
   })

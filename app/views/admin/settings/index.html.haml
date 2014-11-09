@@ -49,10 +49,9 @@
         = f.submit 'Submit', class: 'pure-button pure-button-primary'
 
 :javascript
-  var conv = new Showdown.converter();
   $('#setting_rules').keyup(function() {
-    $('#rules-preview').html(conv.makeHtml(this.value));
+    $('#rules-preview').html(marked(this.value));
   });
   $(document).on('page:load', function() {
-    $('#rules-preview').html(conv.makeHtml($('#setting_rules').value));
+    $('#rules-preview').html(marked($('#setting_rules').value));
   });

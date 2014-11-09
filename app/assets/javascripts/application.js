@@ -16,6 +16,6 @@
 //= require jquery_nested_form
 //= require jquery.datetimepicker
 //= require turbolinks
-//= require showdown
+//= require marked
 //= require layout
 //= require_tree .

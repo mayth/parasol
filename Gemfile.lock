@@ -165,6 +165,7 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    marked-rails (0.3.2.0)
     method_source (0.8.2)
     migrant (1.5.0)
       faker
@@ -267,9 +268,6 @@ GEM
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
     sexp_processor (4.4.4)
-    showdown-rails (0.0.4)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -358,6 +356,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   less-rails
+  marked-rails
   migrant
   nested_form
   newrelic_rpm
@@ -376,7 +375,6 @@ DEPENDENCIES
   redcarpet
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.0)
-  showdown-rails
   spring
   spring-commands-rspec
   therubyracer

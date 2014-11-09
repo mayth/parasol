@@ -30,7 +30,7 @@ gem 'haml-rails'
 
 # markdown
 gem 'redcarpet'
-gem 'showdown-rails'
+gem 'marked-rails'
 
 # monitor
 gem 'newrelic_rpm'
