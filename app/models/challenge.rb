@@ -14,7 +14,7 @@ class Challenge < ActiveRecord::Base
   validates_associated :flags
   validates_presence_of :flags
 
-  accepts_nested_attributes_for :flags
+  accepts_nested_attributes_for :flags, allow_destroy: true
 
   structure do
     name        'Parasol Star Memories', validates: :presence

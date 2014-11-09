@@ -73,7 +73,7 @@ class Admin::ChallengesController < ApplicationController
     def admin_challenge_params
       params.require(:challenge).permit(
         :name, :genre, :description, :opened_at,
-        { flags_attributes: [:flag, :point] }
+        flags_attributes: %i(id _destroy flag point)
       )
     end
 end
