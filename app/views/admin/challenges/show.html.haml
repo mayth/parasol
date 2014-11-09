@@ -9,7 +9,7 @@
       %p
         Opened (opened at #{@challenge.opened_at})
       - if @challenge.answers.valid.any?
-        %p First break by #{@challenge.first_break.player.name} (#{@challenge.first_break.player.team.name}) at #{@challenge.first_break.created_at} 
+        %p First break by #{@challenge.first_break.player.name} (#{@challenge.first_break.player.team.name}) at #{@challenge.first_break.created_at}
         %p #{pluralize(@challenge.answers.valid.count, 'player')} solved
       - else
         No one submits correct answer...
@@ -23,7 +23,7 @@
     %h1 Details
     %section
       %h2 Description
-      != markdown_render(@challenge.description)
+      #description-body= @challenge.description
     %section
       %h2 Flags
       %ul
