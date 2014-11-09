@@ -13,6 +13,7 @@
  *= require grids-responsive
  *= require purecss-skin
  *= require layout
- *= require styles/tomorrow.css
+ *= require styles/tomorrow
+ *= require jquery.datetimepicker
  *= require_tree .
  */
