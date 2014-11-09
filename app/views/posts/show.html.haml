@@ -11,7 +11,7 @@
   %p.post-date= @post.updated_at
 
   .post-body
-    != markdown_render(@post.body)
+    = @post.body
 
   %p
     = link_to 'Back', posts_path

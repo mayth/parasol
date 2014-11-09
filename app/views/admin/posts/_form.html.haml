@@ -16,6 +16,20 @@
     %fieldset
       %legend Body
       = f.text_area :body, required: true, class: 'pure-input-1', rows: 10
+      %small Preview
+      %div#preview
 
     .pure-controls
       = f.submit 'Post', class: 'pure-button pure-button-primary'
+
+:javascript
+  var $previewElement = $('#preview');
+  var $editingElement = $('#post_body');
+  $editingElement.keyup(function() {
+    $previewElement.html(marked(this.value));
+    $previewElement.children('pre').children('code').each(function(i, e) { hljs.highlightBlock(e) });
+  });
+  $(document).on('page:change', function() {
+    $previewElement.html(marked($editingElement.text()));
+    $previewElement.children('pre').children('code').each(function(i, e) { hljs.highlightBlock(e) });
+  });

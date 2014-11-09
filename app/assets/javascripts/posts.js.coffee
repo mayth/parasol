@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on('page:change', () =>
+  if /^\/posts\/[0-9]+$/.test(location.pathname)
+    $.getJSON('/posts/1.json', (data) =>
+      $('.post-body').html(marked(data['body']))
+      $('.post-body pre code').each((i, e) => hljs.highlightBlock(e))
+    )
+)
