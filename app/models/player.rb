@@ -37,7 +37,6 @@ class Player < ActiveRecord::Base
   validates :name,
             presence: true,
             format: { with: /\A[- [:word:]]+\z/ }
-  validates :email, presence: true, uniqueness: true
 
   # Submits the answer.
   #
