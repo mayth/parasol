@@ -17,7 +17,7 @@ module ApplicationHelper
     @render ||=
       Redcarpet::Markdown.new(
         Redcarpet::Render::HTML.new,
-        fenced_code_blocks: true, no_intra_emphasis: true
+        fenced_code_blocks: true, no_intra_emphasis: true, tables: true
       )
     @render.render(md)
   end
