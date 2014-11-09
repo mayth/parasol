@@ -15,4 +15,9 @@ $(document).on('page:change', () =>
       $('#description-body').html(marked(data['description']))
       $('#description-body pre code').each((i, e) => hljs.highlightBlock(e))
     )
+
+  result = /^\/admin\/challenges\/([0-9]+)\/edit\/?$/.exec(location.pathname)
+  if result
+      $('#description-preview').html(marked($('#challenge_description').text()))
+      $('#description-preview pre code').each((i, e) => hljs.highlightBlock(e))
 )

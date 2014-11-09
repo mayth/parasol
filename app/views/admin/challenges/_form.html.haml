@@ -37,4 +37,7 @@
 :javascript
   $('#challenge_description').keyup(function() {
     $('#description-preview').html(marked(this.value));
-  })
+    $('#description-preview pre code').each(function(i, e) {
+      hljs.highlightBlock(e);
+    })
+  });
