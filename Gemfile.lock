@@ -123,9 +123,6 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
-    guard-spring (0.0.4)
-      guard
-      spring
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -351,7 +348,6 @@ DEPENDENCIES
   foreman
   guard-brakeman
   guard-rspec
-  guard-spring
   haml-rails
   hirb
   hirb-unicode

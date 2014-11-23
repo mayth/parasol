@@ -116,5 +116,4 @@ group :development, :test do
 
   # Guard (automatic run tests)
   gem 'guard-rspec'
-  gem 'guard-spring'
 end
