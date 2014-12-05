@@ -1,0 +1,19 @@
+%h1 Listing admins
+
+%table
+  %tr
+    %th Email
+    %th
+    %th
+    %th
+
+  - @accounts.each do |account|
+    %tr
+      %td= account.email
+      %td= link_to 'Show', admin_account_path(account)
+      %td= link_to 'Edit', edit_admin_account_path(account)
+      %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Admin', new_admin_account_path

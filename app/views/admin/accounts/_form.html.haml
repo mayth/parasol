@@ -1,0 +1,10 @@
+= form_for @account, url: @account.new_record? ? admin_accounts_path : admin_account_path(@account), html: { class: 'pure-form pure-form-aligned' } do |f|
+  - if @account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@admin.errors.count, "error")} prohibited this admin from being saved:"
+      %ul
+        - @account.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
