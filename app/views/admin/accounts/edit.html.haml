@@ -1,7 +1,10 @@
-%h1 Editing admin
+.header
+  %h1 Edit Admin Account
+  %h2= @account.email
 
-= render 'form'
+.content
+  = render 'form'
 
-= link_to 'Show', @account
-\|
-= link_to 'Back', admin_accounts_path
+  = link_to 'Show', @account
+  \|
+  = link_to 'Back', admin_accounts_path

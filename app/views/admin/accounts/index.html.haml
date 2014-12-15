@@ -1,19 +1,25 @@
-%h1 Listing admins
+.header
+  %h1 Admin Accounts
 
-%table
-  %tr
-    %th Email
-    %th
-    %th
-    %th
+.content
+  %section
+    = link_to 'New Account', new_admin_account_path
 
-  - @accounts.each do |account|
-    %tr
-      %td= account.email
-      %td= link_to 'Show', admin_account_path(account)
-      %td= link_to 'Edit', edit_admin_account_path(account)
-      %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %section
+    %table.pure-table
+      %thead
+        %tr
+          %th Email
+          %th Created at
+          %th
+          %th
+          %th
 
-%br
-
-= link_to 'New Admin', new_admin_account_path
+      %tbody
+        - @accounts.each do |account|
+          %tr
+            %td= account.email
+            %td= account.created_at
+            %td= link_to 'Show', admin_account_path(account)
+            %td= link_to 'Edit', edit_admin_account_path(account)
+            %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }

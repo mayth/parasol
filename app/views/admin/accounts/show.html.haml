@@ -1,6 +1,14 @@
-%p#notice= notice
+.header
+  %h1 Admin Account
+  %h2= @account.email
 
+.content
+  %dl
+    %dt Email
+    %dd= @account.email
+    %dt Created at
+    %dd= @account.created_at
 
-= link_to 'Edit', edit_admin_account_path(@account)
-\|
-= link_to 'Back', admin_accounts_path
+  = link_to 'Edit', edit_admin_account_path(@account)
+  \|
+  = link_to 'Back', admin_accounts_path

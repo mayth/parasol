@@ -6,5 +6,13 @@
         - @account.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
-    = f.submit 'Save'
+  %fieldset
+    .pure-control-group
+      = f.label :email
+      = f.email_field :email, required: true
+    .pure-control-group
+      = f.label :password
+      = f.password_field :password
+      %small Leave this empty if you want not to change the password.
+    .pure-controls
+      = f.submit 'Save', class: 'pure-button pure-button-primary'
