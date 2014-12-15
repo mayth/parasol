@@ -1,4 +1,5 @@
 class Admin::AccountsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/accounts
@@ -40,8 +41,10 @@ class Admin::AccountsController < ApplicationController
   # PATCH/PUT /admin/accounts/1
   # PATCH/PUT /admin/accounts/1.json
   def update
+    params = account_params
+    params.delete('password') unless params['password'].present?
     respond_to do |format|
-      if @account.update(account_params)
+      if @account.update(params)
         format.html { redirect_to admin_account_path(@account), notice: 'Admin account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
       else
@@ -69,6 +72,6 @@ class Admin::AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:email, :password)
+      params.require(:admin).permit(:email, :password)
     end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::AccountsController, :type => :controller do
-  let(:invalid_attributes) { attributes_for(:admin).merge(password: '') }
+  let(:invalid_attributes) { attributes_for(:admin).merge(email: '') }
   let(:admin) { create(:admin) }
 
   before do
@@ -40,30 +40,30 @@ RSpec.describe Admin::AccountsController, :type => :controller do
     describe "with valid params" do
       it "creates a new Admin" do
         expect {
-          post :create, account: attributes_for(:admin)
+          post :create, admin: attributes_for(:admin)
         }.to change(Admin, :count).by(1)
       end
 
       it "assigns a newly created admin account as @account" do
-        post :create, account: attributes_for(:admin)
+        post :create, admin: attributes_for(:admin)
         expect(assigns(:account)).to be_a(Admin)
         expect(assigns(:account)).to be_persisted
       end
 
       it "redirects to the created admin account" do
-        post :create, account: attributes_for(:admin)
+        post :create, admin: attributes_for(:admin)
         expect(response).to redirect_to(admin_account_url(Admin.last))
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved admin account as @account" do
-        post :create, account: invalid_attributes
+        post :create, admin: invalid_attributes
         expect(assigns(:account)).to be_a_new(Admin)
       end
 
       it "re-renders the 'new' template" do
-        post :create, account: invalid_attributes
+        post :create, admin: invalid_attributes
         expect(response).to render_template("new")
       end
     end
@@ -76,30 +76,30 @@ RSpec.describe Admin::AccountsController, :type => :controller do
       }
 
       it "updates the requested admin account" do
-        put :update, id: admin.to_param, account: new_attributes
+        put :update, id: admin.to_param, admin: new_attributes
         admin.reload
         expect(assigns(:account).email).to eq(new_attributes[:email])
       end
 
       it "assigns the requested admin account as @account" do
-        put :update, id: admin.to_param, account: attributes_for(:admin)
+        put :update, id: admin.to_param, admin: attributes_for(:admin)
         expect(assigns(:account)).to eq(admin)
       end
 
       it "redirects to the admin account" do
-        put :update, id: admin.to_param, account: attributes_for(:admin)
+        put :update, id: admin.to_param, admin: attributes_for(:admin)
         expect(response).to redirect_to(admin_account_url(admin))
       end
     end
 
     describe "with invalid params" do
       it "assigns the admin account as @account" do
-        put :update, id: admin.to_param, account: invalid_attributes
+        put :update, id: admin.to_param, admin: invalid_attributes
         expect(assigns(:account)).to eq(admin)
       end
 
       it "re-renders the 'edit' template" do
-        put :update, id: admin.to_param, account: invalid_attributes
+        put :update, id: admin.to_param, admin: invalid_attributes
         expect(response).to render_template("edit")
       end
     end
