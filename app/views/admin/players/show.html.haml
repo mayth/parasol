@@ -3,6 +3,18 @@
   %h2= @player.team.name
 
 .content
+  %h1 Captured Flags
+  %table.pure-table
+    %thead
+      %tr
+        %td Challenge
+        %td Captured at
+    %tbody
+      - @player.captured_flags.each do |flag|
+        %tr
+          %td #{flag.challenge.name} (#{flag.challenge.genre} #{flag.point})
+          %td= flag.created_at
+
   = link_to 'Edit', edit_admin_player_path(@player)
   \|
   = link_to 'Back', admin_players_path
