@@ -21,7 +21,7 @@
         %tr
           %td= player.id
           %td= player.name
-          %td= link_to player.team.name, '/'
+          %td= link_to player.team.name, admin_team_path(player.team)
           %td= player.point
           %td= link_to 'Show', admin_player_path(player)
           %td= link_to 'Edit', edit_admin_player_path(player)
