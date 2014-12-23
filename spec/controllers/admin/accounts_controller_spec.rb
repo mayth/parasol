@@ -70,15 +70,44 @@ RSpec.describe Admin::AccountsController, :type => :controller do
   end
 
   describe "PUT update" do
-    describe "with valid params" do
+    describe "with valid params which don't include password" do
+      let(:old_password) { attributes_for(:admin)['password'] }
       let(:new_attributes) {
-        attributes_for(:admin).merge(email: 'new_address@example.com')
+        attributes_for(:admin).merge(email: 'new_address@example.com', password: '')
       }
 
       it "updates the requested admin account" do
         put :update, id: admin.to_param, admin: new_attributes
         admin.reload
         expect(assigns(:account).email).to eq(new_attributes[:email])
+      end
+
+      it "assigns the requested admin account as @account" do
+        put :update, id: admin.to_param, admin: new_attributes
+        expect(assigns(:account)).to eq(admin)
+      end
+
+      it "redirects to the admin account" do
+        put :update, id: admin.to_param, admin: new_attributes
+        expect(response).to redirect_to(admin_account_url(admin))
+      end
+
+      it 'does not update the password' do
+        put :update, id: admin.to_param, admin: new_attributes
+        expect(assigns(:account).password).to eq old_password
+      end
+    end
+
+    describe "with valid params which include password" do
+      let (:new_attributes) {
+        attributes_for(:admin).merge(email: 'new_address@example.com', password: 'newpassword')
+      }
+
+      it "updates the requested admin account" do
+        put :update, id: admin.to_param, admin: new_attributes
+        admin.reload
+        expect(assigns(:account).email).to eq(new_attributes[:email])
+        expect(assigns(:account).password).to eq(new_attributes[:password])
       end
 
       it "assigns the requested admin account as @account" do
