@@ -3,10 +3,10 @@ AllCops:
     - Rakefile
     - config.ru
   Exclude:
-    - db/**
-    - config/**
+    - db/**/*
+    - config/**/*
     - bin/**
-    - vendor/bundle/**
+    - vendor/bundle/**/*
   RunRailsCops: true
 
 inherit_from: rubocop-todo.yml
