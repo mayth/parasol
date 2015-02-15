@@ -33,11 +33,6 @@ Documentation:
 EmptyLinesAroundAccessModifier:
   Enabled: false
 
-# Offense count: 12
-# Cop supports --auto-correct.
-FinalNewline:
-  Enabled: false
-
 # Offense count: 27
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
