@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.2.1'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 
 gem 'therubyracer', platforms: :ruby
 
 gem 'pg'
 
 # stylesheets (sass/less)
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'less-rails'
 gem 'yui-compressor'
 
@@ -23,7 +23,7 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # view template (haml)
 gem 'haml-rails'
@@ -40,7 +40,7 @@ gem 'coveralls', require: false
 gem 'foreman'
 # app configuration
 gem 'figaro'
-gem 'rails-settings-cached', '0.4.1'
+gem 'rails-settings-cached'
 
 ## model
 # migration DSL
@@ -48,11 +48,11 @@ gem 'migrant'
 # tag
 gem 'acts-as-taggable-on'
 # timeline validation
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 
 ## view
 # i18n
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n'
 # automatically insert validation to views
 gem 'html5_validators'
 gem 'nested_form'
@@ -70,7 +70,7 @@ gem 'unicorn'
 group :development do
   gem 'yard', require: false
   gem 'yard-activerecord', require: false
-  gem 'brakeman', '~> 2.6.3', require: false
+  gem 'brakeman', require: false
   gem 'guard-brakeman'
   gem 'bullet'
 end
@@ -105,8 +105,8 @@ group :development, :test do
   gem 'awesome_print'
 
   # RSpec
-  gem 'rspec-rails', '~> 3.1.0'
-  gem 'rake_shared_context', '~> 0.2.1'
+  gem 'rspec-rails'
+  gem 'rake_shared_context'
 
   # fixture-replacement
   gem 'factory_girl_rails'

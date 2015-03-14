@@ -1,14 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
-# Pick the frameworks you want:
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "sprockets/railtie"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
 module Parasol
   class Application < Rails::Application
@@ -25,6 +21,9 @@ module Parasol
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :en
+
+    # Do not swallow erros in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
       g.template_engine :haml
