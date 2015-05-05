@@ -107,7 +107,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     fastercsv (1.5.5)
-    ffi (1.9.7)
+    ffi (1.9.8)
     figaro (1.1.0)
       thor (~> 0.14)
     foreman (0.78.0)
