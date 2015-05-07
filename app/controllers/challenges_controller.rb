@@ -29,13 +29,6 @@ class ChallengesController < ApplicationController
   end
 
   private
-    def response_for_closed_contest
-      respond_to do |format|
-        format.html { redirect_to @challenge, alert: 'Contest Closed!' }
-        format.json { { result: 'closed' } }
-      end
-    end
-
     def response_for_valid_answer
       format.html do
         redirect_to challenge_path(@challenge),
