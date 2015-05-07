@@ -29,36 +29,41 @@ class ChallengesController < ApplicationController
   end
 
   private
-    def response_for_valid_answer
-      format.html do
-        redirect_to challenge_path(@challenge),
-                    notice: 'Your flag is correct!'
+    def redirect_with_answer_result(message, type = :notice)
+      case type
+      when nil, :notice
+        redirect_to challenge_path(@challenge), notice: message
+      when :alert, :error
+        redirect_to challenge_path(@challenge), alert: message
       end
-      format.json { render json: { result: 'correct' } }
+    end
+
+    def response_for_valid_answer
+      respond_to do |format|
+        format.html { redirect_with_answer_result('Your flag is correct!') }
+        format.json { render json: { result: 'correct' } }
+      end
     end
 
     def response_for_answered_challenge
-      format.html do
-        redirect_to challenge_path(@challenge),
-                    notice: 'The flag is correct, but you or your team mate has already answered.'
+      respond_to do |format|
+        format.html { redirect_with_answer_result('The flag is correct, but you or your team mate has already answered.') }
+        format.json { render json: { result: 'answered' } }
       end
-      format.json { render json: { result: 'answered' } }
     end
 
     def response_for_wrong_anser
-      format.html do
-        redirect_to challenge_path(@challenge),
-                    notice: 'Wrong answer...'
+      respond_to do |format|
+        format.html { redirect_with_answer_result('Wrong answer...', :alert) }
+        format.json { render json: { result: 'wrong' } }
       end
-      format.json { render json: { result: 'wrong' } }
     end
 
     def response_on_error
-      format.html do
-        redirect_to challenge_path(@challenge),
-                    alert: 'Something went wrong...'
+      respond_to do |format|
+        format.html { redirect_with_answer_result('Something went wrong...', :error) }
+        format.json { render json: { result: 'error' } }
       end
-      format.json { render json: { result: 'error' } }
     end
 
     def check_contest_period
