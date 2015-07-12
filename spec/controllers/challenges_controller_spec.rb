@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ChallengesController, type: :controller do
   let(:player) do
     p = create(:player)
-    p.confirm!
+    p.confirm
     p
   end
 

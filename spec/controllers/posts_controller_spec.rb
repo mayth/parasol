@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   let(:player) do
     player = create(:player)
-    player.confirm!
+    player.confirm
     player
   end
 
@@ -29,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
         before do
           sign_in admin
         end
-        
+
         it 'assigns all posts as @ posts' do
           posts =
           [

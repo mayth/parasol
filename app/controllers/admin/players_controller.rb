@@ -26,7 +26,7 @@ class Admin::PlayersController < ApplicationController
   # POST /admin/players.json
   def create
     @player = Player.new(admin_player_params)
-    @player.confirm!
+    @player.confirm
 
     respond_to do |format|
       if @player.save

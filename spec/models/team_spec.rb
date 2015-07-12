@@ -124,7 +124,7 @@ RSpec.describe Team, type: :model do
       before do
         3.times.each do
           player = create(:player)
-          player.confirm!
+          player.confirm
           team.players << player
         end
       end
@@ -207,7 +207,7 @@ RSpec.describe Team, type: :model do
   describe '#last_submission' do
     let(:team) do
       p = create(:player)
-      p.confirm!
+      p.confirm
       create(:team, players: [p])
     end
     let(:challenge) { create(:challenge) }

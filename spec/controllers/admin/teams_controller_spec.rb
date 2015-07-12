@@ -155,7 +155,7 @@ RSpec.describe Admin::TeamsController, type: :controller do
         sign_in admin
         team = create(:team)
         player = create(:player)
-        player.confirm!
+        player.confirm
         team.players << player
         request.env['HTTP_REFERER'] = admin_team_path(team)
         expect { delete :destroy, id: team.to_param }
@@ -166,7 +166,7 @@ RSpec.describe Admin::TeamsController, type: :controller do
         sign_in admin
         team = create(:team)
         player = create(:player)
-        player.confirm!
+        player.confirm
         team.players << player
         request.env['HTTP_REFERER'] = admin_team_path(team)
         delete :destroy, id: team.to_param

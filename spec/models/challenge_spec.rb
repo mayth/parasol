@@ -172,7 +172,7 @@ RSpec.describe Challenge, type: :model do
     let(:challenge) { create(:challenge) }
     let(:player) do
       player = create(:player)
-      player.confirm!
+      player.confirm
       player
     end
 

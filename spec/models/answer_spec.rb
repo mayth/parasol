@@ -12,7 +12,7 @@ RSpec.describe Answer, type: :model do
       @flags.each {|f| @challenge.flags << f}
       @challenge.save!
       @player = create(:player)
-      @player.confirm!
+      @player.confirm
     end
     context 'when it is the correct answer' do
       it 'returns true' do
@@ -84,9 +84,9 @@ RSpec.describe Answer, type: :model do
       @flags.each { |f| @challenge.flags << f }
       @challenge.save!
       @player = create(:player)
-      @player.confirm!
+      @player.confirm
       @player2 = create(:player, team: @player.team)
-      @player2.confirm!
+      @player2.confirm
     end
 
     context 'when it is the correct answer' do

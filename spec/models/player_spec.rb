@@ -17,10 +17,10 @@ RSpec.describe Player, type: :model do
       @flags.each { |f| @challenge.flags << f }
       @challenge.save!
       @player = create(:player)
-      @player.confirm!
+      @player.confirm
       players = 2.times.map do
         player = create(:player)
-        player.confirm!
+        player.confirm
         player
       end
       @players = [@player, *players]
@@ -177,7 +177,7 @@ RSpec.describe Player, type: :model do
   describe '#adjust!' do
     let(:player) do
       p = create(:player)
-      p.confirm!
+      p.confirm
       p
     end
 
@@ -209,7 +209,7 @@ RSpec.describe Player, type: :model do
   describe '#adjustment_point' do
     let(:player) do
       p = create(:player)
-      p.confirm!
+      p.confirm
       p
     end
 
@@ -249,7 +249,7 @@ RSpec.describe Player, type: :model do
   describe '#point' do
     let(:player) do
       player = create(:player)
-      player.confirm!
+      player.confirm
       player
     end
 
@@ -301,7 +301,7 @@ RSpec.describe Player, type: :model do
   describe '#last_submission' do
     let(:player) do
       p = create(:player)
-      p.confirm!
+      p.confirm
       p
     end
     let(:challenge) { create(:challenge) }
