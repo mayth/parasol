@@ -3,8 +3,8 @@ parasol
 
 CAPTURE THE FUTURE.
 
-[![Build Status](https://travis-ci.org/mayth/parasol.svg?branch=master)](https://travis-ci.org/mayth/parasol)
-[![Coverage Status](https://img.shields.io/coveralls/mayth/parasol.svg)](https://coveralls.io/r/mayth/parasol?branch=master)
+[![Circle CI](https://circleci.com/gh/mayth/parasol.svg?style=shield)](https://circleci.com/gh/mayth/parasol)
+[![Test Coverage](https://codeclimate.com/github/mayth/parasol/badges/coverage.svg)](https://codeclimate.com/github/mayth/parasol/coverage)
 [![Code Climate](https://codeclimate.com/github/mayth/parasol/badges/gpa.svg)](https://codeclimate.com/github/mayth/parasol)
 [![Dependency Status](https://gemnasium.com/mayth/parasol.svg)](https://gemnasium.com/mayth/parasol)
 
