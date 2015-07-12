@@ -87,7 +87,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context 'with nil' do
       subject { helper.markdown_render(nil) }
       it 'fails' do
-        expect { subject }.to raise_error
+        expect { subject }.to raise_error(TypeError)
       end
     end
 
@@ -102,7 +102,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context 'with something else' do
       subject { helper.markdown_render([1, 2, 3]) }
       it 'fails' do
-        expect { subject }.to raise_error
+        expect { subject }.to raise_error(TypeError)
       end
     end
   end

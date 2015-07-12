@@ -29,7 +29,7 @@ RSpec.describe 'admin:create_user' do
       let(:password) { 'shortpw' }
 
       it 'fails with some errors' do
-        expect { subject.invoke }.to raise_error
+        expect { subject.invoke }.to raise_error(RuntimeError)
       end
     end
   end
